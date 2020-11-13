@@ -7,4 +7,6 @@ class TrainsController < ApplicationController
 
   end
 
+  def search
+  end
 end
