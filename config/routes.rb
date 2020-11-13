@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   root to: "trains#index"
   resources :bookmarks, only: [:edit, :show]
+  resources :calendars, only: [:show, :edit, :create]
   resources :trains, only: :index do
     collection do
       get :search
