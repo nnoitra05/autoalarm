@@ -10,10 +10,10 @@
 
 
 ### Association
-- has_many :calenders
+- has_many :calendars
 - has_many :bookmarks
 
-## Calender テーブル
+## Calendar テーブル
 
 | Column       | Type          | Options                            |
 | -------------| --------------| -----------------------------------|
@@ -22,8 +22,8 @@
 
 ### Association
 - belongs_to :users
-- has_many : bookmark_calenders
-- has_many : bookmarks, through:bookmark_calenders
+- has_many : bookmark_calendars
+- has_many : bookmarks, through:bookmark_calendars
 
 
 
@@ -41,19 +41,19 @@
 
 ### Association
 - belongs_to :users
-- has_many : bookmark_calenders
-- has_many : calenders, through:bookmark_calenders
+- has_many : bookmark_calendars
+- has_many : calendars, through:bookmark_calendars
 
-## BookmarkCalender テーブル
+## BookmarkCalendar テーブル
 
 | Column       | Type          | Options                            |
 | -------------| --------------| -----------------------------------|
 | bookmark     | references    | null : false, foreign key: true    |
-| Calender     | references    | null : false, foreign key: true    |
+| Calendar     | references    | null : false, foreign key: true    |
 
 ### Association
 - belongs_to : bookmark
-- belongs_to : calender
+- belongs_to : calendar
 
 
 
