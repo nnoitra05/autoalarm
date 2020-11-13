@@ -2,6 +2,9 @@ require_relative 'boot'
 
 require 'rails/all'
 
+# app/services直下のファイルをrequireする
+Dir.glob("#{Rails.root}/app/services/*").each {|service_path| require service_path}
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
