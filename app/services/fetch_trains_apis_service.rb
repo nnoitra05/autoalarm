@@ -32,7 +32,7 @@ class FetchTrainsApisService
                          ttt: "odpt:TrainTimetable", # 電車単位の時刻表
                          tt: "odpt:TrainType" # 列車種別
                         }
-  
+
   end
 
 end
