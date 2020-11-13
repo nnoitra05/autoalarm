@@ -1,24 +1,61 @@
-# README
+#テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column      | Type       | Options         |
+| ----------- | -----------| ----------------|
+| name        | string     | null : false    |
+| email       | string     | null : false    |
+| password    | string     | null : false    |
 
-* Ruby version
 
-* System dependencies
+### Association
+- has_many :calenders
+- has_many :bookmarks
 
-* Configuration
+## Calender テーブル
 
-* Database creation
+| Column       | Type          | Options                            |
+| -------------| --------------| -----------------------------------|
+| date         | date          | null : false                       |
+| user         | references    | null : false, foreign key: true    |
 
-* Database initialization
+### Association
+- belongs_to :users
+- has_many : bookmark_calenders
+- has_many : bookmarks, through:bookmark_calenders
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+## Bookmark テーブル
+
+| Column       | Type          | Options                            |
+| -------------| --------------| -----------------------------------|
+| name         | string        | null : false                       |
+| departure    | string        | null : false                       |
+| destination  | string        | null : false                       |
+| time         | datetime      | null : false                       |
+| user         | references    | null : false, foreign key: true    |
+| status_check | boolean       |                                    |
+
+### Association
+- belongs_to :users
+- has_many : bookmark_calenders
+- has_many : calenders, through:bookmark_calenders
+
+## BookmarkCalender テーブル
+
+| Column       | Type          | Options                            |
+| -------------| --------------| -----------------------------------|
+| bookmark     | references    | null : false, foreign key: true    |
+| Calender     | references    | null : false, foreign key: true    |
+
+### Association
+- belongs_to : bookmark
+- belongs_to : calender
+
+
+
+
+
