@@ -83,3 +83,19 @@ a {
 .nav__logout:hover{
   opacity: 0.5;
 }
+
+.field{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-btn{
+  border: 1px solid #87CEFA;
+  background-color: #87CEFA;
+}
+
+.page_title{
+  display: flex;
+  justify-content: center;
+}
