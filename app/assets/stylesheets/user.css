@@ -1,0 +1,22 @@
+.user_name{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.name{
+  color: #505066;
+}
+
+.btn{
+  margin: 10px;
+  padding: 8px 20px;
+  font-size: 14px;
+  border: 2px solid #66BB88;
+  color: #66BB88;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 3px;
+  display: inline-block;
+}
