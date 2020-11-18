@@ -18,7 +18,7 @@
   <%# ログインしているときは以下を表示するようにしましょう %>
         <%# if user_signed_in? %>
           <div class="nav__right">
-            <%= link_to "ログアウト", root_path, method: :delete, class: :nav__logout%>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__logout%>
             <%= link_to "マイページ", root_path, class: :nav__btn %>
             <%= link_to "ブックマーク", root_path, class: :nav__btn %>
           </div> 
@@ -26,8 +26,8 @@
    <%# ログインしていないときは以下を表示するようにしましょう %>
         <%# else %>
           <div class="nav__right">
-            <%= link_to "ログイン", root_path, class: :nav__btn %>
-            <%= link_to "新規登録", root_path, class: :nav__btn %>
+            <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
+            <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
           </div>
         <%# end %>
     <%# // ログインしていないときは上記を表示するようにしましょう %>
