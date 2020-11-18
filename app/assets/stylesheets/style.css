@@ -39,7 +39,7 @@ a {
 .header {
 
   background-color: #f1f8fe;
-  background-color: green;
+  background-color: #2c7873;
   margin-bottom: 48px;
   padding: 20px 0;
 
@@ -60,16 +60,16 @@ a {
   display: inline-block;
   padding: 0.4em 1.6em;
   font-size: 0.8em;
-  color: #87CEFA;
+  color: white;
   text-decoration: none;
   user-select: none;
-  border: 1px #87CEFA solid;
+  border: 1.5px white solid;
   border-radius: 3px;
   transition: 0.4s ease;
 }
 .nav__btn:hover{
   color: #fff;
-  background: #87CEFA;
+  background: #6fb98f;
 }
 
 .nav__logout{
