@@ -4,6 +4,6 @@
         <%= current_user.nickname %><br>
         <%= current_user.email %><br>
         <%= link_to "編集する", edit_user_path(current_user.id), class: 'btn'%>
-        <%= link_to "削除する", root_path, class: 'btn'%>
+        <%= link_to "削除する", user_path(current_user.id), method: :delete, class: 'btn'%>
     </div>
 </div>
