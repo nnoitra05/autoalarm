@@ -212,6 +212,7 @@ div.contents.row .new_user {
 
 .bookmark_route{
   display: flex;
+  justify-content: center;
 }
 
 .bookmark_btn{
