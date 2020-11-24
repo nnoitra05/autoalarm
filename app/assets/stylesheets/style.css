@@ -192,3 +192,29 @@ div.contents.row .new_user {
   content: " ";
   display: table;
 }
+
+/* ブックマークページのCSSです */
+.bookmarks{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bookmark{
+  border: 2px solid #2c7873;
+  border-radius: 10px;
+}
+
+.bookmark_title{
+  display: flex;
+}
+
+.bookmark_route{
+  display: flex;
+}
+
+.bookmark_btn{
+  display: flex;
+  justify-content: center;
+}
