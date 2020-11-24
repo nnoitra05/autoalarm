@@ -13,7 +13,7 @@
     <header class="header">
       <div class="nav">
         <div class="nav__left">
-          <%= link_to "経路検索アプリ", root_path %>
+          <%= link_to "経路検索アプリ", root_path, class: :nav__logo %>
         </div>
   <%# ログインしているときは以下を表示するようにしましょう %>
         <% if user_signed_in? %>

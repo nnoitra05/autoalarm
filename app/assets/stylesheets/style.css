@@ -84,6 +84,11 @@ a {
   opacity: 0.5;
 }
 
+.nav__logo{
+  color: white;
+  font-size: 25px
+}
+
 /* devise用のCSS 適宜変更お願いします */
 .page_title{
   display: flex;
