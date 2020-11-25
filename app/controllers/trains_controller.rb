@@ -24,4 +24,9 @@ class TrainsController < ApplicationController
     @routes = @response[:routes]
     
   end
+
+  def sandbox
+
+  end
+  
 end

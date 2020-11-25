@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :trains, only: :index do
     collection do
       get :search
+      get :sandbox
     end
   end
 end
