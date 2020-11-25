@@ -1,4 +1,7 @@
 /* リセットCSS */
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -13,6 +16,7 @@ p,
 div {
   margin: 0;
   padding: 0;
+  font-family: 'M PLUS 1p', sans-serif;
 }
 
 body {
@@ -76,7 +80,7 @@ a {
   display: inline-block;
   padding: 0.4em 1.6em;
   font-size: 0.8em;
-  color: #87CEFA;
+  color: white;
   text-decoration: none;
   user-select: none;
 }
@@ -86,7 +90,8 @@ a {
 
 .nav__logo{
   color: white;
-  font-size: 25px
+  font-size: 25px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 /* devise用のCSS 適宜変更お願いします */
@@ -196,6 +201,22 @@ div.contents.row .new_user {
 .row:before, .row:after {
   content: " ";
   display: table;
+}
+
+/* マイページのCSSです */
+.mypage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user_name{
+  font-size: 30px;
+}
+
+.user_btn{
+  display: flex;
 }
 
 /* ブックマークページのCSSです */
