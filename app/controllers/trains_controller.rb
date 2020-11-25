@@ -21,6 +21,7 @@ class TrainsController < ApplicationController
         {departure: "新宿", destination: "渋谷", departure_time: DateTime.now, arrival_time: DateTime.now}
       ]  
     }
-
+    @routes = @response[:routes]
+    
   end
 end

@@ -1,9 +1,3 @@
 <div class="trains">
-    <div class="train">
-        <%= link_to "ブックマークに追加する", root_path, class: 'btn'%>
-        <%= link_to "カレンダーに追加する", root_path, class: 'btn'%>
-        
-      <p>A → B</p>
-      <p>B → C</p>
-    </div>
+  <%= render partial: "train", collection: @routes %>
 </div>
