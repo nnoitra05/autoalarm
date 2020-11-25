@@ -70,6 +70,7 @@ a {
   border: 1.5px white solid;
   border-radius: 3px;
   transition: 0.4s ease;
+  margin-right: 15px;
 }
 .nav__btn:hover{
   color: #fff;
@@ -92,6 +93,7 @@ a {
   color: white;
   font-size: 25px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
+  margin: 0 15px;
 }
 
 /* devise用のCSS 適宜変更お願いします */
@@ -203,6 +205,9 @@ div.contents.row .new_user {
   display: table;
 }
 
+/* トップページのCSSです */
+
+
 /* マイページのCSSです */
 .mypage{
   display: flex;
@@ -244,4 +249,73 @@ div.contents.row .new_user {
 .bookmark_btn{
   display: flex;
   justify-content: center;
+}
+
+/* レスポンシブデザイン タブレット表示 */
+@media (max-width: 1024px) {
+  .nav__left{
+    display: flex;
+    align-items: center;
+  }
+  .nav__logo{
+    font-size: 30px;
+  }
+
+  .train_information{
+    font-size: 30px;
+  }
+
+  .mypage{
+    font-size: 25px;
+  }
+
+  .user_name{
+    font-size: 35px;
+  }
+
+  .bookmarks{
+    font-size: 25px;
+  }
+  .nav__btn{
+    font-size: 20px;
+  }
+
+  .nav__logout{
+    font-size: 20px;
+  }
+}
+
+/* レスポンシブデザイン スマホ表示 */
+@media (max-width: 599px) {
+  .nav__left{
+    display: flex;
+    align-items: center;
+  }
+  .nav__logo{
+    font-size: 25px;
+  }
+
+  .train_information{
+    font-size: 20px;
+  }
+
+  .mypage{
+    font-size: 15px;
+  }
+
+  .user_name{
+    font-size: 20px;
+  }
+
+  .bookmarks{
+    font-size: 15px;
+  }
+  .nav__btn{
+    display: flex;
+    font-size: 10px;
+  }
+
+  .nav__logout{
+    font-size: 10px;
+  }
 }
