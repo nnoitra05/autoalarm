@@ -7,10 +7,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update(user_params)
-      redirect_to root_path
+    @user = User.find(params[:id])
+    result = if current_user.id == @user
+               # 自身の更新ならパスワード入力を求める
+               @user.update_with_password(user_params)
+             else
+               @user.update(user_params)
+             end
+    if result
+      # パスワード変更でログアウトするのを防ぐ
+      sign_in(@user, bypass: true) if current_user.id == @user.id
+      redirect_to user_path(@user)
     else
-      render :edit
+      render action: :edit
     end
   end
 
