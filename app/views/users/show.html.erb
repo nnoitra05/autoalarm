@@ -3,8 +3,8 @@
       <h1>マイページ</h1>
     </div>
     <div class="user_name">
-      <%= current_user.nickname %><br>
-      <%= current_user.email %><br>
+      <div>Nickname:   <%= current_user.nickname %></div>
+      <div>Email:   <%= current_user.email %></div>
     </div>
     <div class="user_btn">
       <%= link_to "編集する", edit_user_path(current_user.id), class: 'btn'%>
