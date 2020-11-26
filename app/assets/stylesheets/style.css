@@ -226,6 +226,12 @@ div.contents.row .new_user {
   display: flex;
 }
 
+/* 共通ボタンのCSSです */
+.btn:hover{
+  color: white;
+  background: #2c7873;
+}
+
 /* ブックマークページのCSSです */
 .bookmarks{
   display: flex;
