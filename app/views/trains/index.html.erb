@@ -1,4 +1,5 @@
 <div class="train_information">
+  <%= render partial: "weather"%>
   <h1>運行情報</h1>
   <% @train_information.each do |train_info| %>
     <% train_status_str = "odpt:trainInformationStatus"%>
