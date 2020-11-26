@@ -1,11 +1,48 @@
+
+<%= render partial: "weather"%>
+
+<%# 運行情報表示 %>
 <div class="train_information">
-  <%= render partial: "weather"%>
+
   <h1>運行情報</h1>
+
   <ul>
     <% @information_list.each do |info| %>
       <li><%= info %></li><br>
     <% end %>
   </ul>
+
   <%= "現在、首都圏の遅延情報はありません。" if @information_list.empty? %>
+
+</div>
+
+<%# 経路検索フォーム %>
+<div class="search-form">
+
+  <h1>経路検索</h1>
+
+  <%= form_with url: search_trains_path, method: :get, local: true do |f| %>
+
+    <div class="field">
+      <%= f.label :departure, "出発地" %>
+      <%= f.text_field :departure, value: "西国分寺" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :destination, "目的地" %>
+      <%= f.text_field :destination, value: "渋谷" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :arrival_at, "到着時刻" %>
+      <%= f.text_field :arrival_at, value: "2020-11-26T10:00:00" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "NAVITIME APIで検索" %>
+    </div>
+
+  <% end %>
+
 </div>
 
