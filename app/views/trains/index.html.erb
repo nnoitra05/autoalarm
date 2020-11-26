@@ -1,15 +1,11 @@
 <div class="train_information">
   <%= render partial: "weather"%>
   <h1>運行情報</h1>
-  <% @train_information.each do |train_info| %>
-    <% train_status_str = "odpt:trainInformationStatus"%>
-    <ul>
-    <% if train_info.keys.include?(train_status_str) && !train_info[train_status_str].nil? %>
-      <li><%= train_info["odpt:trainInformationText"]["ja"] %></li>
-      <% @information_list << train_info %>
+  <ul>
+    <% @information_list.each do |info| %>
+      <li><%= info %></li><br>
     <% end %>
-    </ul>
-  <% end %>
-<%= "現在、首都圏の遅延情報はありません。" if @information_list == [] %>
+  </ul>
+  <%= "現在、首都圏の遅延情報はありません。" if @information_list.empty? %>
 </div>
 
