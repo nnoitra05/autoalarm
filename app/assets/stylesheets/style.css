@@ -22,6 +22,7 @@ div {
 body {
   font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN W3", sans-serif;
   color: #3b4043;
+  background-color: #f0efea;
 }
 
 li {
@@ -204,6 +205,7 @@ div.contents.row .new_user {
   content: " ";
   display: table;
 }
+
 
 /* トップページのCSSです */
 
