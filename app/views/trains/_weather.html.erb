@@ -22,8 +22,10 @@
             <div><span id = "weatherMark"  class="bold" ></span></div>
             <p id="icon"></p>
         </div>
-        <div>気温 <span id = "temp"  class="bold"></span> ℃</div>
+        <div>最高気温 <span id = "temp_max"  class="bold"></span> ℃</div>
+        <div>最低気温 <span id = "temp_min"  class="bold"></span> ℃</div>
         <div>湿度 <span id = "humidity" class="bold"></span> %</div>
+        <div>雲 <span id = "cloud" class="bold"></span>%</div>
     </div>
     
     <script>
@@ -34,8 +36,10 @@
                 function(json){
                     $("#weather").html(json.weather[0].description);
                     $("#humidity").html(json.main.humidity);
+                    $("#cloud").html(json.clouds.all);
                     //lang=jaにすることで華氏から摂氏に変換することなく摂氏表示となる。小数点だけ丸める処理をする
-                    $("#temp").html(Math.round(json.main.temp));
+                    $("#temp_max").html(Math.round(json.main.temp_max));
+                    $("#temp_min").html(Math.round(json.main.temp_min));
 
                     //天気に応じた天気アイコンを表示させる
                     switch (json.weather[0].main){
