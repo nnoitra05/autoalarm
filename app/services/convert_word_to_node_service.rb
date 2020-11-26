@@ -2,9 +2,7 @@
 
 class ConvertWordToNodeService
 
-  URL = "https://navitime-route-totalnavi.p.rapidapi.com/transport_node"
-  API_HOST = "navitime-route-totalnavi.p.rapidapi.com"
-  API_KEY = "06ac31ab38msha5fdb3338e65166p1e090djsn9608e40d68db"
+  URL = "https://navitime-transport.p.rapidapi.com/transport_node"
 
   def self.fetch(word)
     
@@ -12,8 +10,8 @@ class ConvertWordToNodeService
     
     response = conn.get do |request|
       
-      request.params["rapidapi-host"] = API_HOST
-      request.params["rapidapi-key"] = API_KEY
+      request.params["rapidapi-host"] = GetNavitimeParamsService.transport_host
+      request.params["rapidapi-key"] = GetNavitimeParamsService.key
       request.params[:word] = word
 
       # レスポンスとして取得する情報を駅に限定
