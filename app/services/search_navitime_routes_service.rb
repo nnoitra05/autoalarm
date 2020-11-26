@@ -3,8 +3,6 @@
 class SearchNavitimeRoutesService
 
   URL = "https://navitime-route-totalnavi.p.rapidapi.com/route_transit"
-  API_HOST = "navitime-route-totalnavi.p.rapidapi.com"
-  API_KEY = "06ac31ab38msha5fdb3338e65166p1e090djsn9608e40d68db"
 
   def self.fetch(departure, destination, arrival_at, departure_flag = true)
     
@@ -12,11 +10,13 @@ class SearchNavitimeRoutesService
 
     response = conn.get do |request|
       
-      request.params["rapidapi-host"] = API_HOST
-      request.params["rapidapi-key"] = API_KEY
+      request.params["rapidapi-host"] = GetNavitimeParamsService.route_host
+      request.params["rapidapi-key"] = GetNavitimeParamsService.key
       # ConvertWordToNodeServiceを使って文字情報をノードIDに変換する
-      request.params[:start] = ConvertWordToNodeService(departure)
-      request.params[:goal] = ConvertWordToNodeService(destination)
+      departure_dump = ConvertWordToNodeService.fetch(departure)
+      request.params[:start] = departure_dump["items"][0]["id"]
+      destination_dump = ConvertWordToNodeService.fetch(destination)
+      request.params[:goal] = destination_dump["items"][0]["id"]
       # 現状は:arrival_atを:start_timeに代入する（出発時刻準拠で検索する）
       request.params[:start_time] = arrival_at
 
