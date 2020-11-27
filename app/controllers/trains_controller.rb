@@ -24,7 +24,8 @@ class TrainsController < ApplicationController
 
     departure = params[:departure]
     destination = params[:destination]
-    arrival_at = params[:arrival_at]
+
+    arrival_at = "#{params[:year]}-#{params[:month]}-#{params[:day]}T#{params[:time]}:00"
     @route_result = SearchNavitimeRoutesService.fetch(departure, destination, arrival_at)["items"][0]
     
   end

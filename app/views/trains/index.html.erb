@@ -33,9 +33,26 @@
       <%= f.text_field :destination, value: "渋谷" %>
     </div>
 
+    <% dt = DateTime.now %>
+
     <div class="field">
-      <%= f.label :arrival_at, "到着時刻" %>
-      <%= f.text_field :arrival_at, value: "2020-11-26T10:00:00" %>
+      <%= f.label :year, "年" %>
+      <%= f.text_field :year, value: dt.year %>
+    </div>
+
+    <div class="field">
+      <%= f.label :month, "月" %>
+      <%= f.text_field :month, value: dt.month %>
+    </div>
+
+    <div class="field">
+      <%= f.label :day, "日" %>
+      <%= f.text_field :day, value: dt.day %>
+    </div>
+
+    <div class="field">
+      <%= f.label :time, "時間" %>
+      <%= f.text_field :time, value: "#{dt.hour}:#{dt.min}" %>
     </div>
 
     <div class="actions">
