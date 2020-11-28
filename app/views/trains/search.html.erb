@@ -3,23 +3,18 @@
 <div class="search_result">
   
   <div>
-    <%= "出発地: #{@route_result["summary"]["start"]["name"]}\n" %>
-    <%= "目的地: #{@route_result["summary"]["goal"]["name"]}\n" %>
-    <%= "乗り換え回数: #{@route_result["summary"]["move"]["transit_count"]}\n" %>
+    <%= "出発地: #{@route_result[:departure]}\n" %>
+    <%= "目的地: #{@route_result[:destination]}\n" %>
+    <%= "乗り換え回数: #{@route_result[:transit_count]}\n" %>
   </div>
   <h2>検索結果</h2>
-  <%# @route_result["sections"]は配列要素 %>
-  <%# [出発駅情報, 駅間の乗換情報, 1回目の乗換駅情報, 駅間の乗換情報,..., n回目の乗換駅情報, 駅間の乗換情報, 目的地情報]が格納されている %>
-  <% @route_result["sections"].each_with_index do |route, idx| %>
-    <%# 駅間の乗換情報のみの情報を取り出す %>
-    <% if idx.odd? %>
-      <div>
-        <%= "#{route["transport"]["links"][0]["from"]["name"]}\t#{route["from_time"].to_datetime.strftime("%Y年%m月%d日 %H時%M分")}" %><br>
-        <%= "↓\t\t#{route["line_name"]}" %><br>
-        <%= "#{route["transport"]["links"][0]["to"]["name"]}\t#{route["to_time"].to_datetime.strftime("%Y年%m月%d日 %H時%M分")}" %><br>
-        <br>
-      </div>
-    <% end %>
+  <% @route_result[:sections].each do |route| %>
+    <div>
+      <%= "#{route[:departure]}\t#{route[:departure_time]}" %><br>
+      <%= "↓\t\t#{route[:line_name]}" %><br>
+      <%= "#{route[:destination]}\t#{route[:destination_time]}" %><br>
+      <br>
+    </div>
   <% end %>
 
 </div>
