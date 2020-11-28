@@ -2,31 +2,23 @@ class TrainsController < ApplicationController
 
   def index
 
-    train_information = FetchTrainsApisService.fetch(FetchTrainsApisService.apis[:ti])
-    @information_list = []
+    # サービスクラスGetTrainInformationServiceから鉄道運行情報を取得
+    @information_list = GetTrainInformationService.fetch
 
-    train_information.each do |train_info|
-
-      train_status_str = "odpt:trainInformationStatus"
-      train_infomation_text_str = "odpt:trainInformationText"
-
-      if train_info.keys.include?(train_status_str) && !train_info[train_status_str].nil?
-        @information_list << train_info[train_infomation_text_str]["ja"]
-      end
-
-    end
-
-    @information_list = @information_list.uniq
+    # indexアクションを発生させた時刻を取得
+    @dt = DateTime.now
 
   end
 
   def search
 
+    # route
     departure = params[:departure]
     destination = params[:destination]
-
     arrival_at = "#{params[:year]}-#{params[:month]}-#{params[:day]}T#{params[:time]}:00"
-    @route_result = SearchNavitimeRoutesService.fetch(departure, destination, arrival_at)["items"][0]
+
+    # サービスクラスSearchNavitimeRoutesServiceから条件を満たす最適なルートを取得
+    @route_result = SearchNavitimeRoutesService.fetch(departure, destination, arrival_at)
     
   end
 
