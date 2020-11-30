@@ -23,16 +23,7 @@
   <h2>検索結果</h2>
 
 
-  <div class="form">
-      <% @route_result[:sections].each do |route| %>
-        <div>
-          <%= "#{route[:departure]}\t#{route[:departure_time]}" %><br>
-          <%= "↓\t\t#{route[:line_name]}" %><br>
-          <%= "#{route[:destination]}\t#{route[:destination_time]}" %><br>
-          <br>
-        </div>
-      <% end %>
-  </div>
+
 
   
   <% @route_result[:sections].each do |route| %>
@@ -52,9 +43,9 @@
 
       var local_time = new Date();  //現在時間
       var destinate_timestr = document.getElementById("dt_destination_time").innerHTML;  //到着や乗り換え時間
-      var destination_time=moment(destinate_timestr, 'YYYY-MM-DDTHH:mm:ssZ')　　　　//正規化
+      var destination_time=moment(destinate_timestr, 'YYYY-MM-DDTHH:mm:ssZ')//正規化
       var diff_time = Date.parse(destination_time)-local_time.getTime();
-      var diffSecond = Math.floor(diff_time / (1000));　　　　　　　　　　　　　　　　//秒に変更する
+      var diffSecond = Math.floor(diff_time / (1000));//秒に変更する
 
       //音を鳴る
       function autoPlay() {
@@ -78,7 +69,7 @@
         }
       //自動にボタンを押す
 
-　　　　//秒読み函数
+      //秒読み函数
       function CountDown() {
       if (diffSecond >= 0) {
         minutes = Math.floor(diffSecond / 60);
@@ -93,7 +84,7 @@
               alert("到着した！");
                 }
       }
-　　　　//秒読み函数
+      //秒読み函数
 
       timer = setInterval("CountDown()", 1000);
 
@@ -103,9 +94,5 @@
     </script>
 
   <% end %>
-
       
-
-
-
 </div>
