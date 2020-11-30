@@ -48,15 +48,15 @@ class SearchNavitimeRoutesService
         route_info[:destination] = route["transport"]["links"][0]["to"]["name"]
         route_info[:destination_time] = route["to_time"].to_datetime.strftime("%Y年%m月%d日 %H時%M分")
         route_info[:line_name] = route["line_name"]
-
+        route_info[:dt_destination_time]= route["to_time"]
+        
         route_result[:sections] << route_info
-      
+       
       end
     
     end
 
     return route_result
-    
   end
 
 end

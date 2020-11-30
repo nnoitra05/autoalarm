@@ -1,3 +1,12 @@
+<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+
+    <%=audio_tag('bibi.mp3',id: "myaudio")%>
+    <input type="button" onclick="autoPlay()" id="self_click"value="再生" />
+    <input type="button" onclick="closePlay()" value="停止" />
+    <div id="timer" style="color:red"></div>
+
 
 <%# 経路検索結果の表示 %>
 <div class="search_result">
@@ -8,13 +17,77 @@
     <%= "乗り換え回数: #{@route_result[:transit_count]}\n" %>
   </div>
   <h2>検索結果</h2>
+
   <% @route_result[:sections].each do |route| %>
     <div>
       <%= "#{route[:departure]}\t#{route[:departure_time]}" %><br>
       <%= "↓\t\t#{route[:line_name]}" %><br>
       <%= "#{route[:destination]}\t#{route[:destination_time]}" %><br>
+      <div id="dt_destination_time">
+        <%= "#{route[:dt_destination_time]}"%>
+      </div>
       <br>
     </div>
+    <%# 経路検索結果の表示 %>
+
+    
+    <script language="javascript" type="text/javascript">
+
+      var local_time = new Date();  //現在時間
+      var destinate_timestr = document.getElementById("dt_destination_time").innerHTML;  //到着や乗り換え時間
+      var destination_time=moment(destinate_timestr, 'YYYY-MM-DDTHH:mm:ssZ')　　　　//正規化
+      var diff_time = Date.parse(destination_time)-local_time.getTime();
+      var diffSecond = Math.floor(diff_time / (1000));　　　　　　　　　　　　　　　　//秒に変更する
+
+      //音を鳴る
+      function autoPlay() {
+        var myAuto = document.getElementById('myaudio');
+        myAuto.play();
+        }
+     //音を鳴る
+
+    //音を止まる
+      function closePlay() {
+        var myAuto = document.getElementById('myaudio');
+        myAuto.pause();
+        myAuto.load();
+        }
+      //音を止まる
+
+       //自動にボタンを押す
+      function botton_click(){
+        var alert = document.getElementById('self_click');
+        alert.click();
+        }
+      //自動にボタンを押す
+
+　　　　//秒読み函数
+      function CountDown() {
+      if (diffSecond >= 0) {
+        minutes = Math.floor(diffSecond / 60);
+        seconds = Math.floor(diffSecond % 60);
+        msg = "残り" + minutes + "分" + seconds + "秒";
+        document.all["timer"].innerHTML = msg;
+          if (diffSecond == 1 * 60) //鳴動前の時間
+            setTimeout(botton_click(),1000);
+              --diffSecond;
+          } else{
+              clearInterval(timer);
+              alert("到着した！");
+                }
+      }
+　　　　//秒読み函数
+
+      timer = setInterval("CountDown()", 1000);
+
+    
+
+
+    </script>
+
   <% end %>
+
+      
+
 
 </div>
