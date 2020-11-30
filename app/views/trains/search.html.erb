@@ -1,4 +1,4 @@
-
+<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 <%# 経路検索結果の表示 %>
 <div class="search_result">
   
@@ -8,13 +8,15 @@
     <%= "乗り換え回数: #{@route_result[:transit_count]}\n" %>
   </div>
   <h2>検索結果</h2>
-  <% @route_result[:sections].each do |route| %>
-    <div>
-      <%= "#{route[:departure]}\t#{route[:departure_time]}" %><br>
-      <%= "↓\t\t#{route[:line_name]}" %><br>
-      <%= "#{route[:destination]}\t#{route[:destination_time]}" %><br>
-      <br>
-    </div>
-  <% end %>
 
+  <div class="form">
+      <% @route_result[:sections].each do |route| %>
+        <div>
+          <%= "#{route[:departure]}\t#{route[:departure_time]}" %><br>
+          <%= "↓\t\t#{route[:line_name]}" %><br>
+          <%= "#{route[:destination]}\t#{route[:destination_time]}" %><br>
+          <br>
+        </div>
+      <% end %>
+  </div>
 </div>
