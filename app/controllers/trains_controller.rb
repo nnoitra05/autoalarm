@@ -32,4 +32,10 @@ class TrainsController < ApplicationController
 
   end
   
+  def create
+  end
+
+  private
+  def bookmark_params
+  end
 end
