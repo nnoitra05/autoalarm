@@ -4,7 +4,7 @@ class SearchNavitimeRoutesService
 
   URL = "https://navitime-route-totalnavi.p.rapidapi.com/route_transit"
 
-  def self.fetch(departure, destination, arrival_at, departure_flag = true)
+  def self.fetch(departure, destination, arrival_at, departure_flag)
     
     conn = Faraday.new(URL)
 

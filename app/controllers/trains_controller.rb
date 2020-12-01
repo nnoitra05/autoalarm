@@ -15,16 +15,11 @@ class TrainsController < ApplicationController
     # route
     departure = params[:departure]
     destination = params[:destination]
-    if params[:day].to_i < 10
-      params[:day] = "0#{params[:day]}"
-    end
-    if params[:time].to_i < 10
-      params[:time] = "0#{params[:time]}"
-    end
-    arrival_at = "#{params[:year]}-#{params[:month]}-#{params[:day]}T#{params[:time]}:00"
+    arrival_at = params[:arrival_at]
+    departure_flag = params[:departure_flag].to_i
 
     # サービスクラスSearchNavitimeRoutesServiceから条件を満たす最適なルートを取得
-    @route_result = SearchNavitimeRoutesService.fetch(departure, destination, arrival_at)
+    @route_result = SearchNavitimeRoutesService.fetch(departure, destination, arrival_at, departure_flag)
     
   end
 
