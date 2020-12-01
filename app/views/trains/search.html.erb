@@ -21,11 +21,11 @@
     <%= "乗り換え回数: #{@route_result[:transit_count]}\n" %>
   </div>
   <h2>検索結果</h2>
-
-
-
-
   
+  <%= render partial: "window_form" %>
+
+
+  <%# 経路検索結果の表示 %>
   <% @route_result[:sections].each do |route| %>
     <div>
       <%= "#{route[:departure]}\t#{route[:departure_time]}" %><br>
@@ -36,7 +36,6 @@
       </div>
       <br>
     </div>
-    <%# 経路検索結果の表示 %>
 
     
     <script language="javascript" type="text/javascript">
