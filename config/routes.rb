@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :bookmarks, only: [:edit, :show]
   resources :calendars, only: [:show, :edit, :create]
   resources :users, only: [:show, :edit, :update, :destroy]
-  resources :trains, only: :index do
+  resources :trains, only: [:index, :create] do
     collection do
       get :search
       get :sandbox

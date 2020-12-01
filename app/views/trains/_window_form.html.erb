@@ -7,10 +7,13 @@
     <header>
       <h2>ブックマークに登録する</h2>
     </header>
-      <article class="cp_content">
-        <p>ブックマーク名：<br>
-        <input type="text" name="name"></p>
-      </article>
-     <footer><p><input type="submit" value="保存する" class="btn"></p></footer>
-</div>
+    <article class="cp_content">
+      <p>ブックマーク名：<br>
+      <%= form_with url: "/trains", method: :post, local: true do |form| %>
+        <%= form.text_field :content %>
+    </article>
+    <footer>
+        <%= form.submit '保存する', class: "btn" %>
+      <% end %>
+    </footer>
 </div>
