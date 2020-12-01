@@ -25,7 +25,7 @@ class SearchNavitimeRoutesService
       end
 
     end
-    
+
     res = JSON.parse(response.body)["items"][0]
 
     route_result = {}
@@ -57,6 +57,47 @@ class SearchNavitimeRoutesService
     end
 
     return route_result
+
+  end
+
+
+  def self.sample_fetch
+
+    file_name = Rails.public_path.join("jsons", "response_sample.json")
+    response_sample = JsonDumpService.read(file_name)
+
+    res = response_sample["items"][0]
+
+    route_result = {}
+    route_result[:departure] = res["summary"]["start"]["name"]
+    route_result[:destination] = res["summary"]["goal"]["name"]
+    route_result[:transit_count] = res["summary"]["move"]["transit_count"]
+    route_result[:sections] = []
+
+    # res["sections"]は配列要素
+    # [出発駅情報, 駅間の乗換情報, 1回目の乗換駅情報, 駅間の乗換情報,..., n回目の乗換駅情報, 駅間の乗換情報, 目的地情報]が格納されている
+    res["sections"].each_with_index do |route, idx|
+
+      # 駅間の乗換情報のみを格納する
+      if idx.odd?
+
+        route_info = {}
+
+        route_info[:departure] = route["transport"]["links"][0]["from"]["name"]
+        route_info[:departure_time] = route["from_time"].to_datetime.strftime("%Y年%m月%d日 %H時%M分")
+        route_info[:destination] = route["transport"]["links"][0]["to"]["name"]
+        route_info[:destination_time] = route["to_time"].to_datetime.strftime("%Y年%m月%d日 %H時%M分")
+        route_info[:line_name] = route["line_name"]
+        route_info[:dt_destination_time]= route["to_time"]
+        
+        route_result[:sections] << route_info
+       
+      end
+    
+    end
+
+    return route_result
+
   end
 
 end
