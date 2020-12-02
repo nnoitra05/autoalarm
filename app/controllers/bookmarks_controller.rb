@@ -1,8 +1,14 @@
 class BookmarksController < ApplicationController
   def show
+    user = User.find(params[:id])
+    @nickname = user.nickname
+    @bookmarks = user.bookmarks
   end
 
   def edit
+    user = User.find(params[:id])
+    @nickname = user.nickname
+    @bookmarks = user.bookmarks
   end
 
   def create
