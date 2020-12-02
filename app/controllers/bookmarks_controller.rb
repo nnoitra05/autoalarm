@@ -6,7 +6,6 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    binding.pry
     Bookmark.create(bookmark_params)
   end
 
