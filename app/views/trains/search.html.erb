@@ -20,6 +20,10 @@
     <%= "目的地: #{@route_result[:destination]}\n" %>
     <%= "乗り換え回数: #{@route_result[:transit_count]}\n" %>
   </div>
+  <div id="transit_count">
+      <% "#{@route_result[:transit_count]}" %>
+  </div>
+
   <h2>検索結果</h2>
   
   <%= render partial: "window_form" %>
@@ -36,17 +40,12 @@
       </div>
       <br>
     </div>
+  <% end %>
 
     
     <script language="javascript" type="text/javascript">
 
-      var local_time = new Date();  //現在時間
-      var destinate_timestr = document.getElementById("dt_destination_time").innerHTML;  //到着や乗り換え時間
-      var destination_time=moment(destinate_timestr, 'YYYY-MM-DDTHH:mm:ssZ')//正規化
-      var diff_time = Date.parse(destination_time)-local_time.getTime();
-      var diffSecond = Math.floor(diff_time / (1000));//秒に変更する
-
-      //音を鳴る
+     //音を鳴る
       function autoPlay() {
         var myAuto = document.getElementById('myaudio');
         myAuto.play();
@@ -68,6 +67,15 @@
         }
       //自動にボタンを押す
 
+    for(var i=0; i<=document.getElementById("transit_count").innerHTML;i++)
+      {
+
+      var local_time = new Date();  //現在時間
+      var destinate_timestr = document.getElementById("dt_destination_time_"+i).innerHTML;  //到着や乗り換え時間
+      var destination_time=moment(destinate_timestr, 'YYYY-MM-DDTHH:mm:ssZ')//正規化
+      var diff_time = Date.parse(destination_time)-local_time.getTime();
+      var diffSecond = Math.floor(diff_time / (1000));//秒に変更する
+
       //秒読み函数
       function CountDown() {
       if (diffSecond >= 0) {
@@ -84,14 +92,11 @@
                 }
       }
       //秒読み函数
-
       timer = setInterval("CountDown()", 1000);
-
-    
-
+      }
+      
 
     </script>
 
-  <% end %>
       
 </div>

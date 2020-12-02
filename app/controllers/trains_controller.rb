@@ -19,10 +19,10 @@ class TrainsController < ApplicationController
     departure_flag = params[:departure_flag].to_i
 
     # サービスクラスSearchNavitimeRoutesServiceから条件を満たす最適なルートを取得
-    # @route_result = SearchNavitimeRoutesService.fetch(departure, destination, arrival_at, departure_flag)
+     @route_result = SearchNavitimeRoutesService.fetch(departure, destination, arrival_at, departure_flag)
 
     # NAVITIME APIのコール回数削減のために経路検索結果をdumpしたので、特に不要な場合はこちらのメソッドで読込してください。
-    @route_result = SearchNavitimeRoutesService.sample_fetch
+    # @route_result = SearchNavitimeRoutesService.sample_fetch
     
   end
 
