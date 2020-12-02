@@ -2,21 +2,23 @@
   <input type="checkbox" id="cp_modal" />
   <label for="cp_modal" class="cp_modal_btn">ブックマークに登録する</label>
   <label for="cp_modal" class="cp_modal_bg"></label>
-<div class="cp_modal_cont">
-  <label for="cp_modal" class="cp_close"><i class="fa fa-times" aria-hidden="true"></i></label>
-    <header>
-      <h2>ブックマークに登録する</h2>
-    </header>
+  <div class="cp_modal_cont">
+    <label for="cp_modal" class="cp_close"><i class="fa fa-times" aria-hidden="true"></i></label>
+    <h2>ブックマークに登録する</h2>
 
     <article class="cp_content">
-      <p>ブックマーク名：<br>
-      <%= form_with url: bookmarks_path(current_user.id), model: @bookmark, class: 'form', local: true do |f| %>
+      <%= form_with model: @bookmark, method: :post, class: 'form', local: true do |f| %>
         <div class="form-input">
-        <%= f.text_field :name, class: 'form-message' %>
-    </article>
-    
-    <footer>
-        <%= f.submit '保存する', class: 'btn' %>
+          <%= f.text_field :name, placeholder: "ブックマーク名", class: 'form-message' %>
+          <%= f.submit '保存する', class: 'btn' %>
+          <%# trains/searchメソッドで定義した@bookmark変数をhidden状態でform_with内に設定 %>
+          <%= f.text_field :departure, value: @bookmark_parameters[:departure], class: 'form-message hidden' %>
+          <%= f.text_field :destination, value: @bookmark_parameters[:destination], class: 'form-message hidden' %>
+          <%= f.text_field :time, value: @bookmark_parameters[:time], class: 'form-message hidden' %>
+          <%= f.text_field :status_check, value: @bookmark_parameters[:status_check], class: 'form-message hidden' %>
+          <%# binding.pry %>
+        </div>
       <% end %>
-    </footer>
+    </article>
+  </div>
 </div>

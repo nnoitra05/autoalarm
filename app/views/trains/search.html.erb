@@ -2,15 +2,12 @@
 <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
-
-    <%=audio_tag('bibi.mp3',id: "myaudio")%>
-    <input type="button" onclick="autoPlay()" id="self_click"value="再生" />
-    <input type="button" onclick="closePlay()" value="停止" />
-    <div id="timer" style="color:red"></div>
-
-
+<%=audio_tag('bibi.mp3',id: "myaudio")%>
+<input type="button" onclick="autoPlay()" id="self_click"value="再生" />
+<input type="button" onclick="closePlay()" value="停止" />
+<div id="timer" style="color:red"></div>
 
 <%# 経路検索結果の表示 %>
 <div class="search_result">
@@ -24,12 +21,14 @@
       <% "#{@route_result[:transit_count]}" %>
   </div>
 
-
   <h2>検索結果</h2>
   
-  <%= render partial: "bookmark_form" %>
-
-
+  <div>
+    <% if user_signed_in? %> 
+      <%= render partial: "bookmark_form" %>
+    <% end %>
+  </div>
+  
   <%# 経路検索結果の表示 %>
   <% @route_result[:sections].each_with_index do |route, idx| %>
     <div>
@@ -42,62 +41,60 @@
       <br>
     </div>
   <% end %>
-
     
-    <script language="javascript" type="text/javascript">
+  <script language="javascript" type="text/javascript">
 
-     //音を鳴る
-      function autoPlay() {
-        var myAuto = document.getElementById('myaudio');
-        myAuto.play();
-        }
-     //音を鳴る
+  //音を鳴る
+  function autoPlay() {
+    var myAuto = document.getElementById('myaudio');
+    myAuto.play();
+  }
+  //音を鳴る
 
-    //音を止まる
-      function closePlay() {
-        var myAuto = document.getElementById('myaudio');
-        myAuto.pause();
-        myAuto.load();
-        }
-      //音を止まる
+  //音を止まる
+  function closePlay() {
+    var myAuto = document.getElementById('myaudio');
+    myAuto.pause();
+    myAuto.load();
+  }
+  //音を止まる
 
-       //自動にボタンを押す
-      function botton_click(){
-        var alert = document.getElementById('self_click');
-        alert.click();
-        }
-      //自動にボタンを押す
+  //自動にボタンを押す
+  function botton_click(){
+    var alert = document.getElementById('self_click');
+    alert.click();
+  }
+  //自動にボタンを押す
 
-    for(var i=0; i<=document.getElementById('transit_count').innerHTML;i++)
-      {
+  for(var i=0; i<=document.getElementById('transit_count').innerHTML;i++){
 
-      var local_time = new Date();  //現在時間
-      var destinate_timestr = document.getElementById("dt_destination_time_"+i).innerHTML;  //到着や乗り換え時間
-      var destination_time=moment(destinate_timestr, 'YYYY-MM-DDTHH:mm:ssZ')//正規化
-      var diff_time = Date.parse(destination_time)-local_time.getTime();
-      var diffSecond = Math.floor(diff_time / (1000));//秒に変更する
+    var local_time = new Date(); //現在時間
+    var destinate_timestr = document.getElementById("dt_destination_time_"+i).innerHTML; //到着や乗り換え時間
+    var destination_time=moment(destinate_timestr, 'YYYY-MM-DDTHH:mm:ssZ') //正規化
+    var diff_time = Date.parse(destination_time)-local_time.getTime();
+    var diffSecond = Math.floor(diff_time / (1000)); //秒に変更する
 
-      //秒読み函数
-      function CountDown() {
-      if (diffSecond >= 0) {
-        minutes = Math.floor(diffSecond / 60);
-        seconds = Math.floor(diffSecond % 60);
-        msg = "残り" + minutes + "分" + seconds + "秒";
-        document.all["timer"].innerHTML = msg;
-          if (diffSecond == 1 * 60) //鳴動前の時間
-            setTimeout(botton_click(),1000);
-              --diffSecond;
-          } else{
-              clearInterval(timer);
-              alert("到着した！");
-                }
+    //秒読み函数
+    function CountDown(){
+    if (diffSecond >= 0) {
+      minutes = Math.floor(diffSecond / 60);
+      seconds = Math.floor(diffSecond % 60);
+      msg = "残り" + minutes + "分" + seconds + "秒";
+      document.all["timer"].innerHTML = msg;
+      if (diffSecond == 1 * 60) //鳴動前の時間
+        setTimeout(botton_click(),1000);
+          --diffSecond;
+      }else{
+        clearInterval(timer);
+        alert("到着した！");
       }
-      //秒読み函数
-      timer = setInterval("CountDown()", 1000);
-      }
-      
+    }
 
-    </script>
+    //秒読み函数
+    timer = setInterval("CountDown()", 1000);
 
-      
+  }
+    
+  </script>
+
 </div>
