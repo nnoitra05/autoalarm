@@ -30,12 +30,12 @@
 
 
   <%# 経路検索結果の表示 %>
-  <% @route_result[:sections].each do |route| %>
+  <% @route_result[:sections].each_with_index do |route, idx| %>
     <div>
       <%= "#{route[:departure]}\t#{route[:departure_time]}" %><br>
       <%= "↓\t\t#{route[:line_name]}" %><br>
       <%= "#{route[:destination]}\t#{route[:destination_time]}" %><br>
-      <div id="dt_destination_time">
+      <div id="<%dt_destination_time_#{idx}%>">
         <%= "#{route[:dt_destination_time]}"%>
       </div>
       <br>
