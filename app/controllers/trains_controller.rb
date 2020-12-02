@@ -22,7 +22,11 @@ class TrainsController < ApplicationController
     # @route_result = SearchNavitimeRoutesService.fetch(departure, destination, arrival_at, departure_flag)
 
     # NAVITIME APIのコール回数削減のために経路検索結果をdumpしたので、特に不要な場合はこちらのメソッドで読込してください。
-    @route_result = SearchNavitimeRoutesService.sample_fetch
+    # 直通か非直通かでそれぞれjsonファイルが違うので、目的に合わせてコメントアウトを外してください。
+    file_name = Rails.public_path.join("jsons", "response_sample_no_transit.json") # 所沢→渋谷の直通経路のレスポンス
+    # file_name = Rails.public_path.join("jsons", "response_sample_no_transit.json") # 西国分寺→渋谷の乗換有のレスポンス
+    @route_result = SearchNavitimeRoutesService.sample_fetch(file_name)
+    
     
   end
 
