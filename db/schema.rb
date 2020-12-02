@@ -27,14 +27,18 @@ ActiveRecord::Schema.define(version: 2020_11_13_103042) do
     t.string "destination", null: false
     t.datetime "time", null: false
     t.boolean "status_check", null: false
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
   create_table "calendars", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "date", null: false
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_calendars_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -52,4 +56,6 @@ ActiveRecord::Schema.define(version: 2020_11_13_103042) do
 
   add_foreign_key "bookmark_calendars", "bookmarks"
   add_foreign_key "bookmark_calendars", "calendars"
+  add_foreign_key "bookmarks", "users"
+  add_foreign_key "calendars", "users"
 end

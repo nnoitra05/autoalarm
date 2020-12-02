@@ -4,4 +4,14 @@ class BookmarksController < ApplicationController
 
   def edit
   end
+
+  def create
+    binding.pry
+    Bookmark.create(bookmark_params)
+  end
+
+  private
+  def bookmark_params
+    params.require(:bookmark).permit(:name).merge(user_id: current_user.id)
+  end
 end
