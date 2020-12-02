@@ -1,100 +1,115 @@
 
 <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-
 <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<button onclick="loop()">アラーム設定</button>
+<div>
+  <span id="_d">00</span>
+  <span id="_h">00</span>
+  <span id="_m">00</span>
+  <span id="_s">00</span>
+</div>
 
 <%=audio_tag('bibi.mp3',id: "myaudio")%>
 <input type="button" onclick="autoPlay()" id="self_click"value="再生" />
 <input type="button" onclick="closePlay()" value="停止" />
-<div id="timer" style="color:red"></div>
+
+
 
 <%# 経路検索結果の表示 %>
 <div class="search_result">
-  
-  <div>
-    <%= "出発地: #{@route_result[:departure]}\n" %>
-    <%= "目的地: #{@route_result[:destination]}\n" %>
-    <%= "乗り換え回数: #{@route_result[:transit_count]}\n" %>
-  </div>
-  <div id="transit_count">
-      <% "#{@route_result[:transit_count]}" %>
-  </div>
+<div>
+  <%= "出発地: #{@route_result[:departure]}\n" %>
+  <%= "目的地: #{@route_result[:destination]}\n" %>
+  <%= "乗り換え回数: #{@route_result[:transit_count]}\n" %>
+</div>
+<div id="transit_count" >
+  <%="#{@route_result[:transit_count]}" %>
+</div>
 
-  <h2>検索結果</h2>
+<h2>検索結果</h2>
   
-  <div>
-    <% if user_signed_in? %> 
-      <%= render partial: "bookmark_form" %>
-    <% end %>
-  </div>
+<div>
+  <% if user_signed_in? %> 
+    <%= render partial: "bookmark_form" %>
+  <% end %>
+</div>
   
   <%# 経路検索結果の表示 %>
-  <% @route_result[:sections].each_with_index do |route, idx| %>
-    <div>
-      <%= "#{route[:departure]}\t#{route[:departure_time]}" %><br>
-      <%= "↓\t\t#{route[:line_name]}" %><br>
-      <%= "#{route[:destination]}\t#{route[:destination_time]}" %><br>
-      <div id="dt_destination_time_<%= idx %>">   
-        <% "#{route[:dt_destination_time]}"%>
-      </div>
-      <br>
+<% @route_result[:sections].each_with_index do |route, idx| %>
+  <div>
+    <%= "#{route[:departure]}\t#{route[:departure_time]}" %><br>
+    <%= "↓\t\t#{route[:line_name]}" %><br>
+    <%= "#{route[:destination]}\t#{route[:destination_time]}" %><br>
+    <div id="dt_destination_time_<%=idx%>">
+      <%="#{route[:dt_destination_time]}"%>
     </div>
-  <% end %>
+    <br>
+  </div>
+<% end %>
     
-  <script language="javascript" type="text/javascript">
+<script language="javascript" type="text/javascript">
 
-  //音を鳴る
-  function autoPlay() {
-    var myAuto = document.getElementById('myaudio');
-    myAuto.play();
+function countTime(end_time) {
+  
+  //今の時間
+  var date = new Date();
+  var now = date.getTime();
+
+ //时间差
+  var leftTime = end_time-now;
+
+  if (Math.floor(leftTime/10000)==60)
+  setTimeout(botton_click(),1000);
+  if(leftTime<=0)
+  return false;
+ // d,h,m,s時間の保存のための変数定義
+  var d,h,m,s;
+  if (leftTime>=0) {
+    d = Math.floor(leftTime/1000/60/60/24);
+    h = Math.floor(leftTime/1000/60/60%24);
+    m = Math.floor(leftTime/1000/60%60);
+    s = Math.floor(leftTime/1000%60);
   }
-  //音を鳴る
 
-  //音を止まる
-  function closePlay() {
-    var myAuto = document.getElementById('myaudio');
-    myAuto.pause();
-    myAuto.load();
-  }
-  //音を止まる
+  //divに入れる
+  document.getElementById("_d").innerHTML = d+"日";
+  document.getElementById("_h").innerHTML = h+"時間";
+  document.getElementById("_m").innerHTML = m+"分";
+  document.getElementById("_s").innerHTML = s+"秒";
+  setTimeout(countTime,1000,end_time);
+}
 
-  //自動にボタンを押す
-  function botton_click(){
-    var alert = document.getElementById('self_click');
-    alert.click();
-  }
-  //自動にボタンを押す
+//音を鳴る
+function autoPlay() {
+  var myAuto = document.getElementById('myaudio');
+  myAuto.play();
+}
+//音を鳴る
 
-  for(var i=0; i<=document.getElementById('transit_count').innerHTML;i++){
+//音を止まる
+function closePlay() {
+  var myAuto = document.getElementById('myaudio');
+  myAuto.pause();
+  myAuto.load();
+}
+//音を止まる
 
-    var local_time = new Date(); //現在時間
-    var destinate_timestr = document.getElementById("dt_destination_time_"+i).innerHTML; //到着や乗り換え時間
-    var destination_time=moment(destinate_timestr, 'YYYY-MM-DDTHH:mm:ssZ') //正規化
-    var diff_time = Date.parse(destination_time)-local_time.getTime();
-    var diffSecond = Math.floor(diff_time / (1000)); //秒に変更する
+//自動にボタンを押す
+function botton_click(){
+  var alert = document.getElementById('self_click');
+  alert.click();
+}
+//自動にボタンを押す
 
-    //秒読み函数
-    function CountDown(){
-    if (diffSecond >= 0) {
-      minutes = Math.floor(diffSecond / 60);
-      seconds = Math.floor(diffSecond % 60);
-      msg = "残り" + minutes + "分" + seconds + "秒";
-      document.all["timer"].innerHTML = msg;
-      if (diffSecond == 1 * 60) //鳴動前の時間
-        setTimeout(botton_click(),1000);
-          --diffSecond;
-      }else{
-        clearInterval(timer);
-        alert("到着した！");
-      }
-    }
-
-    //秒読み函数
-    timer = setInterval("CountDown()", 1000);
-
-  }
-    
-  </script>
-
+function loop(){
+for(i=0;i<=document.getElementById("transit_count").innerHTML;i++){
+  str=document.getElementById("dt_destination_time_"+i).innerHTML;
+  var endDate = moment(str, 'YYYY-MM-DDTHH:mm:ssZ');
+  var end = Date.parse(endDate);
+  countTime(end);
+}
+}
+</script>
 </div>
