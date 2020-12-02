@@ -6,6 +6,7 @@ class CreateBookmarks < ActiveRecord::Migration[6.0]
       t.string :destination, null: false
       t.datetime :time, null: false
       t.boolean :status_check, null: false
+      t.references :user, foreign_key: true
       t.timestamps
     end
   end

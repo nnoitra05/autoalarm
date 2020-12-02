@@ -13,7 +13,6 @@ class JsonDumpService
   def self.read(file_name)
 
     File.open(file_name) do |file|
-      #hash = file.read
       return JSON.load(file)
     end
 
