@@ -6,6 +6,18 @@ class BookmarksController < ApplicationController
 
   def edit
   
+    user = User.find(params[:id])
+    @nickname = user.nickname
+    @bookmarks = user.bookmarks
+    
+  end
+
+  def edit
+    
+    user = User.find(params[:id])
+    @nickname = user.nickname
+    @bookmarks = user.bookmarks
+
   end
 
   
@@ -21,8 +33,9 @@ class BookmarksController < ApplicationController
   private
 
   def bookmark_params
-    #params.require(:bookmark).permit(:name).merge(user_id: current_user.id)
+
     params.require(:bookmark).permit(:departure, :destination, :time, :status_check, :name).merge(user_id: current_user.id)
+    
   end
 
 end

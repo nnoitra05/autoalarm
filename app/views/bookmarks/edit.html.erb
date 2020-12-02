@@ -1,5 +1,5 @@
 <div class="bookmarks">
-      <h1>保存したブックマーク</h1>
+      <h1><%= @nickname %>さんのブックマーク</h1>
     <div class="bookmark">
       <div class="bookmark_title">
         <h2>ブックマーク１</h2>
@@ -8,7 +8,6 @@
         <%# form withで記述 %>
       </div>
       <div class= "bookmark_btn">
-        <%= link_to "編集する", root_path, class: 'btn'%>
         <%= link_to "削除する", root_path, class: 'btn'%>
       </div>
     </div>
