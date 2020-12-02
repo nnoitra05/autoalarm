@@ -61,9 +61,8 @@ class SearchNavitimeRoutesService
   end
 
 
-  def self.sample_fetch
+  def self.sample_fetch(file_name)
 
-    file_name = Rails.public_path.join("jsons", "response_sample.json")
     response_sample = JsonDumpService.read(file_name)
 
     res = response_sample["items"][0]
