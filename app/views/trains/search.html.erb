@@ -36,7 +36,7 @@
       <%= "↓\t\t#{route[:line_name]}" %><br>
       <%= "#{route[:destination]}\t#{route[:destination_time]}" %><br>
       <div id="dt_destination_time_<%= idx %>">   
-        <%= "#{route[:dt_destination_time]}"%>
+        <% "#{route[:dt_destination_time]}"%>
       </div>
       <br>
     </div>
@@ -67,7 +67,7 @@
         }
       //自動にボタンを押す
 
-    for(var i=0; i<=document.getElementById("transit_count").innerHTML;i++)
+    for(var i=0; i<=document.getElementById('transit_count').innerHTML;i++)
       {
 
       var local_time = new Date();  //現在時間
