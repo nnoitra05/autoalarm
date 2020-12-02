@@ -35,7 +35,7 @@
       <%= "#{route[:departure]}\t#{route[:departure_time]}" %><br>
       <%= "↓\t\t#{route[:line_name]}" %><br>
       <%= "#{route[:destination]}\t#{route[:destination_time]}" %><br>
-      <div id="<%dt_destination_time_#{idx}%>">
+      <div id="dt_destination_time_<%= idx %>">   
         <%= "#{route[:dt_destination_time]}"%>
       </div>
       <br>
