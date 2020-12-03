@@ -19,7 +19,6 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.7);
   z-index: -1;
   }
   .cp_modal02 .cp_content p {
@@ -55,17 +54,7 @@ body {
   transition: box-shadow 250ms ease;
   color: #2c7873;
   }
-  .cp_modal02 .cp_modal_btn::before {
-  position: absolute;
-  top:50%;
-  left: 20%;
-  font-family: 'FontAwesome';
-  font-size: 1em;
-  line-height: 0;
-  display: inline-block;
-  width: 4em;
   
-  }
   .cp_modal02 .cp_modal_btn:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   }
@@ -137,27 +126,7 @@ body {
   margin: 0;
   padding: 10px 0 0;
   }
-  .cp_modal02 .cp_modal_cont footer .cp_btn {
-  position: relative;
-  padding: 10px 30px;
-  border-radius: 3px;
-  font-size: 14px;
-  font-weight: 400;
-  color: white;
-  text-transform: uppercase;
-  overflow: hidden;
-  }
-  .cp_modal02 .cp_modal_cont footer .cp_btn:before {
-  position: absolute;
-  content: '';
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background-color: rgba(88, 24, 26, 0.3);
-  transition: width 250ms ease;
-  z-index: 0;
-  }
+  
   .cp_modal02 .cp_modal_cont footer .cp_btn:hover:before {
   width: 100%;
   }
