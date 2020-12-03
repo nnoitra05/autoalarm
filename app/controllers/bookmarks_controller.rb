@@ -31,9 +31,20 @@ class BookmarksController < ApplicationController
   
     bookmark = Bookmark.create(bookmark_params)
     # Bookmarkが保存できなかった場合の分岐を作る必要あり
-    bookmark.save
-    redirect_to root_path
-    
+    if bookmark.save
+      redirect_to bookmark_path(current_user.id)
+    else
+      render :create
+    end
+  end
+
+  def destroy
+
+    bookmark = Bookmark.find(params[:id])
+    if bookmark.destroy
+      redirect_to bookmark_path(current_user.id)
+    end
+
   end
 
   private
