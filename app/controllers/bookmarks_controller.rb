@@ -2,7 +2,7 @@ class BookmarksController < ApplicationController
 
   def show
 
-    user = User.find(params[:id])
+    user = User.find(current_user.id)
     @nickname = user.nickname
     @bookmarks = user.bookmarks
     
@@ -10,10 +10,21 @@ class BookmarksController < ApplicationController
 
   def edit
   
-    user = User.find(params[:id])
+    user = User.find(current_user.id)
+    @bookmark = Bookmark.find(params[:id])
     @nickname = user.nickname
-    @bookmarks = user.bookmarks
     
+  end
+
+  def update
+
+    bookmark = Bookmark.find(params[:id])
+    if bookmark.update(bookmark_params)
+      redirect_to bookmark_path
+    else
+      render :edit
+    end
+
   end
   
   def create
