@@ -11,15 +11,6 @@ class BookmarksController < ApplicationController
     @bookmarks = user.bookmarks
     
   end
-
-  def edit
-    
-    user = User.find(params[:id])
-    @nickname = user.nickname
-    @bookmarks = user.bookmarks
-
-  end
-
   
   def create
   
