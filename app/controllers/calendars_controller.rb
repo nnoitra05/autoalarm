@@ -11,7 +11,6 @@ class CalendarsController < ApplicationController
   def create
 
     calendar = Calendar.find_by(date: params[:date], user_id: current_user.id)
-    binding.pry
 
     if calendar.nil?
       calendar = Calendar.new(date: params[:date], user_id: current_user.id)
