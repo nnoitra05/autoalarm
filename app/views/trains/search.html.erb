@@ -52,14 +52,12 @@
 <script language="javascript" type="text/javascript">
 
 function countTime(end_time) {
-  
   //今の時間
   var date = new Date();
   var now = date.getTime();
-
  //时间差
   var leftTime = end_time-now;
-
+  
   if (Math.floor(leftTime/10000)==60)
   setTimeout(botton_click(),1000);
   if(leftTime<=0)
@@ -72,7 +70,6 @@ function countTime(end_time) {
     m = Math.floor(leftTime/1000/60%60);
     s = Math.floor(leftTime/1000%60);
   }
-
   //divに入れる
   document.getElementById("_d").innerHTML = d+"日";
   document.getElementById("_h").innerHTML = h+"時間";
