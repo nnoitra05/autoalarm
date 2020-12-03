@@ -49,6 +49,13 @@ class BookmarksController < ApplicationController
 
   end
 
+  def register
+
+    @bookmark_calendar = BookmarkCalendar.new
+    @bookmark_calendar.bookmark = Bookmark.find(params[:id])
+
+  end
+
   private
 
   def bookmark_params

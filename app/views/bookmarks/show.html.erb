@@ -12,7 +12,7 @@
 
         <div class="bookmark_title">
           ブックマーク名: <%= bookmark.name %>
-          <%= render partial: "calendar_form", locals: {bookmark: bookmark} %>
+          <%#= render partial: "calendar_form", locals: {bookmark: bookmark} %>
         </div>
 
         <div class="bookmark_route">
@@ -26,6 +26,7 @@
 
         <div class= "bookmark_btn">
           <%= link_to "編集する", edit_bookmark_path(bookmark.id), method: :get, class: 'btn'%>
+          <%= link_to "カレンダーに登録する", register_bookmark_path(bookmark.id), method: :get, class: 'btn'%>
           <%= link_to "削除する", bookmark_path(bookmark.id), method: :delete, class: 'btn'%>
         </div>
 
