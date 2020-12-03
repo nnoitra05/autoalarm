@@ -8,7 +8,11 @@
           到着地 <%= f.text_field :destination, placeholder: "到着地", class: 'form-message' %>
           時間 <%= f.text_field :time, placeholder: "時間", class: 'form-message' %>
           <%= f.submit '保存する', class: 'btn' %>
+
+        <%= form_with model: @bookmark, class: 'form', method: :delete, local: true do |f| %>
           <%= f.submit '削除する', class: 'btn' %>
+        <% end %>
+        
         <% end %>
       </div>
     </div>
