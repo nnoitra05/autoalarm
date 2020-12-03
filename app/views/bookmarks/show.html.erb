@@ -1,10 +1,11 @@
 <div class="bookmarks">
   <h1><%= @nickname%>さんのブックマーク</h1>
 
-    <div class="bookmark">
-      <%= @bookmarks.each do |bookmark| %>
+  <div class="bookmark">
+    <% @bookmarks.each do |bookmark| %>
+      <div class = "user_bookmark">
         <div class="bookmark_title">
-          <%= bookmark.name %>
+          ブックマーク名: <%= bookmark.name %>
           <%= link_to "カレンダーに追加する", root_path, class: 'btn'%>
         </div>
         <div class="bookmark_route">
@@ -12,13 +13,14 @@
           到着地: <%= bookmark.destination %>
         </div>
         <div class="bookmark_time">
-          時間<%= bookmark.time %>
+          時間: <%= bookmark.time %>
         </div>
         <div class= "bookmark_btn">
           <%= link_to "編集する", edit_bookmark_path, class: 'btn'%>
           <%= link_to "削除する", root_path, class: 'btn'%>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
+  </div>
 
 </div>
