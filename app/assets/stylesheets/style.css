@@ -243,6 +243,14 @@ div.contents.row .new_user {
 }
 
 .bookmark{
+  width: 40%;
+}
+
+.user_bookmark{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 2px solid #2c7873;
   border-radius: 10px;
 }
