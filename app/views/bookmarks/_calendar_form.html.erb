@@ -1,0 +1,30 @@
+
+
+<div class="cp_modal02">
+
+  <input type="checkbox" id="cp_modal" />
+  <div class = "btn"><label for="cp_modal" >カレンダーに登録する</label></div>
+  <label for="cp_modal" class="cp_modal_bg"></label>
+
+  <div class="cp_modal_cont">
+
+    <label for="cp_modal" class="cp_close"><i class="fa fa-times" aria-hidden="true"></i></label>
+    <h2>カレンダーに登録する</h2>
+
+    <article class="cp_content">
+
+      <%= form_with url: calendars_path, method: :post, class: 'form', local: true do |f| %>
+      
+        <div class="form-input">
+          <%= f.date_field :date, class: 'form-message' %>
+          <%= f.submit '保存する', class: 'btn' %>
+          <%= f.text_field :bookmark_id, value: bookmark.id, class: 'form-message hidden' %>
+        </div>
+      
+      <% end %>
+
+    </article>
+
+  </div>
+
+</div>

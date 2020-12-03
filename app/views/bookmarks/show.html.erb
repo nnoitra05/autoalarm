@@ -1,24 +1,39 @@
+
+
 <div class="bookmarks">
+
   <h1><%= @nickname%>さんのブックマーク</h1>
 
-    <div class="bookmark">
-      <%= @bookmarks.each do |bookmark| %>
+  <div class="bookmark">
+
+    <% @bookmarks.each do |bookmark| %>
+
+      <div class = "user_bookmark">
+
         <div class="bookmark_title">
-          <%= bookmark.name %>
-          <%= link_to "カレンダーに追加する", root_path, class: 'btn'%>
+          ブックマーク名: <%= bookmark.name %>
+          <%#= render partial: "calendar_form", locals: {bookmark: bookmark} %>
         </div>
+
         <div class="bookmark_route">
-          出発地<%= bookmark.departure %>
-          到着地<%= bookmark.destination %>
+          出発地: <%= bookmark.departure %>→
+          到着地: <%= bookmark.destination %>
         </div>
+
         <div class="bookmark_time">
-          時間<%= bookmark.time %>
+          時間: <%= bookmark.time %>
         </div>
+
         <div class= "bookmark_btn">
-          <%= link_to "編集する", edit_bookmark_path, class: 'btn'%>
-          <%= link_to "削除する", root_path, class: 'btn'%>
+          <%= link_to "編集する", edit_bookmark_path(bookmark.id), method: :get, class: 'btn'%>
+          <%= link_to "カレンダーに登録する", register_bookmark_path(bookmark.id), method: :get, class: 'btn'%>
+          <%= link_to "削除する", bookmark_path(bookmark.id), method: :delete, class: 'btn'%>
         </div>
-      <% end %>
-    </div>
+
+      </div>
+
+    <% end %>
+
+  </div>
 
 </div>
