@@ -259,16 +259,6 @@ div.contents.row .new_user {
   display: flex;
 }
 
-.bookmark_route{
-  display: flex;
-  justify-content: center;
-}
-
-.bookmark_btn{
-  display: flex;
-  justify-content: center;
-}
-
 /* レスポンシブデザイン タブレット表示 */
 @media (max-width: 1024px) {
   .nav__left{
