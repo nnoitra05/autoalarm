@@ -1,18 +1,22 @@
+
+
 /* ブックマーク登録用モーダルのCSS */
 body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  }
-  *, *::after, *::before {
+}
+
+*, *::after, *::before {
   box-sizing: inherit;
-  }
-  *, *:before, *:after {
+}
+
+*, *:before, *:after {
   box-sizing: border-box;
   outline: none;
-  }
+}
   
-  .cp_modal02:before {
+.cp_modal02:before {
   position: absolute;
   content: '';
   top: 0;
@@ -21,28 +25,35 @@ body {
   height: 100%;
   background-color: rgba(255, 255, 255, 0.7);
   z-index: -1;
-  }
-  .cp_modal02 .cp_content p {
+}
+
+.cp_modal02 .cp_content p {
   margin: 0;
   line-height: 1.5;
   text-indent: 1em;
-  }
-  .cp_modal02 p.citation {
+}
+
+.cp_modal02 p.citation {
   text-align: right;
-  }
-  .cp_modal02 p.citation::before {
+}
+
+.cp_modal02 p.citation::before {
   content: '\2500'
-  }
-  .cp_modal02 p:not(.citation) {
+}
+
+.cp_modal02 p:not(.citation) {
   margin-bottom: 1.5rem;
-  }
-  .cp_modal02 a {
+}
+
+.cp_modal02 a {
   text-decoration: none;
-  }
-  .cp_modal02 label {
+}
+
+.cp_modal02 label {
   cursor: pointer;
-  }
-  .cp_modal02 .cp_modal_btn {
+}
+
+.cp_modal02 .cp_modal_btn {
   margin: 10px;
   padding: 8px 20px;
   font-size: 14px;
@@ -54,8 +65,9 @@ body {
   text-align: center;
   transition: box-shadow 250ms ease;
   color: #2c7873;
-  }
-  .cp_modal02 .cp_modal_btn::before {
+}
+
+.cp_modal02 .cp_modal_btn::before {
   position: absolute;
   top:50%;
   left: 20%;
@@ -64,12 +76,13 @@ body {
   line-height: 0;
   display: inline-block;
   width: 4em;
-  
-  }
-  .cp_modal02 .cp_modal_btn:hover {
+}
+
+.cp_modal02 .cp_modal_btn:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  }
-  .cp_modal02 .cp_modal_bg {
+}
+
+.cp_modal02 .cp_modal_bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -79,8 +92,9 @@ body {
   z-index: 10;
   visibility: hidden;
   transition: background-color 250ms linear;
-  }
-  .cp_modal02 .cp_modal_cont {
+}
+
+.cp_modal02 .cp_modal_cont {
   position: absolute;
   top: 45%;
   left: 50%;
@@ -97,38 +111,44 @@ body {
   transition: transform 250ms ease;
   visibility: hidden;
   z-index: 20;
-  }
-  .cp_modal02 .cp_modal_cont .cp_close {
+}
+
+.cp_modal02 .cp_modal_cont .cp_close {
   position: relative;
   float: right;
   font-size: 18px;
   transition: transform 500ms ease;
   z-index: 11;
-  }
-  .cp_modal02 .cp_modal_cont .cp_close:hover {
+}
+
+.cp_modal02 .cp_modal_cont .cp_close:hover {
   color: #da3c41;
   transform: rotate(180deg);
-  }
-  .cp_modal02 .cp_modal_cont header {
+}
+
+.cp_modal02 .cp_modal_cont header {
   position: relative;
   display: block;
   border-bottom: 1px solid #00bcd4;
   margin-bottom: 1.5em;
-  }
-  .cp_modal02 .cp_modal_cont header h2 {
+}
+
+.cp_modal02 .cp_modal_cont header h2 {
   margin: 0 0 10px;
   padding: 0;
   font-size: 28px;
-  }
-  .cp_modal02 .cp_modal_cont article {
+}
+
+.cp_modal02 .cp_modal_cont article {
   position: relative;
   display: block;
   margin: 0;
   padding: 0;
   font-size: 16px;
   line-height: 1.75;
-  }
-  .cp_modal02 .cp_modal_cont footer {
+}
+
+.cp_modal02 .cp_modal_cont footer {
   position: relative;
   display: flex;
   align-items: center;
@@ -136,8 +156,9 @@ body {
   width: 100%;
   margin: 0;
   padding: 10px 0 0;
-  }
-  .cp_modal02 .cp_modal_cont footer .cp_btn {
+}
+
+.cp_modal02 .cp_modal_cont footer .cp_btn {
   position: relative;
   padding: 10px 30px;
   border-radius: 3px;
@@ -146,8 +167,9 @@ body {
   color: white;
   text-transform: uppercase;
   overflow: hidden;
-  }
-  .cp_modal02 .cp_modal_cont footer .cp_btn:before {
+}
+
+.cp_modal02 .cp_modal_cont footer .cp_btn:before {
   position: absolute;
   content: '';
   top: 0;
@@ -157,32 +179,44 @@ body {
   background-color: rgba(88, 24, 26, 0.3);
   transition: width 250ms ease;
   z-index: 0;
-  }
-  .cp_modal02 .cp_modal_cont footer .cp_btn:hover:before {
+}
+
+.cp_modal02 .cp_modal_cont footer .cp_btn:hover:before {
   width: 100%;
-  }
-  .cp_modal02 .cp_modal_cont footer .cp_btn.cp_cl {
+}
+
+.cp_modal02 .cp_modal_cont footer .cp_btn.cp_cl {
   background-color: #da3c41;
-  }
-  .cp_modal02 #cp_modal {
+}
+
+.cp_modal02 #cp_modal {
   display: none;
-  }
-  .cp_modal02 #cp_modal:checked ~ .cp_modal_bg {
+}
+
+.cp_modal02 #cp_modal:checked ~ .cp_modal_bg {
   visibility: visible;
   background-color: #000000;
   opacity: 0.7;
   transition: background-color 250ms linear;
-  }
-  .cp_modal02 #cp_modal:checked ~ .cp_modal_cont {
+}
+
+.cp_modal02 #cp_modal:checked ~ .cp_modal_cont {
   visibility: visible;
   transform: scale(1);
   transition: transform 250ms ease;
   z-index: 111;
-  }
-  @media only screen and (max-width: 480px) {
+}
+
+@media only screen and (max-width: 480px) {
+  
   .cp_modal02 .cp_modal_cont{
-  top: 30%;
-  left: 30%;
-  width: 90%;
+    top: 30%;
+    left: 30%;
+    width: 90%;
   }
+
+}
+
+.hidden{
+  visibility: hidden;
 }

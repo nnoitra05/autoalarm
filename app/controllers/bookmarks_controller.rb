@@ -5,6 +5,8 @@ class BookmarksController < ApplicationController
     user = User.find(params[:id])
     @nickname = user.nickname
     @bookmarks = user.bookmarks
+
+    @comment = []
     
   end
 
