@@ -14,7 +14,7 @@
     <%= link_to "削除する", user_path(current_user.id), method: :delete, class: 'btn'%>
   </div>
 
-  <div class="simple_calendar">
+  <div class="simple-calendar-parent">
     <%= month_calendar do |date| %>
       <%= date %>
     <% end %>
