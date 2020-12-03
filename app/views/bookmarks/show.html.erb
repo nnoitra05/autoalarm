@@ -1,3 +1,5 @@
+
+
 <div class="bookmarks">
 
   <h1><%= @nickname%>さんのブックマーク</h1>
@@ -10,7 +12,7 @@
 
         <div class="bookmark_title">
           ブックマーク名: <%= bookmark.name %>
-          <%= render partial: "calendar_form" %>
+          <%= render partial: "calendar_form", locals: {bookmark: bookmark} %>
         </div>
 
         <div class="bookmark_route">
