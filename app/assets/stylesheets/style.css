@@ -257,6 +257,7 @@ div.contents.row .new_user {
 
 .bookmark_title{
   display: flex;
+  align-items: center;
 }
 
 /* レスポンシブデザイン タブレット表示 */
