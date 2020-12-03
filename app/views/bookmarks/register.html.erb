@@ -25,7 +25,7 @@
 
     <%= f.label :date, "登録する日付を選択する" %>
     <%= f.date_field :date %>
-    <%= f.submit '登録する', class: 'btn' %>
+    <%= f.submit '保存する', class: 'btn' %>
     <%= f.number_field :bookmark_id, value: @bookmark_calendar.bookmark.id, class: "hidden" %>
 
   <% end %>
