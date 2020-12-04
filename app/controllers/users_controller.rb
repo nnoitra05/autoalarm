@@ -5,9 +5,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
+
     @user = User.find(params[:id])
     result = if current_user.id == @user
                # 自身の更新ならパスワード入力を求める
@@ -22,16 +24,23 @@ class UsersController < ApplicationController
     else
       render action: :edit
     end
+
   end
 
   def destroy
+
     user = User.find(params[:id])
     user.destroy
     redirect_to root_path
+
   end
 
   private
+
   def user_params
+
     params.require(:user).permit(:nickname, :email, :password)
+    
   end
+
 end
