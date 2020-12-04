@@ -21,7 +21,7 @@
 
   </div>
 
-  <%= form_with url: calendars_path, method: :post, class: 'form', local: true do |f| %>
+  <%= form_with url: calendars_path, method: :post, class: 'calendar_form', local: true do |f| %>
 
     <%= f.label :date, "登録する日付を選択する" %>
     <%= f.date_field :date %>
