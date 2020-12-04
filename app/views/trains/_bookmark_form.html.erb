@@ -14,13 +14,13 @@
       <%= form_with model: @bookmark, method: :post, class: 'form', local: true do |f| %>
         <div class="form-input">
           <%= f.text_field :name, placeholder: "ブックマーク名", class: 'form-message' %>
+          <%# ↓----trains/searchメソッドで定義した@bookmark変数をhidden状態でform_with内に設定 %>
+          <%= f.hidden_field :departure, value: @bookmark.departure, class: 'form-message' %>
+          <%= f.hidden_field :destination, value: @bookmark.destination, class: 'form-message' %>
+          <%= f.hidden_field :time, value: @bookmark.time, class: 'form-message' %>
+          <%= f.hidden_field :status_check, value: @bookmark.status_check, class: 'form-message' %>
+          <%# ↑----ここまで %>
           <%= f.submit '保存する', class: 'form_btn' %>
-          <%# trains/searchメソッドで定義した@bookmark変数をhidden状態でform_with内に設定 %>
-          <%= f.text_field :departure, value: @bookmark_parameters[:departure], class: 'form-message hidden' %>
-          <%= f.text_field :destination, value: @bookmark_parameters[:destination], class: 'form-message hidden' %>
-          <%= f.text_field :time, value: @bookmark_parameters[:time], class: 'form-message hidden' %>
-          <%= f.text_field :status_check, value: @bookmark_parameters[:status_check], class: 'form-message hidden' %>
-          <%# binding.pry %>
         </div>
       <% end %>
     </article>

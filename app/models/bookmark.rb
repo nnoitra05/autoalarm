@@ -7,5 +7,4 @@ class Bookmark < ApplicationRecord
   validates :departure, presence: true
   validates :destination, presence: true
   validates :time, presence: true
-  validates :status_check, presence: true 
 end

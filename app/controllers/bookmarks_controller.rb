@@ -5,8 +5,6 @@ class BookmarksController < ApplicationController
     user = User.find(current_user.id)
     @nickname = user.nickname
     @bookmarks = user.bookmarks
-
-    @comment = []
     
   end
 
@@ -31,13 +29,15 @@ class BookmarksController < ApplicationController
   
   def create
   
-    bookmark = Bookmark.create(bookmark_params)
+    binding.pry
+    bookmark = Bookmark.new(bookmark_params)
     # Bookmarkが保存できなかった場合の分岐を作る必要あり
     if bookmark.save
       redirect_to bookmark_path(current_user.id)
     else
       render :create
     end
+
   end
 
   def destroy
@@ -53,6 +53,31 @@ class BookmarksController < ApplicationController
 
     @bookmark_calendar = BookmarkCalendar.new
     @bookmark_calendar.bookmark = Bookmark.find(params[:id])
+
+  end
+
+  # うまく動かないので修正
+  def register_without
+
+    # status_check = falseの状態でブックマーク保存
+    bookmark = Bookmark.find_by(bookmark_params)
+    if bookmark.nil?
+      Bookmark.create(bookmark_params)
+      bookmark = Bookmark.find_by(bookmark_params)
+    end
+
+    calendar = Calendar.find_by(date: bookmark_params[:time].to_date, user_id: current_user.id)
+    if calendar.nil?
+      Calendar.create(date: bookmark_params[:time].to_date, user_id: current_user.id)
+      calendar = Calendar.find_by(date: bookmark_params[:time].to_date, user_id: current_user.id)
+    end
+
+    bookmark_calendar = BookmarkCalendar.find_by(bookmark_id: bookmark.id, calendar_id: calendar.id)
+    if bookmark_calendar.nil?
+      bookmark_calendar = BookmarkCalendar.create(bookmark_id: bookmark.id, calendar_id: calendar.id)
+    end
+    
+    redirect_to user_path(current_user.id)
 
   end
 

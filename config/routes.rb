@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     member do
       get :register
     end
+    collection do
+      post :register_without
+    end
   end
   resources :calendars, only: [:show, :edit, :create, :destroy]
   resources :users, only: [:show, :edit, :update, :destroy]
