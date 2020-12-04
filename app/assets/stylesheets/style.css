@@ -228,8 +228,25 @@ div.contents.row .new_user {
   display: flex;
 }
 
-/* 共通ボタンのCSSです */
+/* 画面遷移用の共通ボタンのCSSです */
 .btn:hover{
+  color: white;
+  background: #2c7873;
+}
+
+/* 入力フォームの共通ボタンのCSSです */
+.form_btn{
+  padding: 8px 20px;
+  font-size: 14px;
+  border: 2px solid #2c7873;
+  color: #2c7873;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.form_btn:hover{
   color: white;
   background: #2c7873;
 }
@@ -330,3 +347,27 @@ div.contents.row .new_user {
 }
 
 /* カレンダー登録用画面CSS */
+.register_calendar{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bookmark_calendar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #2c7873;
+  border-radius: 10px;
+  width: 50%;
+}
+
+.calendar_form{
+  width: 50%;
+  
+}
+
+.calendar_date{
+  margin: 10px;
+}

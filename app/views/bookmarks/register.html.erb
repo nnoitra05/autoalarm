@@ -1,10 +1,10 @@
 
 
-<div>
+<div class="register_calendar">
 
-  <h2>カレンダーに登録する</h2>
+  <h1>カレンダーに登録する</h1>
 
-  <div class="user_bookmark">
+  <div class="bookmark_calendar">
 
     <div class="bookmark_title">
       ブックマーク名: <%= @bookmark_calendar.bookmark.name %>
@@ -25,7 +25,7 @@
 
     <%= f.label :date, "登録する日付を選択する" %>
     <%= f.date_field :date %>
-    <%= f.submit '保存する', class: 'btn' %>
+    <%= f.submit '保存する', class: 'form_btn' %>
     <%= f.number_field :bookmark_id, value: @bookmark_calendar.bookmark.id, class: "hidden" %>
 
   <% end %>
