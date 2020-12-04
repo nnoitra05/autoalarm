@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       get :register
     end
   end
-  resources :calendars, only: [:show, :edit, :create]
+  resources :calendars, only: [:show, :edit, :create, :destroy]
   resources :users, only: [:show, :edit, :update, :destroy]
   resources :trains, only: [:index] do
     collection do

@@ -32,6 +32,10 @@ class CalendarsController < ApplicationController
 
   end
 
+  def destroy
+
+  end
+
   private
   
 end
