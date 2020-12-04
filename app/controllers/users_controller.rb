@@ -2,19 +2,6 @@ class UsersController < ApplicationController
 
   def show
 
-    calendars = Calendar.where(user_id: current_user.id)
-
-    @bookmark_calendars = []
-
-    calendars.each do |calendar|
-      BookmarkCalendar.where(calendar_id: calendar.id).each do |bookmark_calendar|
-        @bookmark_calendars << bookmark_calendar
-      end
-    end
-
-    # 2次元配列部や空配列部を強制的に1次元化
-    @bookmark_calendars.flatten!
-
   end
 
   def edit

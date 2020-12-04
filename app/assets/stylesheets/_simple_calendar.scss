@@ -2,7 +2,9 @@
 
 .simple-calendar {
 
-  //.day {}
+  .day {
+    width: 100% / 7;
+  }
 
   .wday-0 {
     background-color: lightcoral;
