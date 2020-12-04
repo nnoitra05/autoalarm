@@ -201,6 +201,7 @@ div.contents.row .new_user {
   box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
   background-color: white;
   box-sizing: border-box;
+  width: 50%;
 }
 
 .row:before, .row:after {
@@ -208,6 +209,12 @@ div.contents.row .new_user {
   display: table;
 }
 
+.contents_row{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 /* トップページのCSSです */
 
