@@ -16,7 +16,15 @@
 
   <div class="simple-calendar-parent">
     <%= month_calendar do |date| %>
-      <%= date %>
+      <%= "#{date.month}月#{date.day}日" %><br>
+      <%# カレンダーに表示する予定の取得 %>
+      <% calendar = Calendar.find_by(date: date, user_id: current_user.id) %>
+      <% unless calendar.nil? %>
+        <% BookmarkCalendar.where(calendar_id: calendar).each do |schedule| %>
+          <%# 下のlink_toをボタンにしてモーダルで経路検索させる仕様にする %>
+          <%= link_to "#{schedule.bookmark.name}", register_bookmark_path(schedule.bookmark) %><br>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 
