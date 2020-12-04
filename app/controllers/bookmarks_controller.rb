@@ -4,7 +4,8 @@ class BookmarksController < ApplicationController
 
     user = User.find(current_user.id)
     @nickname = user.nickname
-    @bookmarks = user.bookmarks
+    binding.pry
+    @bookmarks = user.bookmarks.where(status_check: true)
     
   end
 
