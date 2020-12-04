@@ -270,6 +270,7 @@ div.contents.row .new_user {
   align-items: center;
   border: 2px solid #2c7873;
   border-radius: 10px;
+  margin: 10px 0;
 }
 
 .bookmark_title{
@@ -360,12 +361,12 @@ div.contents.row .new_user {
   align-items: center;
   border: 2px solid #2c7873;
   border-radius: 10px;
-  width: 50%;
+  width: 30%;
+  margin: 10px 0;
 }
 
 .calendar_form{
-  width: 50%;
-  
+  width: 30%;
 }
 
 .calendar_date{

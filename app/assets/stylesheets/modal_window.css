@@ -160,8 +160,6 @@ body {
   padding: 10px 0 0;
   }
   
-  .cp_modal02 .cp_modal_cont footer .cp_btn:hover:before {
-}
 
 .cp_modal02 .cp_modal_cont footer .cp_btn {
   position: relative;
@@ -224,4 +222,9 @@ body {
 
 .hidden{
   visibility: hidden;
+}
+
+.bookmark_form{
+  border-bottom: 2px solid;
+  margin: 10px 0;
 }

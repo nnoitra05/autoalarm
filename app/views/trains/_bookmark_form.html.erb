@@ -6,7 +6,9 @@
   <label for="cp_modal" class="cp_modal_bg"></label>
   <div class="cp_modal_cont">
     <label for="cp_modal" class="cp_close"><i class="fa fa-times" aria-hidden="true"></i></label>
-    <h2>ブックマークに登録する</h2>
+    <div class="bookmark_form">
+      <h2>ブックマークに登録する</h2>
+    </div>
 
     <article class="cp_content">
       <%= form_with model: @bookmark, method: :post, class: 'form', local: true do |f| %>
