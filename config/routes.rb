@@ -4,10 +4,14 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   root to: "trains#index"
-  resources :bookmarks, only: [:edit, :show]
-  resources :calendars, only: [:show, :edit, :create]
+  resources :bookmarks, only: [:show, :create, :edit, :update, :destroy] do
+    member do
+      get :register
+    end
+  end
+  resources :calendars, only: [:show, :edit, :create, :destroy]
   resources :users, only: [:show, :edit, :update, :destroy]
-  resources :trains, only: :index do
+  resources :trains, only: [:index] do
     collection do
       get :search
       get :sandbox

@@ -1,0 +1,28 @@
+
+
+<h1>経路検索</h1>
+
+<%= form_with url: search_trains_path, method: :get, local: true, class: "search-form" do |f| %>
+
+  <div class="field search-field">
+    <%= f.text_field :departure, placeholder: "出発地" %>
+  </div>
+
+  <div class="field search-field">
+    <%= f.text_field :destination, placeholder: "目的地" %>
+  </div>
+
+  <div class="field search-field">
+    <%= f.datetime_field :arrival_at, value: @dt.to_s %>
+  </div>
+
+  <div class="field search-field">
+    <%# departure_flagはデフォルト値を1（到着時間）に指定してある %>
+    <%= f.select :departure_flag, {"到着時刻として検索": 1, "出発時刻として検索": 0}, {selected: 1}, class: "search-select-field" %>
+  </div>
+
+  <div class="field search-field">
+    <%= f.submit "NAVITIME APIで検索" %>
+  </div>
+
+<% end %>

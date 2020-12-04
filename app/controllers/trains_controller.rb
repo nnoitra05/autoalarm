@@ -2,31 +2,51 @@ class TrainsController < ApplicationController
 
   def index
 
-    @train_information = FetchTrainsApisService.fetch(FetchTrainsApisService.apis[:ti])
-    @information_list = []
+    # サービスクラスGetTrainInformationServiceから鉄道運行情報を取得
+    @information_list = GetTrainInformationService.fetch
+
+    # indexアクションを発生させた時刻を取得
+    @dt = DateTime.now
 
   end
 
   def search
 
-    # まだ経路検索実装できてないので、検索するとこういうレスポンスが返ってくるという想定で@responseにハッシュを記述しておきます。
-    # 時刻は全てDateTime.nowで仮置きしてます。
-    # これを加工してtrains/searchビューに反映させるイメージで！
-    @response = {
-      departure: "西国分寺",
-      destination: "渋谷",
-      time: DateTime.now,
-      routes: [
-        {departure: "西国分寺", destination: "新宿", departure_time: DateTime.now, arrival_time: DateTime.now}, 
-        {departure: "新宿", destination: "渋谷", departure_time: DateTime.now, arrival_time: DateTime.now}
-      ]  
-    }
-    @routes = @response[:routes]
+    # route
+    departure = params[:departure]
+    destination = params[:destination]
+    time = params[:arrival_at]
+    departure_flag = params[:departure_flag].to_i
+
+    # サービスクラスSearchNavitimeRoutesServiceから条件を満たす最適なルートを取得
+    # route_result = SearchNavitimeRoutesService.fetch(departure, destination, time, departure_flag)
+
+    # NAVITIME APIのコール回数削減のために経路検索結果をdumpしたものです。特に不要な場合はこちらのメソッドで読込してください。
+    # 直通か非直通かでそれぞれjsonファイルが違うので、目的に合わせてコメントアウトを外してください。
+    # file_name = Rails.public_path.join("jsons", "response_sample_no_transit.json") # 所沢→渋谷の直通経路のレスポンス
+    file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
+    @route_result = SearchNavitimeRoutesService.sample_fetch(file_name)
+    
+    # 経路検索結果に引き渡すBookmarkモデルのインスタンス変数
+    if user_signed_in?
+      
+      @bookmark = Bookmark.new
+
+      @bookmark_parameters = {
+        departure: departure,
+        destination: destination,
+        time: time,
+        status_check: true,
+      }
+
+    end
     
   end
 
   def sandbox
 
   end
-  
+
+  private
+
 end

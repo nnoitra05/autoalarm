@@ -18,7 +18,7 @@
   <%# ログインしているときは以下を表示するようにしましょう %>
         <% if user_signed_in? %>
           <div class="nav__right">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__logout%>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__btn %>
             <%= link_to "マイページ", user_path(current_user.id), class: :nav__btn %>
             <%= link_to "ブックマーク", bookmark_path(current_user.id), class: :nav__btn %>
           </div> 

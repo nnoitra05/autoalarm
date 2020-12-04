@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap');
 
+
 * {
   box-sizing: border-box;
 }
@@ -22,6 +23,7 @@ div {
 body {
   font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN W3", sans-serif;
   color: #3b4043;
+  background-color: #f0efea;
 }
 
 li {
@@ -107,6 +109,7 @@ form input[type="submit"] {
   color: #fff;
   border: 0;
   font-size: 18px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 .transition, a, form input[type="submit"] {
   -moz-transition-property: all;
@@ -205,6 +208,7 @@ div.contents.row .new_user {
   display: table;
 }
 
+
 /* トップページのCSSです */
 
 
@@ -224,6 +228,29 @@ div.contents.row .new_user {
   display: flex;
 }
 
+/* 画面遷移用の共通ボタンのCSSです */
+.btn:hover{
+  color: white;
+  background: #2c7873;
+}
+
+/* 入力フォームの共通ボタンのCSSです */
+.form_btn{
+  padding: 8px 20px;
+  font-size: 14px;
+  border: 2px solid #2c7873;
+  color: #2c7873;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.form_btn:hover{
+  color: white;
+  background: #2c7873;
+}
+
 /* ブックマークページのCSSです */
 .bookmarks{
   display: flex;
@@ -233,22 +260,21 @@ div.contents.row .new_user {
 }
 
 .bookmark{
+  width: 40%;
+}
+
+.user_bookmark{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 2px solid #2c7873;
   border-radius: 10px;
 }
 
 .bookmark_title{
   display: flex;
-}
-
-.bookmark_route{
-  display: flex;
-  justify-content: center;
-}
-
-.bookmark_btn{
-  display: flex;
-  justify-content: center;
+  align-items: center;
 }
 
 /* レスポンシブデザイン タブレット表示 */
@@ -318,4 +344,30 @@ div.contents.row .new_user {
   .nav__logout{
     font-size: 10px;
   }
+}
+
+/* カレンダー登録用画面CSS */
+.register_calendar{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bookmark_calendar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #2c7873;
+  border-radius: 10px;
+  width: 50%;
+}
+
+.calendar_form{
+  width: 50%;
+  
+}
+
+.calendar_date{
+  margin: 10px;
 }

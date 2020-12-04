@@ -3,7 +3,7 @@ class Bookmark < ApplicationRecord
   has_many :bookmark_calendars
   has_many :calendars, through: :bookmark_calendars, dependent: :destroy
 
-  validates :date, presence: true
+  validates :name, presence: true
   validates :departure, presence: true
   validates :destination, presence: true
   validates :time, presence: true

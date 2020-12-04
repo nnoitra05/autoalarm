@@ -1,0 +1,19 @@
+<div class="bookmarks">
+      <h1><%= @nickname %>さんのブックマーク</h1>
+
+    <div class="bookmark">
+        <%= form_with model: @bookmark, class: 'form', local: true do |f| %>
+          ブックマーク名 <%= f.text_field :name, placeholder: "ブックマーク名", class: 'form-message' %>
+          出発地 <%= f.text_field :departure, placeholder: "出発地", class: 'form-message' %>
+          到着地 <%= f.text_field :destination, placeholder: "到着地", class: 'form-message' %>
+          時間 <%= f.text_field :time, placeholder: "時間", class: 'form-message' %>
+          <%= f.submit '保存する', class: 'btn' %>
+
+        <%= form_with model: @bookmark, class: 'form', method: :delete, local: true do |f| %>
+          <%= f.submit '削除する', class: 'btn' %>
+        <% end %>
+        
+        <% end %>
+      </div>
+    </div>
+</div>
