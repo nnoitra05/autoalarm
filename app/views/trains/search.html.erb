@@ -32,6 +32,7 @@
   <div>
     <% if user_signed_in? %> 
       <%= render partial: "bookmark_form" %>
+      <%= link_to "カレンダーに登録する", register_without_bookmarks_path(params: @parameters), method: :post, class: "btn" %>
     <% end %>
   </div>
   

@@ -30,13 +30,15 @@ class TrainsController < ApplicationController
     # 経路検索結果に引き渡すBookmarkモデルのインスタンス変数
     if user_signed_in?
       
-      @bookmark = Bookmark.new
-
-      @bookmark_parameters = {
-        departure: departure,
-        destination: destination,
-        time: time,
-        status_check: true,
+      @bookmark = Bookmark.new(departure: departure, destination: destination, time: time, status_check: true)
+      @parameters = {
+        bookmark: {
+          name: "#{@bookmark.departure}→#{@bookmark.destination}",
+          departure: @bookmark.departure,
+          destination: @bookmark.destination,
+          time: @bookmark.time,
+          status_check: false,
+        }
       }
 
     end
