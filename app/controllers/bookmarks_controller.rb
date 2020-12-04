@@ -4,7 +4,6 @@ class BookmarksController < ApplicationController
 
     user = User.find(current_user.id)
     @nickname = user.nickname
-    binding.pry
     @bookmarks = user.bookmarks.where(status_check: true)
     
   end
@@ -30,7 +29,6 @@ class BookmarksController < ApplicationController
   
   def create
   
-    binding.pry
     bookmark = Bookmark.new(bookmark_params)
     # Bookmarkが保存できなかった場合の分岐を作る必要あり
     if bookmark.save
