@@ -35,6 +35,7 @@
 
   <div class="icon_btn">
     <button onclick="loop()" class="btn"><%= image_tag("/assets/alarm_icon.png", width: "60", alt: "アラーム設定") %></button>
+    <button class="btn" onclick="closePlay()" id="music_btn" style="display:none"><%= image_tag("/assets/alarm_stop.png", width: "60", alt: "アラーム停止") %></button>
     <div id="timer" style="display:none" class="timer">
       <span id="_d">00</span>
       <span id="_h">00</span>
