@@ -31,12 +31,24 @@ class BookmarksController < ApplicationController
   
   def create
   
-    bookmark = Bookmark.new(bookmark_params)
+    @bookmark = Bookmark.new(bookmark_params)
     # Bookmarkが保存できなかった場合の分岐を作る必要あり
-    if bookmark.save
+    if @bookmark.save
       redirect_to bookmark_path(current_user.id)
     else
-      render :create
+      file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
+      @route_result = SearchNavitimeRoutesService.sample_fetch(file_name)
+      @parameters = {
+        bookmark: {
+          name: "#{@bookmark.departure}→#{@bookmark.destination}",
+          departure: @bookmark.departure,
+          destination: @bookmark.destination,
+          time: @bookmark.time,
+          status_check: false
+        }
+      }
+      render "trains/search"
+   
     end
 
   end

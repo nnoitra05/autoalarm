@@ -30,8 +30,8 @@
   <h2>検索結果</h2>
   
   <div>
-    <% if user_signed_in? %> 
-      <%= render partial: "bookmark_form" %>
+    <% if user_signed_in? %>
+      <%= render partial: "trains/bookmark_form" %>
       <%= link_to "カレンダーに登録する", register_without_bookmarks_path(params: @parameters), method: :post, class: "btn" %>
     <% end %>
   </div>
