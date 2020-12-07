@@ -25,7 +25,8 @@ ActiveRecord::Schema.define(version: 2020_11_13_103042) do
     t.string "name", null: false
     t.string "departure", null: false
     t.string "destination", null: false
-    t.datetime "time", null: false
+    t.time "time", null: false
+    t.boolean "departure_flag", null: false
     t.boolean "status_check", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false

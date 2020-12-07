@@ -2,29 +2,12 @@
 
   <h1>カレンダーに登録する</h1>
 
-  <div class="bookmark_calendar">
-
-    <div class="bookmark_title">
-      ブックマーク名: <%= @bookmark_calendar.bookmark.name %>
-    </div>
-
-    <div class="bookmark_route">
-      出発地: <%= @bookmark_calendar.bookmark.departure %>→
-      到着地: <%= @bookmark_calendar.bookmark.destination %>
-    </div>
-
-    <div class="bookmark_time">
-      時間: <%= @bookmark_calendar.bookmark.time %>
-    </div>
-
-  </div>
-
   <%= form_with url: calendars_path, method: :post, class: 'calendar_form', local: true do |f| %>
 
     <%= f.label :date, "登録する日付を選択する" %>
     <%= f.date_field :date %>
     <%= f.submit '保存する', class: 'form_btn' %>
-    <%= f.number_field :bookmark_id, value: @bookmark_calendar.bookmark.id, class: "hidden" %>
+    <%= f.hidden_field :bookmark_id, value: @bookmark_calendar.bookmark.id %>
 
   <% end %>
 

@@ -44,6 +44,7 @@ class BookmarksController < ApplicationController
           departure: @bookmark.departure,
           destination: @bookmark.destination,
           time: @bookmark.time,
+          departure_flag: @bookmark.departure_flag,
           status_check: false
         }
       }
@@ -98,7 +99,7 @@ class BookmarksController < ApplicationController
 
   def bookmark_params
 
-    params.require(:bookmark).permit(:departure, :destination, :time, :status_check, :name).merge(user_id: current_user.id)
+    params.require(:bookmark).permit(:departure, :destination, :time, :departure_flag, :status_check, :name).merge(user_id: current_user.id)
     
   end
 
