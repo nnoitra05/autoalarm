@@ -15,11 +15,11 @@ class TrainsController < ApplicationController
     # route
     departure = params[:departure]
     destination = params[:destination]
-    datetime = params[:datetime]
+    @datetime = params[:datetime].to_datetime
     departure_flag = params[:departure_flag].to_i
 
     # サービスクラスSearchNavitimeRoutesServiceから条件を満たす最適なルートを取得
-    # @route_result = SearchNavitimeRoutesService.fetch(departure, destination, time, departure_flag)
+    # @route_result = SearchNavitimeRoutesService.fetch(departure, destination, @datetime, departure_flag)
 
     # NAVITIME APIのコール回数削減のために経路検索結果をdumpしたものです。特に不要な場合はこちらのメソッドで読込してください。
     # 直通か非直通かでそれぞれjsonファイルが違うので、目的に合わせてコメントアウトを外してください。
@@ -30,7 +30,7 @@ class TrainsController < ApplicationController
     # 経路検索結果に引き渡すBookmarkモデルのインスタンス変数
     if user_signed_in?
       
-      @bookmark = Bookmark.new(departure: departure, destination: destination, time: datetime.to_time, departure_flag: departure_flag, status_check: true)
+      @bookmark = Bookmark.new(departure: departure, destination: destination, time: @datetime.strftime("%H:%M"), departure_flag: departure_flag, status_check: true)
       @parameters = {
         bookmark: {
           name: "#{@bookmark.departure}→#{@bookmark.destination}",
@@ -39,7 +39,8 @@ class TrainsController < ApplicationController
           time: @bookmark.time,
           departure_flag: @bookmark.departure_flag,
           status_check: false,
-        }
+        },
+        datetime: @datetime
       }
 
     end
