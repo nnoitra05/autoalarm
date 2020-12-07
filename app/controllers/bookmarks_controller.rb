@@ -80,10 +80,10 @@ class BookmarksController < ApplicationController
       bookmark = Bookmark.find_by(bookmark_params)
     end
 
-    calendar = Calendar.find_by(date: bookmark_params[:time].to_date, user_id: current_user.id)
+    calendar = Calendar.find_by(date: params[:datetime].to_date, user_id: current_user.id)
     if calendar.nil?
-      Calendar.create(date: bookmark_params[:time].to_date, user_id: current_user.id)
-      calendar = Calendar.find_by(date: bookmark_params[:time].to_date, user_id: current_user.id)
+      Calendar.create(date: params[:datetime].to_date, user_id: current_user.id)
+      calendar = Calendar.find_by(date: params[:datetime].to_date, user_id: current_user.id)
     end
 
     bookmark_calendar = BookmarkCalendar.find_by(bookmark_id: bookmark.id, calendar_id: calendar.id)
