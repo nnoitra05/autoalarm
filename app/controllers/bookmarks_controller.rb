@@ -37,21 +37,16 @@ class BookmarksController < ApplicationController
     if @bookmark.save
       redirect_to bookmark_path(current_user.id)
     else
+      @bookmark.valid?
       file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
       @route_result = SearchNavitimeRoutesService.sample_fetch(file_name)
+      @datetime = params[:bookmark][:datetime]
       @parameters = {
-        bookmark: {
-          name: "#{@bookmark.departure}→#{@bookmark.destination}",
-          departure: @bookmark.departure,
-          destination: @bookmark.destination,
-          time: @bookmark.time,
-          departure_flag: @bookmark.departure_flag,
-          status_check: false
-        },
-        datetime: params[:datetime]
+        bookmark: bookmark_params,
+        datetime: @datetime
       }
-      binding.pry
-      @comment = "ブックマークの名前を入力してください。"
+      @parameters[:bookmark][:status_check] = false
+      @failure_comment = "ブックマークの名前を入力してください。"
       render "trains/search"
    
     end
