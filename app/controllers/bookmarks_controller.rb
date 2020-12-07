@@ -32,6 +32,7 @@ class BookmarksController < ApplicationController
   def create
   
     @bookmark = Bookmark.new(bookmark_params)
+
     # Bookmarkが保存できなかった場合の分岐を作る必要あり
     if @bookmark.save
       redirect_to bookmark_path(current_user.id)
@@ -46,8 +47,11 @@ class BookmarksController < ApplicationController
           time: @bookmark.time,
           departure_flag: @bookmark.departure_flag,
           status_check: false
-        }
+        },
+        datetime: params[:datetime]
       }
+      binding.pry
+      @comment = "ブックマークの名前を入力してください。"
       render "trains/search"
    
     end
