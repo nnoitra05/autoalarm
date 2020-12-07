@@ -380,9 +380,7 @@ div.contents.row .new_user {
   margin: 10px;
 }
 
-/* モーダルCSSJava用 */
-/* ここまでデモページ用のコード */
-
+/* モーダルCSS JS用 */
 #modal-content {
 	width: 50% ;
 	margin: 0 ;
@@ -405,12 +403,16 @@ div.contents.row .new_user {
 	background-color: rgba( 0,0,0, 0.75 ) ;
 }
 
-.button-link {
-	color: #00f ;
-	text-decoration: underline ;
+.modal_header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
- 
-.button-link:hover {
-	cursor: pointer ;
-	color: #f00 ;
+
+.close_btn{
+  font-size: 40px;
+}
+
+.close_btn:hover{
+  color: lightcoral;
 }
