@@ -420,6 +420,7 @@ div.contents.row .new_user {
 /* 経路検索結果ページのCSSです */
 .register_btn{
   display: flex;
+  margin-bottom: 15px;
 }
 
 .search_result{
@@ -460,8 +461,51 @@ div.contents.row .new_user {
   margin: 5px 10px 5px 15px;
 }
 
+.train_date{
+  display: flex;
+  align-items: center;
+}
+
+.train_datetime{
+  background-color: #ff7800;
+  color: white;
+  padding: 5px;
+  margin: 5px 10px;
+}
+
 .train_route{
+  width: 40%;
   display: flex;
   flex-direction: column;
-  text-align: left;
+  justify-content: space-around;
+  margin: -10px;
+}
+
+.route_departure{
+  background-color: #5e92c4;
+  color: white;
+  justify-content: space-between;
+  font-size: 20px;
+  display: flex;
+  margin: 0 0 5px 0;
+  padding: 10px;
+}
+
+.route_destination{
+  background-color: #5e92c4;
+  color: white;
+  justify-content: space-between;
+  font-size: 20px;
+  display: flex;
+  margin: 5px 0 0 0;
+  padding: 10px;
+}
+
+.train_line{
+  height: 10vh;
+  border-left: thick solid #999999;
+  padding: 10px;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
 }

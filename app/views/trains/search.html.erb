@@ -36,7 +36,11 @@
   </div>
 
   <div class="train_date">
-    <%= "#{@datetime.strftime('%Y年%m月%d日')}"%>
+
+    <div class="train_datetime">日付</div>
+    <%= "#{@parameters[:bookmark][:time].strftime('%Y年%m月%d日  %H:%M')}"%>
+    <%= @parameters[:bookmark][:departure_flag] ? "到着" : "出発" %>
+
   </div>
 
 
@@ -50,11 +54,33 @@
   <%# 経路検索結果の表示 %>
   <% @route_result[:sections].each_with_index do |route, idx| %>
     <div class="train_route">
-      <%= "#{route[:departure]}\t#{route[:departure_time]}" %><br>
-      <%= "↓\t\t#{route[:line_name]}" %><br>
-      <%= "#{route[:destination]}\t#{route[:destination_time]}" %><br>
 
-      
+      <div class="route_departure">
+        <div class="train_departuretime">
+          <%= "#{route[:departure_time]} 出発" %>
+        </div>
+
+        <div class="train_departure">
+          <%= "#{route[:departure]}" %>
+        </div>
+      </div>
+
+        <div class="train_line">
+          <%= "\t\t#{route[:line_name]}" %><br>
+        </div>
+
+      <div class="route_destination">
+        <div class="train_destinationtime">
+          <%= "#{route[:destination_time]} 到着" %>
+        </div>
+
+        <div class="destination">
+          <%= "#{route[:destination]}" %>
+        </div>
+      </div>
+
+    
+      <%# アラーム用の記述だと思われるもの %>
       <div id="dt_destination_time_<%=idx%>">
         <%"#{route[:dt_destination_time]}"%>
       </div>
@@ -62,10 +88,12 @@
     </div>
   <% end %>
     
+
+  <%# アラーム機能 %>
   <script language="javascript" type="text/javascript">
 
   function countTime(end,endtime) {
-    //今の時間
+    //現在の時間
     var date = new Date();
     var now = date.getTime();
     //时间差
@@ -97,13 +125,13 @@
       setTimeout(countTime,1000,end,endtime);
     }
 
-    //音を鳴る
+    //音が鳴る
     function autoPlay() {
       var myAuto = document.getElementById('myaudio');
       myAuto.play();
     }
 
-    //音を止まる
+    //音を止める
     function closePlay() {
       var myAuto = document.getElementById('myaudio');
       myAuto.pause();
