@@ -4,7 +4,7 @@ class SearchNavitimeRoutesService
 
   URL = "https://navitime-route-totalnavi.p.rapidapi.com/route_transit"
 
-  def self.fetch(departure, destination, arrival_at, departure_flag)
+  def self.fetch(departure, destination, datetime, departure_flag)
     
     conn = Faraday.new(URL)
 
@@ -19,9 +19,9 @@ class SearchNavitimeRoutesService
       request.params[:goal] = destination_dump["items"][0]["id"]
       # departure_flagがtrueなら到着時刻に間に合うような結果を、falseなら指定時刻以降に出発する結果を返すように設定する
       if departure_flag
-        request.params[:goal_time] = arrival_at
+        request.params[:goal_time] = datetime
       else
-        request.params[:start_time] = arrival_at
+        request.params[:start_time] = datetime
       end
 
     end

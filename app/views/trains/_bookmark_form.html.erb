@@ -16,6 +16,7 @@
           <%= f.hidden_field :departure, value: @bookmark.departure, class: 'form-message' %>
           <%= f.hidden_field :destination, value: @bookmark.destination, class: 'form-message' %>
           <%= f.hidden_field :time, value: @bookmark.time, class: 'form-message' %>
+          <%= f.hidden_field :departure_flag, value: @bookmark.departure_flag, class: 'form-message' %>
           <%= f.hidden_field :status_check, value: @bookmark.status_check, class: 'form-message' %>
           <%# ↑----ここまで %>
           <%= f.submit '保存する', class: 'form_btn' %>

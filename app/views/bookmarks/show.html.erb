@@ -20,7 +20,12 @@
         </div>
 
         <div class="bookmark_time">
-          到着時間: <%= bookmark.time.strftime('%H:%M') %>
+          時刻: <%= bookmark.time.strftime('%H:%M') %>
+        </div>
+
+        <div class="bookmark_departure_flag">
+          <% departure_flag_str = (bookmark.departure_flag ? "到着時刻" : "出発時刻" ) %>
+          <%= "#{departure_flag_str}として検索" %>
         </div>
 
         <div class= "bookmark_btn">

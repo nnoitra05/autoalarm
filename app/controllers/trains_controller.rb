@@ -15,7 +15,7 @@ class TrainsController < ApplicationController
     # route
     departure = params[:departure]
     destination = params[:destination]
-    time = params[:arrival_at]
+    datetime = params[:datetime]
     departure_flag = params[:departure_flag].to_i
 
     # サービスクラスSearchNavitimeRoutesServiceから条件を満たす最適なルートを取得
@@ -30,13 +30,14 @@ class TrainsController < ApplicationController
     # 経路検索結果に引き渡すBookmarkモデルのインスタンス変数
     if user_signed_in?
       
-      @bookmark = Bookmark.new(departure: departure, destination: destination, time: time, status_check: true)
+      @bookmark = Bookmark.new(departure: departure, destination: destination, time: datetime.to_time, departure_flag: departure_flag, status_check: true)
       @parameters = {
         bookmark: {
           name: "#{@bookmark.departure}→#{@bookmark.destination}",
           departure: @bookmark.departure,
           destination: @bookmark.destination,
           time: @bookmark.time,
+          departure_flag: @bookmark.departure_flag,
           status_check: false,
         }
       }
