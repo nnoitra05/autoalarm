@@ -416,3 +416,52 @@ div.contents.row .new_user {
 .close_btn:hover{
   color: lightcoral;
 }
+
+/* 経路検索結果ページのCSSです */
+.register_btn{
+  display: flex;
+}
+
+.search_result{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.train_index{
+  display: flex;
+  align-items: center;
+}
+
+.departure_index{
+  background-color: #5e92c4;
+  color: white;
+  padding: 5px;
+  margin: 5px 10px;
+}
+
+.arrow{
+  font-size: 30px;
+  margin: 0 10px;
+}
+
+.destination_index{
+  background-color: #c76daa;
+  color: white;
+  padding: 5px;
+  margin: 5px 10px;
+}
+
+.transit_index{
+  background-color: teal;
+  color: white;
+  padding: 5px;
+  margin: 5px 10px 5px 15px;
+}
+
+.train_route{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
