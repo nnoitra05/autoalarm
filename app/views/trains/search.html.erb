@@ -16,20 +16,31 @@
 
 <%# 経路検索結果の表示 %>
 <div class="search_result">
-  
-  <div>
-    <%= "出発地: #{@route_result[:departure]}\n" %>
-    <%= "目的地: #{@route_result[:destination]}\n" %>
-    <%= "乗り換え回数: #{@route_result[:transit_count]}\n" %>
-  </div>
 
   <div id="transit_count" >
-    <%="#{@route_result[:transit_count]}" %>
+    <% "#{@route_result[:transit_count]}" %>
   </div>
 
-  <h2>検索結果</h2>
-  
-  <div>
+  <h1>検索結果</h1>
+  <div class="train_index">
+    <div class="departure_index">出発地</div>
+      <%= "#{@route_result[:departure]}\n" %>
+    
+    <div class="arrow">→</div>
+
+    <div class="destination_index">目的地</div>
+      <%= "#{@route_result[:destination]}\n" %>
+
+    <div class="transit_index">乗り換え回数</div>
+      <%= "#{@route_result[:transit_count]}回\n" %>
+  </div>
+
+  <div class="train_date">
+    <%= "#{@parameters[:bookmark][:time].strftime('%Y年%m月%d日')}"%>
+  </div>
+
+
+  <div class="register_btn">
     <% if user_signed_in? %>
       <%= render partial: "trains/bookmark_form" %>
       <%= link_to "カレンダーに登録する", register_without_bookmarks_path(params: @parameters), method: :post, class: "btn" %>
@@ -38,12 +49,14 @@
   
   <%# 経路検索結果の表示 %>
   <% @route_result[:sections].each_with_index do |route, idx| %>
-    <div>
+    <div class="train_route">
       <%= "#{route[:departure]}\t#{route[:departure_time]}" %><br>
       <%= "↓\t\t#{route[:line_name]}" %><br>
       <%= "#{route[:destination]}\t#{route[:destination_time]}" %><br>
+
+      
       <div id="dt_destination_time_<%=idx%>">
-        <%="#{route[:dt_destination_time]}"%>
+        <%"#{route[:dt_destination_time]}"%>
       </div>
       <br>
     </div>
