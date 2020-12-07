@@ -11,19 +11,25 @@ class BookmarksController < ApplicationController
   end
 
   def edit
-  
+
     user = User.find(current_user.id)
     @bookmark = Bookmark.find(params[:id])
     @nickname = user.nickname
+    @failure_comment = ""
     
   end
 
   def update
 
-    bookmark = Bookmark.find(params[:id])
-    if bookmark.update(bookmark_params)
+    @failure_comment = ""
+    @bookmark = Bookmark.find(params[:id])
+    if @bookmark.update(bookmark_params)
       redirect_to bookmark_path
     else
+      @nickname = current_user.nickname
+      @bookmark.valid?
+      error_messages = @bookmark.errors.messages.values.flatten.uniq
+      @failure_comment = "空欄部分があります。入力してください。" if error_messages.include?("can't be blank")
       render :edit
     end
 
@@ -56,9 +62,8 @@ class BookmarksController < ApplicationController
   def destroy
 
     bookmark = Bookmark.find(params[:id])
-    if bookmark.destroy
-      redirect_to bookmark_path(current_user.id)
-    end
+    bookmark.destroy
+    redirect_to bookmark_path(current_user.id)
 
   end
 
