@@ -478,7 +478,6 @@ div.contents.row .new_user {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin: -10px;
 }
 
 .route_departure{
