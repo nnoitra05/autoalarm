@@ -22,6 +22,11 @@
   </div>
 
   <h1>検索結果</h1>
+
+  <div style="color: red;">
+    <%= @failure_comment unless @failure_comment.empty? %>
+  </div>
+  
   <%= render partial: "trains/search_result"%>
   
   <% @route_result[:sections].each_with_index do |route, idx| %>
