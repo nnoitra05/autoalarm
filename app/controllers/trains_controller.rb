@@ -2,6 +2,9 @@ class TrainsController < ApplicationController
 
   def index
 
+    # 検索失敗時に表示するためのstring型変数
+    @failure_comment = ""
+
     # サービスクラスGetTrainInformationServiceから鉄道運行情報を取得
     @information_list = GetTrainInformationService.fetch
 
@@ -11,6 +14,8 @@ class TrainsController < ApplicationController
   end
 
   def search
+
+    @failure_comment = ""
 
     # route
     departure = params[:departure]
