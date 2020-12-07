@@ -216,7 +216,15 @@ div.contents.row .new_user {
   align-items: center;
 }
 
-/* トップページのCSSです */
+/* アカウントの編集ページのCSSです */
+.account-page__inner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.account-page__inner--right{
+  width: 40%;
+}
 
 
 /* マイページのCSSです */
