@@ -8,9 +8,6 @@ class TrainsController < ApplicationController
     # サービスクラスGetTrainInformationServiceから鉄道運行情報を取得
     @information_list = GetTrainInformationService.fetch
 
-    # indexアクションを発生させた時刻を取得
-    @dt = DateTime.now
-
   end
 
   def search
@@ -23,30 +20,41 @@ class TrainsController < ApplicationController
     @datetime = params[:datetime].to_datetime
     departure_flag = params[:departure_flag].to_i
 
-    # サービスクラスSearchNavitimeRoutesServiceから条件を満たす最適なルートを取得
-    # @route_result = SearchNavitimeRoutesService.fetch(departure, destination, @datetime, departure_flag)
+    # 経路検索フォームに空欄が合った場合にindexビューに戻る
+    if departure.empty? || destination.empty? || @datetime.nil?
 
-    # NAVITIME APIのコール回数削減のために経路検索結果をdumpしたものです。特に不要な場合はこちらのメソッドで読込してください。
-    # 直通か非直通かでそれぞれjsonファイルが違うので、目的に合わせてコメントアウトを外してください。
-    # file_name = Rails.public_path.join("jsons", "response_sample_no_transit.json") # 所沢→渋谷の直通経路のレスポンス
-    file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
-    @route_result = SearchNavitimeRoutesService.sample_fetch(file_name)
+      @failure_comment = "全ての項目を入力してください。"
+      @information_list = GetTrainInformationService.fetch
+      render template: "trains/index"
     
-    # 経路検索結果に引き渡すBookmarkモデルのインスタンス変数
-    if user_signed_in?
+    else
+
+      # サービスクラスSearchNavitimeRoutesServiceから条件を満たす最適なルートを取得
+      # @route_result = SearchNavitimeRoutesService.fetch(departure, destination, @datetime, departure_flag)
+
+      # NAVITIME APIのコール回数削減のために経路検索結果をdumpしたものです。特に不要な場合はこちらのメソッドで読込してください。
+      # 直通か非直通かでそれぞれjsonファイルが違うので、目的に合わせてコメントアウトを外してください。
+      # file_name = Rails.public_path.join("jsons", "response_sample_no_transit.json") # 所沢→渋谷の直通経路のレスポンス
+      file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
+      @route_result = SearchNavitimeRoutesService.sample_fetch(file_name)
+    
+      # 経路検索結果に引き渡すBookmarkモデルのインスタンス変数
+      if user_signed_in?
       
-      @bookmark = Bookmark.new(departure: departure, destination: destination, time: @datetime.strftime("%H:%M"), departure_flag: departure_flag, status_check: true)
-      @parameters = {
-        bookmark: {
-          name: "#{@bookmark.departure}→#{@bookmark.destination}",
-          departure: @bookmark.departure,
-          destination: @bookmark.destination,
-          time: @bookmark.time,
-          departure_flag: @bookmark.departure_flag,
-          status_check: false,
-        },
-        datetime: @datetime
-      }
+        @bookmark = Bookmark.new(departure: departure, destination: destination, time: @datetime.strftime("%H:%M"), departure_flag: departure_flag, status_check: true)
+        @parameters = {
+          bookmark: {
+            name: "#{@bookmark.departure}→#{@bookmark.destination}",
+            departure: @bookmark.departure,
+            destination: @bookmark.destination,
+            time: @bookmark.time,
+            departure_flag: @bookmark.departure_flag,
+            status_check: false,
+          },
+          datetime: @datetime
+        }
+
+      end
 
     end
     
