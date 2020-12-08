@@ -1,11 +1,11 @@
-<div class="bookmarks">
+<div class="mybookmarks_edit">
   <h1><%= @nickname %>さんのブックマーク</h1>
 
   <div style="color: red;">
     <%= @failure_comment unless @failure_comment.empty? %>
   </div>
 
-  <div class="bookmark">
+  <div class="mybookmark_edit">
     <%= form_with model: @bookmark, class: 'form', local: true do |f| %>
       <%= f.label :name, "ブックマーク名" %>
       <%= f.text_field :name, placeholder: "ブックマーク名", class: 'form-message' %>
@@ -19,10 +19,9 @@
       <%= f.select :departure_flag, {"到着時刻として検索": 1, "出発時刻として検索": 0}, {selected: @bookmark.departure_flag}, class: "form-message" %>
       <%= f.submit '保存する', class: 'form_btn' %>
     <% end %>
-        
-    <%= form_with model: @bookmark, class: 'form', method: :delete, local: true do |f| %>
-      <%= f.submit '削除する', class: 'form_btn' %>
-    <% end %>
 
+      <%= form_with model: @bookmark, class: 'form', method: :delete, local: true do |f| %>
+        <%= f.submit '削除する', class: 'form_btn' %>
+      <% end %>
   </div>
 </div>

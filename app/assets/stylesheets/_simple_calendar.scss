@@ -1,7 +1,13 @@
 
 
 .simple-calendar {
-  background-color: whitesmoke;
+  background-color: white;
+  font-size: large;
+  font-weight: bold;
+  padding: 30px;
+  margin: 20px;
+  border-top: solid 7px #5a5760;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.22);
 
   .day {
     width: 100% / 7;
@@ -39,5 +45,11 @@
     //background-color: #2c7873;
   }
   */
-
+  .table-striped{
+    border: 3px solid #dddddd;
+  }
+  
+  a:hover{
+    color: lightcoral;
+  }
 }
