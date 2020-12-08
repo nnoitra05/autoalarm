@@ -23,7 +23,10 @@ div {
 body {
   font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN W3", sans-serif;
   color: #3b4043;
-  background-color: #f0efea;
+  background-image: url(/assets/test.jpg);
+  background-color: rgba(255,255,255,0.8);
+  background-blend-mode:lighten;
+
 }
 
 li {
@@ -286,6 +289,7 @@ div.contents.row .new_user {
   border: 2px solid #2c7873;
   border-radius: 10px;
   margin: 10px 0;
+  background-color: whitesmoke;
 }
 
 .bookmark_title{
