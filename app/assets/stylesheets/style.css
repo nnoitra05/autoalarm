@@ -24,7 +24,7 @@ body {
   font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN W3", sans-serif;
   color: #3b4043;
   background-image: url(/assets/test.jpg);
-  background-color: rgba(255,255,255,0.9);
+  background-color: rgba(255,255,255,0.75);
   background-blend-mode:lighten;
 
 }
@@ -239,6 +239,7 @@ div.contents.row .new_user {
 }
 
 .user_name{
+  display: flex;
   font-size: 30px;
 }
 
@@ -278,7 +279,10 @@ div.contents.row .new_user {
 }
 
 .bookmark{
-  width: 40%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .user_bookmark{
@@ -286,15 +290,46 @@ div.contents.row .new_user {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid #2c7873;
-  border-radius: 10px;
-  margin: 10px 0;
-  background-color: whitesmoke;
+  background-color: white;
+  font-size: large;
+  font-weight: bold;
+  padding: 10px 10px;
+  margin: 10px;
+  width: 30vw;
+  height: 40vh;
+  border-top: solid 7px rgb(103, 197, 228);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.22);
 }
 
 .bookmark_title{
   display: flex;
   align-items: center;
+}
+
+.bookmark_edit{
+  display: flex;
+  justify-content: center;
+}
+
+.bookmark_register{
+  display: flex;
+  justify-content: center;
+}
+
+/* ブックマーク編集用ページのCSSです */
+.mybookmarks_edit{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mybookmark_edit{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
 }
 
 /* レスポンシブデザイン タブレット表示 */
