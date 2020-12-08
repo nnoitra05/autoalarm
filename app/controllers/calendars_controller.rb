@@ -12,24 +12,36 @@ class CalendarsController < ApplicationController
 
   def create
 
-    calendar = Calendar.find_by(date: params[:date], user_id: current_user.id)
+    # ブックマークをカレンダーに登録できなかった際に表示する変数の初期化
+    @failure_comment = ""
 
-    if calendar.nil?
-      calendar = Calendar.new(date: params[:date], user_id: current_user.id)
-      calendar.save
-    end
+    # 日付が入力されなかった場合の処理
+    if params[:date].empty?
 
-    bookmark_calendar = BookmarkCalendar.find_by(bookmark_id: params[:bookmark_id], calendar_id: calendar.id)
+      @failure_comment = "日付を入力してください。"
+      @bookmark_calendar = BookmarkCalendar.new(bookmark_id: params[:bookmark_id])
+      render template: "bookmarks/register"
 
-    if bookmark_calendar.nil?
-      bookmark_calendar = BookmarkCalendar.new(bookmark_id: params[:bookmark_id], calendar_id: calendar.id)
-      if bookmark_calendar.save
-        redirect_to bookmark_path(current_user.id)
-      else
-        @bookmark_calendar = BookmarkCalendar.new
-        @bookmark_calendar.bookmark = Bookmark.find(params[:id])
-        render register_bookmark_path(params[:id])
+    # 日付が入力された場合の処理
+    else
+
+      # Calendarレコードの作成
+      calendar = Calendar.find_by(date: params[:date], user_id: current_user.id)
+      if calendar.nil?
+        Calendar.create(date: params[:date], user_id: current_user.id)
+        calendar = Calendar.find_by(date: params[:date], user_id: current_user.id)
       end
+      # BookmarkCalendarレコードの作成
+      @bookmark_calendar = BookmarkCalendar.find_by(bookmark_id: params[:bookmark_id], calendar_id: calendar.id)
+      if @bookmark_calendar.nil?
+        BookmarkCalendar.create(bookmark_id: params[:bookmark_id], calendar_id: calendar.id)
+        redirect_to bookmark_path(current_user.id)
+      # bookmark_calendarが既にカレンダーに登録されている場合の処理
+      else
+        @failure_comment = "既にカレンダーに登録されています。"
+        render template: "bookmarks/register"
+      end
+
     end
 
   end

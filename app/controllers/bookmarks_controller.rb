@@ -39,7 +39,6 @@ class BookmarksController < ApplicationController
   
     @bookmark = Bookmark.new(bookmark_params)
 
-    # Bookmarkが保存できなかった場合の分岐を作る必要あり
     if @bookmark.save
       redirect_to bookmark_path(current_user.id)
     else
@@ -53,7 +52,7 @@ class BookmarksController < ApplicationController
       }
       @parameters[:bookmark][:status_check] = false
       @failure_comment = "ブックマークの名前を入力してください。"
-      render "trains/search"
+      render search_trains_path
    
     end
 
@@ -69,8 +68,8 @@ class BookmarksController < ApplicationController
 
   def register
 
-    @bookmark_calendar = BookmarkCalendar.new
-    @bookmark_calendar.bookmark = Bookmark.find(params[:id])
+    @failure_comment = ""
+    @bookmark_calendar = BookmarkCalendar.new(bookmark_id: params[:id])
 
   end
 
