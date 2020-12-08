@@ -23,6 +23,12 @@ class TrainsController < ApplicationController
     # 経路検索フォームに空欄が合った場合にindexビューに戻る
     if departure.empty? || destination.empty? || @datetime.nil?
 
+    # NAVITIME APIのコール回数削減のために経路検索結果をdumpしたものです。特に不要な場合はこちらのメソッドで読込してください。
+    # 直通か非直通かでそれぞれjsonファイルが違うので、目的に合わせてコメントアウトを外してください。
+    file_name = Rails.public_path.join("jsons", "response_sample_no_transit.json") # 所沢→渋谷の直通経路のレスポンス
+    # file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
+    @route_result = SearchNavitimeRoutesService.sample_fetch(file_name)
+      
       @failure_comment = "全ての項目を入力してください。"
       @information_list = GetTrainInformationService.fetch
       render template: "trains/index"

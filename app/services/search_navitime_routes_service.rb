@@ -92,9 +92,8 @@ class SearchNavitimeRoutesService
         route_info[:dt_destination_time]= route["to_time"]
         
         route_result[:sections] << route_info
-       
       end
-    
+
     end
 
     return route_result
