@@ -3,7 +3,7 @@
 class FetchTrainsApisService
 
   URL = "https://api-tokyochallenge.odpt.org/api/v4"
-  CONSUMER_KEY = "pUDvG82NZDiE8ufhvvH2iR3DnMok1YRMO7h7jkOpinU"
+  CONSUMER_KEY = ENV["ODPT_ACCESS_TOKEN"]
 
   def self.fetch(api_path)
     
