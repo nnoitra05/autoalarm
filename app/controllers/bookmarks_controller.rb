@@ -73,7 +73,6 @@ class BookmarksController < ApplicationController
 
   end
 
-  # うまく動かないので修正
   def register_without
 
     # status_check = falseの状態でブックマーク保存
@@ -91,7 +90,7 @@ class BookmarksController < ApplicationController
 
     bookmark_calendar = BookmarkCalendar.find_by(bookmark_id: bookmark.id, calendar_id: calendar.id)
     if bookmark_calendar.nil?
-      bookmark_calendar = BookmarkCalendar.create(bookmark_id: bookmark.id, calendar_id: calendar.id)
+      BookmarkCalendar.create(bookmark_id: bookmark.id, calendar_id: calendar.id)
     end
     
     redirect_to user_path(current_user.id)
