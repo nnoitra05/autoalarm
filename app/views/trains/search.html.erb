@@ -1,7 +1,7 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
-<button onclick="loop()">アラーム設定</button>
+<button onclick="loop()" class="btn">アラーム設定</button>
 <div>
   <span id="_d">00</span>
   <span id="_h">00</span>
@@ -11,7 +11,7 @@
 
 <%=audio_tag('bibi.mp3',id: "myaudio")%>
 <input type="button" onclick="autoPlay()" id="self_click" value="再生" style="display:none"/>
-<input type="button" onclick="closePlay()" value="停止" />
+<input type="button" onclick="closePlay()" id="music_btn" value="音停止" style="display:none"/>
 
 <%# 経路検索結果の表示 %>
 <div class="search_result">
@@ -48,8 +48,8 @@
 
   function countTime(end,endtime) {
     //現在の時間
-    // var date = new Date();
-    var date =new Date(2020,11,4,12,00);
+    var date = new Date();
+    //var date =new Date(2020,11,4,12,00);
 
     var now = date.getTime();
     //时间差
@@ -71,14 +71,21 @@
       s = Math.floor(leftTime/1000%60);
     }
     //アラームの時間設定
-    if(d==0&&h==0&&m==0&&s==59)
+    if(d==0&&h==0&&m==0&&s==59){
+      displayShowUI();
       setTimeout(botton_click(),1000);
+    }
       //divに入れる
       document.getElementById("_d").innerHTML = d+"日";
       document.getElementById("_h").innerHTML = h+"時間";
       document.getElementById("_m").innerHTML = m+"分";
       document.getElementById("_s").innerHTML = s+"秒";
       setTimeout(countTime,1000,end,endtime);
+    }
+
+    function displayShowUI(){
+      var ui =document.getElementById("music_btn");
+      ui.style.display="";
     }
 
     //音が鳴る
@@ -92,6 +99,8 @@
       var myAuto = document.getElementById('myaudio');
       myAuto.pause();
       myAuto.load();
+      var ui =document.getElementById("music_btn");
+      ui.style.display="none";
     }
 
     //自動にボタンを押す
@@ -109,7 +118,7 @@
         var end = Date.parse(endDate);
         endtime[i]=end;
       }
-      if(document.getElementById("transit_count")==0){
+      if(document.getElementById("transit_count").innerHTML==0){
         end=endtime.pop();
         endtime.length=0;
         countTime(end,endtime);
