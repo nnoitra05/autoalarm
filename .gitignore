@@ -32,4 +32,4 @@ yarn-debug.log*
 
 # Ignore the files .DS_Store and .env. (not default)
 .DS_Store
-#/.env
+/.env
