@@ -51,7 +51,7 @@ class TrainsController < ApplicationController
             departure_flag: @bookmark.departure_flag,
             status_check: false,
           },
-          datetime: @datetime
+          datetime: @datetime.to_datetime
         }
 
       end
