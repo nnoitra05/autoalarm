@@ -17,17 +17,11 @@ class TrainsController < ApplicationController
     # route
     departure = params[:departure]
     destination = params[:destination]
-    @datetime = params[:datetime].to_datetime
+    @datetime = params[:datetime]
     departure_flag = params[:departure_flag].to_i
 
     # 経路検索フォームに空欄が合った場合にindexビューに戻る
     if departure.empty? || destination.empty? || @datetime.nil?
-
-    # NAVITIME APIのコール回数削減のために経路検索結果をdumpしたものです。特に不要な場合はこちらのメソッドで読込してください。
-    # 直通か非直通かでそれぞれjsonファイルが違うので、目的に合わせてコメントアウトを外してください。
-    # file_name = Rails.public_path.join("jsons", "response_sample_no_transit.json") # 所沢→渋谷の直通経路のレスポンス
-     file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
-     @route_result = SearchNavitimeRoutesService.sample_fetch(file_name)
       
       @failure_comment = "全ての項目を入力してください。"
       @information_list = GetTrainInformationService.fetch
@@ -36,7 +30,7 @@ class TrainsController < ApplicationController
     else
 
       # サービスクラスSearchNavitimeRoutesServiceから条件を満たす最適なルートを取得
-      #  @route_result = SearchNavitimeRoutesService.fetch(departure, destination, @datetime, departure_flag)
+      # @route_result = SearchNavitimeRoutesService.fetch(departure, destination, @datetime, departure_flag)
 
       # NAVITIME APIのコール回数削減のために経路検索結果をdumpしたものです。特に不要な場合はこちらのメソッドで読込してください。
       # 直通か非直通かでそれぞれjsonファイルが違うので、目的に合わせてコメントアウトを外してください。
@@ -47,7 +41,7 @@ class TrainsController < ApplicationController
       # 経路検索結果に引き渡すBookmarkモデルのインスタンス変数
       if user_signed_in?
       
-        @bookmark = Bookmark.new(departure: departure, destination: destination, time: @datetime.strftime("%H:%M"), departure_flag: departure_flag, status_check: true)
+        @bookmark = Bookmark.new(departure: departure, destination: destination, time: @datetime.to_datetime.strftime("%H:%M"), departure_flag: departure_flag, status_check: true)
         @parameters = {
           bookmark: {
             name: "#{@bookmark.departure}→#{@bookmark.destination}",
