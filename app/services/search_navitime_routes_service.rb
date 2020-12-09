@@ -9,14 +9,34 @@ class SearchNavitimeRoutesService
     conn = Faraday.new(URL)
 
     response = conn.get do |request|
-      
+        
       request.params["rapidapi-host"] = GetNavitimeParamsService.route_host
       request.params["rapidapi-key"] = GetNavitimeParamsService.key
-      # ConvertWordToNodeServiceを使って文字情報をノードIDに変換する
-      departure_dump = ConvertWordToNodeService.fetch(departure)
-      request.params[:start] = departure_dump["items"][0]["id"]
-      destination_dump = ConvertWordToNodeService.fetch(destination)
-      request.params[:goal] = destination_dump["items"][0]["id"]
+      
+      # 駅名をIDに変換する際にエラーが発生する可能性があるので例外処理
+      begin
+
+        # ConvertWordToNodeServiceを使って文字情報をノードIDに変換する
+        departure_dump = ConvertWordToNodeService.fetch(departure)
+        request.params[:start] = departure_dump["items"][0]["id"]
+
+      rescue => exception1
+
+        return HandleExceptionService.rescue(departure_dump)
+
+      end
+      
+      begin
+
+        destination_dump = ConvertWordToNodeService.fetch(destination)
+        request.params[:goal] = destination_dump["items"][0]["id"]
+
+      rescue => exception2
+
+        return HandleExceptionService.rescue(destination_dump)
+
+      end
+
       # departure_flagがtrueなら到着時刻に間に合うような結果を、falseなら指定時刻以降に出発する結果を返すように設定する
       if departure_flag == 1
         request.params[:goal_time] = datetime
@@ -26,7 +46,17 @@ class SearchNavitimeRoutesService
 
     end
 
-    res = JSON.parse(response.body)["items"][0]
+    # 経路検索でエラーが発生する可能性があるので例外処理
+    begin
+
+      response_body = JSON.parse(response.body)
+      res = response_body["items"][0]
+
+    rescue => exception3
+
+      return HandleExceptionService.rescue(response_body)
+  
+    end
 
     route_result = {}
     route_result[:departure] = res["summary"]["start"]["name"]
