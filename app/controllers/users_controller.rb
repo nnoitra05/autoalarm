@@ -4,13 +4,14 @@ class UsersController < ApplicationController
 
   def show
 
+    date = DateTime.now.to_date
     # 当日を過ぎ、かつstatus_check=falseのBookmarkレコードを削除する
     bookmarks = Bookmark.where(user_id: current_user.id, status_check: false)
     bookmarks.each do |bookmark|
       # status_check=falseのBookmarkCalendarレコードは1つのみなのでwhereではなくfind_by
       schedule = BookmarkCalendar.find_by(bookmark_id: bookmark.id)
       # 現在日付より前のBookmarkレコードを削除する
-      bookmark.destroy if schedule.calendar.date < DateTime.now.to_date
+      bookmark.destroy if (!schedule.nil? && schedule.calendar.date < date)
     end
 
     # BookmarkCakendarレコードの登録がないCalendarレコードを削除
