@@ -79,9 +79,8 @@ class SearchNavitimeRoutesService
         route_info[:destination_time] = route["to_time"].to_datetime.strftime("%H:%M")
         route_info[:line_name] = route["line_name"]
         route_info[:dt_destination_time]= route["to_time"]
-        route_info[:index]= idx
+        route_info[:transit_status]= route["next_transit"]
 
-        
         route_result[:sections] << route_info
 
       end
@@ -121,11 +120,14 @@ class SearchNavitimeRoutesService
         route_info[:line_name] = route["line_name"]
         route_info[:dt_destination_time]= route["to_time"]
         route_info[:dt_departure_time] = route["from_time"]
+        route_info[:transit_status]= route["next_transit"]
+        
         
         route_result[:sections] << route_info
+       
       end
-
     end
+
 
     return route_result
 

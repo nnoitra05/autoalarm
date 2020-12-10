@@ -38,6 +38,10 @@
       <div id="index" style="display:none">
         <%=@route_result[:sections].length%>
       </div>
+      <div id="transit_status_<%=idx%>" style="display:none">
+        <%="#{route[:transit_status]}"%>
+      </div>
+
     </div>
     
   <% end %>
@@ -49,7 +53,6 @@
   function countTime(end,endtime) {
     //現在の時間
     var date = new Date();
-    //var date =new Date(2020,11,4,12,00);
 
     var now = date.getTime();
     //时间差
@@ -113,19 +116,18 @@
     function loop(){
       var endtime = new Array();
       for (i=0;i<document.getElementById("index").innerHTML;i++){
-        str=document.getElementById("dt_destination_time_"+i).innerHTML;
-        var endDate = moment(str, 'YYYY-MM-DDTHH:mm:ssZ');
-        var end = Date.parse(endDate);
-        endtime[i]=end;
+        if(document.getElementById("transit_status_"+i).innerHTML.trim()!="true" &&i<document.getElementById("index").innerHTML-1){
+          continue;
+          }
+        else{
+          str=document.getElementById("dt_destination_time_"+i).innerHTML;
+          var endDate = moment(str, 'YYYY-MM-DDTHH:mm:ssZ');
+          var end = Date.parse(endDate);
+          endtime.push(end);
+        }
       }
-      if(document.getElementById("transit_count").innerHTML==0){
-        end=endtime.pop();
-        endtime.length=0;
-        countTime(end,endtime);
-      }else{
       end=endtime.shift();
       countTime(end,endtime);
-      }
     }
   </script>
 </div>
