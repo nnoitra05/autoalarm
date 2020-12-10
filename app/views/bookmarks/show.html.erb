@@ -32,12 +32,37 @@
             <%= link_to "編集する", edit_bookmark_path(bookmark.id), method: :get, class: 'btn' %>
             <%= link_to "削除する", bookmark_path(bookmark.id), method: :delete, class: 'btn' %>
           </div>
-          <div class="bookmark_register">
+          <%# <div class="bookmark_register">
             <%= link_to "カレンダーに登録する", register_bookmark_path(bookmark.id), method: :get, class: 'btn' %>
-          </div>
+          <%# </div> %>
         </div>
 
-        <%= render partial: "bookmarks/calendar_modal"%>
+        <%# モーダルあえてこちらで記述してます %>
+        <div class="cp_modal">
+  
+        <!-- モーダルウィンドウ -->
+        
+        <%# <div id="modal-content"> %>
+          <!-- モーダルウィンドウのコンテンツ開始 -->
+          <%# <div class="modal_header"> %>
+            <%# <h2>カレンダーに登録する</h2> %>
+            <%# <button id = "modal-close" class="close_btn">&times;</button> %>
+          <%# </div> %>
+
+          <%# <article class="cp_content"> %>
+            <%#= form_with url: calendars_path(bookmark.id), method: :post, class: 'calendar_form', local: true do |f| %>
+              <%#= f.label :date, "登録する日付を選択する" %>
+              <%#= f.date_field :date %>
+              <%#= f.submit '保存する', class: 'form_btn' %>
+              <%#= f.hidden_field :bookmark_id, value: @bookmark_calendar[:bookmark_id] %>  <!-- bookmark_id == 1 -->
+            <%# end %>
+          <%# </article> %>
+        <!-- モーダルウィンドウのコンテンツ終了 -->
+        <%# </div> %>
+
+          <%# <button id = "modal-open" class="modal_btn">カレンダーに登録する</button> %>
+          <%= render partial: 'calendar_modal', locals: { id: bookmark.id, bookmark_calendar: @bookmark_calendar } %>
+        </div>
 
       </div>
 

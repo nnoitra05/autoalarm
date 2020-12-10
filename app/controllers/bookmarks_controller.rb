@@ -7,7 +7,9 @@ class BookmarksController < ApplicationController
     user = User.find(current_user.id)
     @nickname = user.nickname
     @bookmarks = user.bookmarks.where(status_check: true)
-    
+
+
+    @bookmark_calendar = BookmarkCalendar.new(bookmark_id: params[:id])
   end
 
   def edit

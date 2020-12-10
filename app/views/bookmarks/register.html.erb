@@ -1,18 +1,18 @@
-<div class="register_calendar">
+<%# <div class="register_calendar"> %>
 
-  <h1>カレンダーに登録する</h1>
+  <%# <h1>カレンダーに登録する</h1> %>
 
-  <div style="color: red;">
-    <%= @failure_comment unless @failure_comment.empty? %>
-  </div>
+  <%# <div style="color: red;"> %>
+    <%# <%= @failure_comment unless @failure_comment.empty? %>
+  <%# </div> %>
 
-  <%= form_with url: calendars_path, method: :post, class: 'calendar_form', local: true do |f| %>
+  <%# <%= form_with url: calendars_path, method: :post, class: 'calendar_form', local: true do |f| %>
 
-    <%= f.label :date, "登録する日付を選択する" %>
-    <%= f.date_field :date %>
-    <%= f.submit '保存する', class: 'form_btn' %>
-    <%= f.hidden_field :bookmark_id, value: @bookmark_calendar[:bookmark_id] %>
+    <%# <%= f.label :date, "登録する日付を選択する" %>
+    <%# <%= f.date_field :date %>
+    <%# <%= f.submit '保存する', class: 'form_btn' %>
+    <%# <%= f.hidden_field :bookmark_id, value: @bookmark_calendar[:bookmark_id] %> 
 
-  <% end %>
+  <%# <% end %>
 
-</div>
+<%# </div> %>
