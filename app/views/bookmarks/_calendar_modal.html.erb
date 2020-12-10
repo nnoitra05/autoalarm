@@ -1,0 +1,26 @@
+<div class="cp_modal">
+  
+  <!-- モーダルウィンドウ -->
+  <div id="modal-content">
+	  <!-- モーダルウィンドウのコンテンツ開始 -->
+    <div class="modal_header">
+      <h2>カレンダーに登録する</h2>
+      <button id = "modal-close" class="close_btn">&times;</button>
+    </div>
+
+    <article class="cp_content">
+      <%= form_with url: calendars_path, method: :post, class: 'form', local: true do |f| %>
+      
+        <div class="form-input">
+          <%= f.date_field :date, class: 'form-message' %>
+          <%= f.submit '保存する', class: 'btn' %>
+        </div>
+      
+      <% end %>
+    </article>
+	<!-- モーダルウィンドウのコンテンツ終了 -->
+  </div>
+
+    <button id = "modal-open" class="modal_btn">カレンダーに登録する</button>
+
+</div>
