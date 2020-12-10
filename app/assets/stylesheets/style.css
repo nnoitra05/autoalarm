@@ -270,6 +270,25 @@ div.contents.row .new_user {
   background: #2c7873;
 }
 
+/* モーダル用共通ボタンのCSSです */
+.modal_btn{
+  margin: 10px;
+  padding: 8px 20px;
+  font-size: 14px;
+  border: 2px solid #2c7873;
+  color: #2c7873;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 3px;
+  display: inline-block;
+  background-color: Transparent;
+}
+
+.modal_btn:hover{
+  color: white;
+  background: #2c7873;
+}
+
 /* ブックマークページのCSSです */
 .bookmarks{
   display: flex;
