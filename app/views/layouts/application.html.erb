@@ -1,6 +1,9 @@
 <!DOCTYPE html>
+
 <html>
+
   <head>
+
     <title>Autoalarm</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -8,33 +11,47 @@
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
+
     <header class="header">
       <div class="nav">
         <div class="nav__left">
           <%= link_to "経路検索アプリ", root_path, class: :nav__logo %>
         </div>
-  <%# ログインしているときは以下を表示するようにしましょう %>
+
+        <%# このdivはサンドボックスアクセス用なのであとで削除する %>
+        <div class="nav__right">
+          <%= link_to "サンドボックス", sandbox_trains_path, class: :nav__btn %>
+        </div> 
+
+        <%# ログインしているときは以下を表示するようにしましょう %>
         <% if user_signed_in? %>
+
           <div class="nav__right">
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__btn %>
             <%= link_to "マイページ", user_path(current_user.id), class: :nav__btn %>
             <%= link_to "ブックマーク", bookmark_path(current_user.id), class: :nav__btn %>
           </div> 
-   <%# // ログインしているときは上記を表示するようにしましょう %>
-   <%# ログインしていないときは以下を表示するようにしましょう %>
+        
+        <%# ログインしていないときは以下を表示するようにしましょう %>
         <% else %>
+
           <div class="nav__right">
             <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
             <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
           </div>
+
         <% end %>
-    <%# // ログインしていないときは上記を表示するようにしましょう %>
-     </div>
+      
+      </div>
     </header>
+
     <%= yield %>
+
   </body>
+
 </html>
 
