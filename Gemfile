@@ -63,3 +63,5 @@ gem "date"
 gem "time"
 gem "simple_calendar"
 gem "dotenv-rails"
+gem "google-api-client", require: ["google/apis/calendar_v3"]
+gem "omniauth-google-oauth2"
