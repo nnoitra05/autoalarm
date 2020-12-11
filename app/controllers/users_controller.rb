@@ -27,8 +27,6 @@ class UsersController < ApplicationController
 
   def edit
 
-    binding.pry
-
     # ログインユーザーと一致しているかを判断
     redirect_to root_path unless user_signed_in? && current_user.id == params[:id].to_i
 
