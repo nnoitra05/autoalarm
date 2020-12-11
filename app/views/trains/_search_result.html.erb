@@ -25,10 +25,19 @@
     <%= render partial: "trains/bookmark_form" %>
     <%= link_to "カレンダーに登録する", register_without_bookmarks_path(params: @parameters), method: :post, class: "btn" %>
   <% end %>
+    <button onclick="loop()" class="alarm_btn">アラーム設定</button>
+    <div id="timer" style="display:none" class="timer">
+      <span id="_d">00</span>
+      <span id="_h">00</span>
+      <span id="_m">00</span>
+      <span id="_s">00</span>
+    </div>
 </div>
 
-<% @route_result[:sections].each_with_index do |route, idx| %>
-  <div class="train_route">
+
+
+<div class="train_route">
+  <% @route_result[:sections].each_with_index do |route, idx| %>
 
     <div class="route_departure">
       <div class="train_departuretime">
@@ -53,5 +62,6 @@
         <%= "#{route[:destination]}" %>
       </div>
     </div>
-  </div>
-<% end %>
+    
+  <% end %>
+</div>
