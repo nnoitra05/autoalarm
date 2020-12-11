@@ -4,6 +4,9 @@ class UsersController < ApplicationController
 
   def show
 
+    # ログインユーザーと一致しているかを判断
+    redirect_to root_path unless user_signed_in? && current_user.id == params[:id].to_i
+
     date = DateTime.now.to_date
     # 当日を過ぎ、かつstatus_check=falseのBookmarkレコードを削除する
     bookmarks = Bookmark.where(user_id: current_user.id, status_check: false)
@@ -23,6 +26,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+
+    binding.pry
+
+    # ログインユーザーと一致しているかを判断
+    redirect_to root_path unless user_signed_in? && current_user.id == params[:id].to_i
 
   end
 

@@ -17,8 +17,6 @@ class BookmarksController < ApplicationController
 
   def edit
 
-    binding.pry
-
     # ログインユーザーと一致しているかを判断
     redirect_to root_path unless user_signed_in? && current_user.id == Bookmark.find(params[:id]).user_id
 
