@@ -26,8 +26,9 @@ window.onload = function () {
   $(function(){
 
     //モーダルウィンドウを出現させるクリックイベント
-    $("#modal-open").click( function(){
-  
+    // $("#modal-open").click( function(){
+    $(".modal_btn").click( function(){
+      var $modal = $(this).prev();
       //キーボード操作などにより、オーバーレイが多重起動するのを防止する
       $( this ).blur() ;	//ボタンからフォーカスを外す
       if( $( "#modal-overlay" )[0] ) return false ;		//新しくモーダルウィンドウを起動しない (防止策1)
@@ -38,10 +39,21 @@ window.onload = function () {
       $( "#modal-overlay" ).fadeIn( "slow" ) ;
   
       //コンテンツをセンタリングする
-      centeringModalSyncer() ;
+      // centeringModalSyncer() ;
+      var w = $( window ).width() ;
+      var h = $( window ).height() ;
+      var cw = $modal.outerWidth();
+      var ch = $modal.outerHeight();
+  
+      //センタリングを実行する
+      $modal.css( {"left": ((w - cw)/2) + "px","top": ((h - ch)/2) + "px"} ) ;
+      
   
       //コンテンツをフェードインする
-      $( "#modal-content" ).fadeIn( "slow" ) ;
+      // $( "#modal-content" ).fadeIn( "slow" ) ;
+      $modal.fadeIn( "slow" ) ;
+      
+    
   
       //[#modal-overlay]、または[#modal-close]をクリックしたら…
       $( "#modal-overlay,#modal-close" ).unbind().click( function(){
@@ -72,6 +84,8 @@ window.onload = function () {
       // jQueryのバージョンによっては、引数[{margin:true}]を指定した時、不具合を起こします。
       //var cw = $( "#modal-content" ).outerWidth( {margin:true} );
       //var ch = $( "#modal-content" ).outerHeight( {margin:true} );
+      // var cw = $( "#modal-content" ).outerWidth();
+      // var ch = $( "#modal-content" ).outerHeight();
       var cw = $( "#modal-content" ).outerWidth();
       var ch = $( "#modal-content" ).outerHeight();
   

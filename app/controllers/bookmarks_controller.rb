@@ -4,15 +4,21 @@ class BookmarksController < ApplicationController
 
   def show
 
+    # user = User.find(current_user.id)
+    # @nickname = user.nickname
+    # @bookmarks = user.bookmarks.where(status_check: true)
+    
+  end
+
+  def index
     # ログインユーザーと一致しているかを判断
     redirect_to root_path unless user_signed_in? && current_user.id == params[:id].to_i
 
     user = User.find(current_user.id)
     @nickname = user.nickname
     @bookmarks = user.bookmarks.where(status_check: true)
-
-
     @bookmark_calendar = BookmarkCalendar.new(bookmark_id: params[:id])
+    
   end
 
   def edit
@@ -32,7 +38,7 @@ class BookmarksController < ApplicationController
     @failure_comment = ""
     @bookmark = Bookmark.find(params[:id])
     if @bookmark.update(bookmark_params)
-      redirect_to bookmark_path
+      redirect_to bookmarks_path
     else
       @nickname = current_user.nickname
       @bookmark.valid?
@@ -48,7 +54,7 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new(bookmark_params)
 
     if @bookmark.save
-      redirect_to bookmark_path(current_user.id)
+      redirect_to bookmarks_path(current_user.id)
     else
       @bookmark.valid?
       file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
@@ -70,7 +76,7 @@ class BookmarksController < ApplicationController
 
     bookmark = Bookmark.find(params[:id])
     bookmark.destroy
-    redirect_to bookmark_path(current_user.id)
+    redirect_to bookmarks_path(current_user.id)
 
   end
 
