@@ -84,9 +84,9 @@ class SearchNavitimeRoutesService
         route_result[:sections] << route_info
 
       end
-            
 
     end
+
     return route_result
 
   end
@@ -122,12 +122,11 @@ class SearchNavitimeRoutesService
         route_info[:dt_departure_time] = route["from_time"]
         route_info[:transit_status]= route["next_transit"]
         
-        
         route_result[:sections] << route_info
        
       end
-    end
 
+    end
 
     return route_result
 
