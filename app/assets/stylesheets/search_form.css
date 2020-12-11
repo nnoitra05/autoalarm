@@ -1,5 +1,3 @@
-
-
 .search-form{
   width: 100%;
   display: flex;
@@ -7,10 +5,11 @@
 
 .search-field{
   width: 100%;
+  margin: 5px;
 }
 
 .search-select-field{
   width: 100%;
   height: 80%;
-  padding: 10px 10px 10px 10px;
+  padding: 10px;
 }

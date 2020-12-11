@@ -406,6 +406,7 @@ div.contents.row .new_user {
 
 /* レスポンシブデザイン スマホ表示 */
 @media (max-width: 599px) {
+  /* ヘッダー */
   .nav__left{
     display: flex;
     align-items: center;
@@ -437,7 +438,18 @@ div.contents.row .new_user {
   .nav__logout{
     font-size: 10px;
   }
+
+  /* 経路検索結果 */
+  .search_result{
+    font-size: 15px;
+  }
+
+  .train_index{
+    font-size: 13px;
+  }
+
 }
+
 
 /* カレンダー登録用画面CSS */
 .register_calendar{
@@ -600,6 +612,23 @@ div.contents.row .new_user {
   border-left: thick solid #999999;
   padding: 10px;
   margin: 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* アラーム用のCSSです */
+.route_search_title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alarm_btn{
+  display: block;
+  flex-direction: column;
+}
+
+.timer{
   display: flex;
   align-items: center;
 }
