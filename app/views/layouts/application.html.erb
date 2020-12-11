@@ -22,10 +22,12 @@
           <%= link_to "経路検索アプリ", root_path, class: :nav__logo %>
         </div>
 
-        <%# このdivはサンドボックスアクセス用なのであとで削除する %>
-        <div class="nav__right">
-          <%= link_to "サンドボックス", sandbox_trains_path, class: :nav__btn %>
-        </div> 
+        <%# このdivはサンドボックスアクセス用なのであとで削除する。if false / endはERBコメントアウト %>
+        <% if false %>
+          <div class="nav__right">
+            <%= link_to "サンドボックス", sandbox_trains_path, class: :nav__btn %>
+          </div> 
+        <% end %>
 
         <%# ログインしているときは以下を表示するようにしましょう %>
         <% if user_signed_in? %>
