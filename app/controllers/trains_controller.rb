@@ -30,13 +30,13 @@ class TrainsController < ApplicationController
     else
 
       # サービスクラスSearchNavitimeRoutesServiceから条件を満たす最適なルートを取得
-      @route_result = SearchNavitimeRoutesService.fetch(departure, destination, @datetime, departure_flag)
+      # @route_result = SearchNavitimeRoutesService.fetch(departure, destination, @datetime, departure_flag)
 
       # NAVITIME APIのコール回数削減のために経路検索結果をdumpしたものです。特に不要な場合はこちらのメソッドで読込してください。
       # 直通か非直通かでそれぞれjsonファイルが違うので、目的に合わせてコメントアウトを外してください。
       #  file_name = Rails.public_path.join("jsons", "response_sample_no_transit.json") # 所沢→渋谷の直通経路のレスポンス
-      #  file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
-      #  @route_result = SearchNavitimeRoutesService.sample_fetch(file_name)
+       file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
+       @route_result = SearchNavitimeRoutesService.sample_fetch(file_name)
     
       # 例外処理が実行されていればtrains/indexにrender
       if @route_result.is_a?(String)
