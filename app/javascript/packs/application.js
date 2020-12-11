@@ -8,7 +8,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 require("../modal")
-require("../modal_schedule")
+// require("../modal_schedule")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

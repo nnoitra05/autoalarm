@@ -20,7 +20,7 @@ class CalendarsController < ApplicationController
 
       @failure_comment = "日付を入力してください。"
       @bookmark_calendar = BookmarkCalendar.new(bookmark_id: params[:bookmark_id])
-      render template: "bookmarks/register"
+      redirect_to bookmarks_path(current_user.id)
 
     # 日付が入力された場合の処理
     else
@@ -35,11 +35,11 @@ class CalendarsController < ApplicationController
       @bookmark_calendar = BookmarkCalendar.find_by(bookmark_id: params[:bookmark_id], calendar_id: calendar.id)
       if @bookmark_calendar.nil?
         BookmarkCalendar.create(bookmark_id: params[:bookmark_id], calendar_id: calendar.id)
-        redirect_to bookmark_path(current_user.id)
+        redirect_to user_path(current_user.id)
       # bookmark_calendarが既にカレンダーに登録されている場合の処理
       else
         @failure_comment = "既にカレンダーに登録されています。"
-        render template: "bookmarks/register"
+        redirect_to bookmarks_path(current_user.id)
       end
 
     end

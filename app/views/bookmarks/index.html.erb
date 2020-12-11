@@ -7,7 +7,6 @@
   <div class="bookmark">
 
     <% @bookmarks.each do |bookmark| %>
-
       <div class = "user_bookmark">
         <div class="bookmark_title">
           ブックマーク名: <%= bookmark.name %>
@@ -37,11 +36,37 @@
           <%# </div> %>
         </div>
 
-        <%# モーダルあえてこちらで記述してます %>
-        <div class="cp_modal">
+        <!-- <div class="cp_modal">-->
   
-        <!-- モーダルウィンドウ -->
+          <!-- モーダルウィンドウ -->
+          <div id="modal-content" class="modal">
+            <!-- モーダルウィンドウのコンテンツ開始 -->
+            <div class="modal_header">
+              <h2>カレンダーに登録する</h2>
+              <button id = "modal-close" class="close_btn">&times;</button>
+            </div>
+
+            <article class="cp_content">
+            
+              <%#= form_with url: calendars_path, model: bookmark_calendar, method: :post, class: 'calendar_form', local: true do |f| %>
+              <%= form_with url: calendars_path(bookmark_id: bookmark.id), method: :post, class: 'calendar_form', local: true do |f| %>
+                <%= f.label :date, "登録する日付を選択する" %>
+                <%= f.date_field :date %>
+                <%= f.submit '保存する', class: 'form_btn' %>
+                <%#= f.hidden_field :bookmark_id, value: @bookmark_calendar[:bookmark_id]  %>
+                <%# <%= f.hidden_field :bookmark_id, value: bookmark.id %>
+              <% end %>
+            </article>
+          <!-- モーダルウィンドウのコンテンツ終了 -->
+          </div>
+
+            
+
+       <!-- </div> -->
+
+        <button id="modal-open" class="modal_btn">カレンダーに登録する</button>
         
+        <%# 旧モーダルウィンドゥ用の記述 %>
         <%# <div id="modal-content"> %>
           <!-- モーダルウィンドウのコンテンツ開始 -->
           <%# <div class="modal_header"> %>
@@ -61,8 +86,8 @@
         <%# </div> %>
 
           <%# <button id = "modal-open" class="modal_btn">カレンダーに登録する</button> %>
-          <%= render partial: 'calendar_modal', locals: { id: bookmark.id, bookmark_calendar: @bookmark_calendar } %>
-        </div>
+          <%# <%= render partial: 'calendar_modal', locals: { id: bookmark.id, bookmark_calendar: @bookmark_calendar } %>
+        <%# </div> %>
 
       </div>
 
