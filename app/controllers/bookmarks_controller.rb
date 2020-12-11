@@ -11,6 +11,8 @@ class BookmarksController < ApplicationController
   end
 
   def index
+    # ログインユーザーと一致しているかを判断
+    redirect_to root_path unless user_signed_in? && current_user.id == params[:id].to_i
 
     user = User.find(current_user.id)
     @nickname = user.nickname
@@ -20,6 +22,9 @@ class BookmarksController < ApplicationController
   end
 
   def edit
+
+    # ログインユーザーと一致しているかを判断
+    redirect_to root_path unless user_signed_in? && current_user.id == Bookmark.find(params[:id]).user_id
 
     user = User.find(current_user.id)
     @bookmark = Bookmark.find(params[:id])
