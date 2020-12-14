@@ -7,8 +7,10 @@
   <div class="destination_index">目的地</div>
     <%= "#{@route_result[:destination]}\n" %>
 
-  <div class="transit_index">乗り換え回数</div>
-    <%= "#{@route_result[:transit_count]}回\n" %>
+  <div class="transits">
+    <div class="transit_index">乗り換え回数</div>
+      <%= "#{@route_result[:transit_count]}回\n" %>
+  </div>
 </div>
 
 <div class="train_date">
