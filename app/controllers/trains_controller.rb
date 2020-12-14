@@ -21,7 +21,7 @@ class TrainsController < ApplicationController
     departure_flag = params[:departure_flag].to_i
 
     # 経路検索フォームに空欄が合った場合にindexビューに戻る
-    if departure.empty? || destination.empty? || @datetime.nil?
+    if (destination.nil? || departure.empty?) || (destination.nil? || destination.empty?) || @datetime.nil?
       
       @failure_comment = "全ての項目を入力してください。"
       @information_list = GetTrainInformationService.fetch

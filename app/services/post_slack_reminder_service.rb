@@ -5,7 +5,7 @@ class PostSlackReminderService
   def self.set_client
 
     Slack.configure do |config|
-      config.token = ENV["SLACK_OAUTH_TOKEN"]
+      config.token = ENV["USER_SLACK_TOKEN"]
     end
 
     return Slack::Web::Client.new
@@ -18,6 +18,8 @@ class PostSlackReminderService
       
       client = PostSlackReminderService.set_client
   
+      binding.pry
+
       client.reminders_add(
         time: "in 1 minutes",
         user: "D01GZ2A1D9A",
