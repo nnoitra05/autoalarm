@@ -14,9 +14,10 @@
 <div class="train_date">
 
   <div class="train_datetime">日付</div>
-  <%= "#{@datetime.to_datetime.strftime("%Y年%m月%d日  %H:%M")}"%>
-  <%= @parameters[:bookmark][:departure_flag] ? "到着" : "出発" %>
-
+  <div class="train_date_time"> 
+    <%= "#{@datetime.to_datetime.strftime("%Y年%m月%d日  %H:%M")}"%>
+    <%= @parameters[:bookmark][:departure_flag] ? "到着" : "出発" %>
+  </div>
 </div>
 
 
