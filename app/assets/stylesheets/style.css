@@ -272,7 +272,7 @@ div.contents.row .new_user {
 
 /* モーダル用共通ボタンのCSSです */
 .modal_btn{
-  margin: 10px;
+  margin: 10px 5px;
   padding: 8px 20px;
   font-size: 14px;
   border: 2px solid #2c7873;
@@ -291,7 +291,7 @@ div.contents.row .new_user {
 
 /* アラーム設定用ボタンのCSSです */
 .alarm_btn{
-  margin: 10px;
+  margin: 10px 5px;
   padding: 8px 20px;
   font-size: 14px;
   border: 2px solid #2c7873;
@@ -432,7 +432,8 @@ div.contents.row .new_user {
   /* ヘッダー */
   .header{
     margin-bottom: 15px;
-    padding: 10px 5px;
+    padding: 10px 0;
+    width: 100%;
   }
 
   .nav__left{
@@ -539,38 +540,67 @@ div.contents.row .new_user {
     height: 60px;
     width: 100px;
     text-align: center;
-    padding: 0px 5px;
+    padding: 5px;
   }
 
   .train_route{
     width: 350px;
+    margin-top: 10px;
+  }
+  
+  .calendar_btn{
+    width: 150px;
   }
 
   .alarm_btn{
-    padding: 8px 10px;
+    height: 60px;
+    padding: 18px 5px;
   }
 
-  
+  .train_alarm{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .timer{
+    display: flex;
+    justify-content: center;
+  }
 }
 
+/* iPhone 6/7/8対応レスポンシブデザイン */
 @media (max-width: 375px) {
   .alarm_btn{
     padding: 8px 15px;
-    width: 150px;
+    height: 60px;
+  }
+
+  .register_btn{
+    margin: 0 10px;
+  }
+
+  .calendar_btn{
+    width: 180px;
   }
 }
 
+/* GooglePixel等横幅が小さいスマホのレスポンシブデザイン */
 @media (max-width: 360px) {
+  .register_btn{
+    margin: 0px;
+  }
   .modal_btn{
     height: 60px;
     width: 100px;
-    text-align: center;
-    padding: 0px;
   }
 
   .alarm_btn{
-    width: 120px;
-    padding: 8px 0px;
+    width: 100px;
+    height: 60px;
+  }
+
+  .calendar_btn{
+    width: 140px;
   }
 }
 
@@ -661,6 +691,7 @@ div.contents.row .new_user {
 /* 経路検索結果ページのCSSです */
 .register_btn{
   display: flex;
+  justify-content: space-between;
   margin-bottom: 15px;
 }
 
@@ -764,6 +795,10 @@ div.contents.row .new_user {
 .alarm_btn{
   display: block;
   flex-direction: column;
+}
+
+.train_alarm{
+  display: flex;
 }
 
 .timer{

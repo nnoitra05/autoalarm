@@ -24,14 +24,18 @@
 <div class="register_btn">
   <% if user_signed_in? %>
     <%= render partial: "trains/bookmark_form" %>
-    <%= link_to "カレンダーに登録する", register_without_bookmarks_path(params: @parameters), method: :post, class: "btn" %>
+    <div class="calendar_btn">
+      <%= link_to "カレンダーに登録する", register_without_bookmarks_path(params: @parameters), method: :post, class: "btn" %>
+    </div>
   <% end %>
-    <button onclick="loop()" class="alarm_btn">アラーム設定</button>
-    <div id="timer" style="display:none" class="timer">
-      <span id="_d">00</span>
-      <span id="_h">00</span>
-      <span id="_m">00</span>
-      <span id="_s">00</span>
+    <div class="train_alarm">
+      <button onclick="loop()" class="alarm_btn">アラーム設定</button>
+      <div id="timer" style="display:none" class="timer">
+        <span id="_d">00</span>
+        <span id="_h">00</span>
+        <span id="_m">00</span>
+        <span id="_s">00</span>
+      </div>
     </div>
 </div>
 
