@@ -381,7 +381,7 @@ div.contents.row .new_user {
   }
 
   .train_information{
-    font-size: 30px;
+    font-size: 35px;
   }
 
   .mypage{
@@ -402,6 +402,29 @@ div.contents.row .new_user {
   .nav__logout{
     font-size: 20px;
   }
+
+  /* トップページ */
+  .train_search_form{
+    font-size: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    font-size: large;
+    font-weight: bold;
+    margin: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.22);
+  }
+
+  .search_form{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 60%;
+  }
+
 }
 
 /* レスポンシブデザイン スマホ表示 */
@@ -439,7 +462,42 @@ div.contents.row .new_user {
     font-size: 10px;
   }
 
-  /* 経路検索結果 */
+/* トップページ */
+  .train_title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .train_contents{
+    display: flex;
+    justify-content: center;
+  }
+
+  .train_search_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    font-size: large;
+    font-weight: bold;
+    padding: 10px 0;
+    margin: 20px 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.22);
+  }
+
+  .search_form{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    width: 80%;
+  }
+
+
+/* 経路検索結果 */
   .search_result{
     font-size: 15px;
   }
@@ -450,6 +508,25 @@ div.contents.row .new_user {
 
 }
 
+
+/* トップページのCSSです */
+.train_information{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.train_route_title{
+  display: flex;
+  justify-content: center;
+}
+
+.search_form{
+  display: flex;
+  margin: 5px;
+}
 
 /* カレンダー登録用画面CSS */
 .register_calendar{
@@ -513,10 +590,6 @@ div.contents.row .new_user {
   border: 0;
   border-radius: 5px;
   right: 5px;
-}
-
-.close_btn:hover{
-  color: lightcoral;
 }
 
 /* 経路検索結果ページのCSSです */
