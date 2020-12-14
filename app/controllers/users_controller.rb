@@ -23,6 +23,8 @@ class UsersController < ApplicationController
     
     end
 
+    @calendars = current_user.calendars.order(date: "ASC")
+
   end
 
   def show
