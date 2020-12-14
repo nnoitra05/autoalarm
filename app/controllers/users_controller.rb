@@ -6,17 +6,21 @@ class UsersController < ApplicationController
 
     date = DateTime.now.to_date
 
-    # 当日を過ぎたBookmarkレコードを削除する
-    current_user.bookmarks.each do |bookmark|
-      # status_check=falseのBookmarkCalendarレコードは1つのみなのでwhereではなくfind_by
-      schedule = BookmarkCalendar.find_by(bookmark_id: bookmark.id)
-      # 現在日付より前のBookmarkレコードを削除する
-      bookmark.destroy if (!schedule.nil? && schedule.calendar.date < date)
-    end
+    # 当日を過ぎたCalendarレコード及びそれに紐付くBookmark(status_check: false)レコードを削除する
+    calendars = current_user.calendars.where("date < ?", date)
+    
+    calendars.each do |calendar|
 
-    # 当日を過ぎたCalendarレコードを削除する
-    current_user.calendars.each do |calendar|
-      calendar.destroy if calendar.date < date
+      schedules = calendar.bookmark_calendars
+      
+      schedules.each do |schedule|
+        bookmark = schedule.bookmark
+        bookmark.destroy if bookmark.status_check == false
+        schedule.destroy
+      end
+      
+      calendar.destroy
+    
     end
 
   end

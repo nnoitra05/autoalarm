@@ -27,26 +27,16 @@
       <% unless calendar.nil? %>
         <% bookmark_calendars = BookmarkCalendar.where(calendar_id: calendar.id) %>
         <% bookmark_calendars.each do |schedule| %>
-
-          <%# 下のlink_toをボタンにしてモーダルで経路検索させる仕様にする %>
-          <%#= link_to "#{schedule.bookmark.name}", register_bookmark_path(schedule.bookmark) %>
           
-          <!-- モーダルウィンドウ -->
-          <% div_id_str = "modal-content-#{schedule.id}" %>
-          <div id=<%= div_id_str %>>
+          <%# trains/searchに引き渡すパラメータの作成 %>
+          <%#= parameters %>
+          <%#= link_to schedule.bookmark.name, search_trains_path(params: parameters), class: 'btn' %>
+          
+          <%# modal-contentへのrender %>
+          <%#= render template: "layouts/modal_template", locals: {schedule: schedule} %>
 
-            <!-- モーダルウィンドウのコンテンツ開始 -->
-            <div class="modal_header">
-              <%= schedule.bookmark.name %>
-              <% button_close_id_str = "modal-close-#{schedule.id}" %>
-              <button id=<%= button_close_id_str %> class="close_btn">&times;</button>
-            </div>
-
-          <!-- モーダルウィンドウのコンテンツ終了 -->
-          </div>
-
-          <% button_open_id_str = "modal-open-#{schedule.id}" %>
-          <button id=<%= button_open_id_str %> class="btn"><%= schedule.bookmark.name %></button>
+          <%# modal-openボタンに反応してmodal-contentがJSにより起動する %>
+          <!-- <button id="modal-open" class="modal_btn"><%= schedule.bookmark.name %></button> -->
 
         <% end %>
 
