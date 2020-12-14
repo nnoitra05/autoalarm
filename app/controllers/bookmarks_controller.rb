@@ -104,7 +104,7 @@ class BookmarksController < ApplicationController
       BookmarkCalendar.create(bookmark_id: bookmark.id, calendar_id: calendar.id)
     end
     
-    redirect_to user_path(current_user.id)
+    redirect_to users_path
 
   end
 

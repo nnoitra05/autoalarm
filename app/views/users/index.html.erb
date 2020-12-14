@@ -20,7 +20,7 @@
 
     <%= month_calendar do |date| %>
 
-      <%= "#{date.month}月#{date.day}日" %><br>
+      <%= "#{date.day}日" %><br>
       
       <%# カレンダーに表示する予定の取得 %>
       <% calendar = Calendar.find_by(date: date, user_id: current_user.id) %>
@@ -49,6 +49,7 @@
           <button id=<%= button_open_id_str %> class="btn"><%= schedule.bookmark.name %></button>
 
         <% end %>
+
       <% end %>
 
     <% end %>
