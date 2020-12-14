@@ -2,26 +2,26 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user!
 
-  def show
-
-    # ログインユーザーと一致しているかを判断
-    redirect_to root_path unless user_signed_in? && current_user.id == params[:id].to_i
+  def index
 
     date = DateTime.now.to_date
-    # 当日を過ぎ、かつstatus_check=falseのBookmarkレコードを削除する
-    bookmarks = Bookmark.where(user_id: current_user.id, status_check: false)
-    bookmarks.each do |bookmark|
+
+    # 当日を過ぎたBookmarkレコードを削除する
+    current_user.bookmarks.each do |bookmark|
       # status_check=falseのBookmarkCalendarレコードは1つのみなのでwhereではなくfind_by
       schedule = BookmarkCalendar.find_by(bookmark_id: bookmark.id)
       # 現在日付より前のBookmarkレコードを削除する
       bookmark.destroy if (!schedule.nil? && schedule.calendar.date < date)
     end
 
-    # BookmarkCakendarレコードの登録がないCalendarレコードを削除
-    calendars = Calendar.where(user_id: current_user.id)
-    calendars.each do |calendar|
-      calendar.destroy if BookmarkCalendar.where(calendar_id: calendar.id).empty?
+    # 当日を過ぎたCalendarレコードを削除する
+    current_user.calendars.each do |calendar|
+      calendar.destroy if calendar.date < date
     end
+
+  end
+
+  def show
 
   end
 
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     if result
       # パスワード変更でログアウトするのを防ぐ
       sign_in(@user, bypass: true) if current_user.id == @user.id
-      redirect_to user_path(@user)
+      redirect_to users_path
     else
       render action: :edit
     end

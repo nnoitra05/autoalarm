@@ -33,9 +33,14 @@
   .future {}
 
   .start-date {}
-
-  .prev-month {}
-  .next-month { }
+  */
+  .prev-month {
+    visibility: hidden;
+  }
+  .next-month {
+    visibility: hidden;
+  }
+  /*
   .current-month {}
 
   .has-events {}

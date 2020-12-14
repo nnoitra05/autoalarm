@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
   resources :calendars, only: [:show, :edit, :create, :destroy]
-  resources :users, only: [:show, :edit, :update, :destroy]
+  resources :users, only: [:index, :show, :edit, :update, :destroy]
   resources :trains, only: [:index] do
     collection do
       get :search

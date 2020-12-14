@@ -31,7 +31,7 @@
 
           <div class="nav__right">
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__btn %>
-            <%= link_to "マイページ", user_path(current_user.id), class: :nav__btn %>
+            <%= link_to "マイページ", users_path, class: :nav__btn %>
             <%= link_to "ブックマーク", bookmarks_path, class: :nav__btn %>
           </div> 
         
