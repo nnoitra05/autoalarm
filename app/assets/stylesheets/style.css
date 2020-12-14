@@ -204,7 +204,7 @@ div.contents.row .new_user {
   box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
   background-color: white;
   box-sizing: border-box;
-  width: 50%;
+  width: 70%;
 }
 
 .row:before, .row:after {
@@ -566,6 +566,8 @@ div.contents.row .new_user {
     display: flex;
     justify-content: center;
   }
+
+
 }
 
 /* iPhone 6/7/8対応レスポンシブデザイン */
@@ -582,6 +584,23 @@ div.contents.row .new_user {
   .calendar_btn{
     width: 180px;
   }
+
+  .departure_index{
+    text-align: center;
+    width: 60px;
+  }
+
+  .destination_index{
+    text-align: center;
+    width: 60px;
+  }
+
+  .transit_index{
+    text-align: center;
+    width: 70px;
+  }
+
+  /* ログイン・新規会員登録画面 */
 }
 
 /* GooglePixel等横幅が小さいスマホのレスポンシブデザイン */
@@ -602,6 +621,8 @@ div.contents.row .new_user {
   .calendar_btn{
     width: 140px;
   }
+
+  
 }
 
 
@@ -705,25 +726,31 @@ div.contents.row .new_user {
 .train_index{
   display: flex;
   align-items: center;
+  font-weight: bold;
 }
 
 .departure_index{
   background-color: #5e92c4;
   color: white;
   padding: 5px;
-  margin: 5px 10px;
+  margin: 5px;
 }
 
 .arrow{
   font-size: 30px;
-  margin: 0 10px;
+  margin: 0 5px;
 }
 
 .destination_index{
   background-color: #c76daa;
   color: white;
   padding: 5px;
-  margin: 5px 10px;
+  margin: 5px;
+}
+
+.transits{
+  display: flex;
+  align-items: center;
 }
 
 .transit_index{
