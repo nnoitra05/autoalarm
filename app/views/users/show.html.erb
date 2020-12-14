@@ -1,58 +1,62 @@
 
 
-<div class="mypage">
+<% if false %>
 
-  <div class="mypage_title">
-    <h1>マイページ</h1>
-  </div>
+  <div class="mypage">
 
-  <div class="user_name">
-    <%= "Nickname:  #{current_user.nickname}" %>
-    <%= "Email:  #{current_user.email}" %>
-  </div>
+    <div class="mypage_title">
+      <h1>マイページ</h1>
+    </div>
 
-  <div class="user_btn">
-    <%= link_to "編集する", edit_user_path(current_user.id), class: 'btn'%>
-    <%= link_to "削除する", user_path(current_user.id), method: :delete, class: 'btn'%>
-  </div>
+    <div class="user_name">
+      <%= "Nickname:  #{current_user.nickname}" %>
+      <%= "Email:  #{current_user.email}" %>
+    </div>
 
-  <div class="simple-calendar-parent">
+    <div class="user_btn">
+      <%= link_to "編集する", edit_user_path(current_user.id), class: 'btn'%>
+      <%= link_to "削除する", user_path(current_user.id), method: :delete, class: 'btn'%>
+    </div>
 
-    <%= month_calendar do |date| %>
+    <div class="simple-calendar-parent">
 
-      <%= "#{date.month}月#{date.day}日" %><br>
-      
-      <%# カレンダーに表示する予定の取得 %>
-      <% calendar = Calendar.find_by(date: date, user_id: current_user.id) %>
-      <% unless calendar.nil? %>
-        <% bookmark_calendars = BookmarkCalendar.where(calendar_id: calendar.id) %>
-        <% bookmark_calendars.each do |schedule| %>
+      <%= month_calendar do |date| %>
 
-          <%# 下のlink_toをボタンにしてモーダルで経路検索させる仕様にする %>
-          <%#= link_to "#{schedule.bookmark.name}", register_bookmark_path(schedule.bookmark) %>
-          
-          <!-- モーダルウィンドウ -->
-          <% div_id_str = "modal-content-#{schedule.id}" %>
-          <div id=<%= div_id_str %>>
+        <%= "#{date.month}月#{date.day}日" %><br>
+        
+        <%# カレンダーに表示する予定の取得 %>
+        <% calendar = Calendar.find_by(date: date, user_id: current_user.id) %>
+        <% unless calendar.nil? %>
+          <% bookmark_calendars = BookmarkCalendar.where(calendar_id: calendar.id) %>
+          <% bookmark_calendars.each do |schedule| %>
 
-            <!-- モーダルウィンドウのコンテンツ開始 -->
-            <div class="modal_header">
-              <%= schedule.bookmark.name %>
-              <% button_close_id_str = "modal-close-#{schedule.id}" %>
-              <button id=<%= button_close_id_str %> class="close_btn">&times;</button>
+            <%# 下のlink_toをボタンにしてモーダルで経路検索させる仕様にする %>
+            <%#= link_to "#{schedule.bookmark.name}", register_bookmark_path(schedule.bookmark) %>
+            
+            <!-- モーダルウィンドウ -->
+            <% div_id_str = "modal-content-#{schedule.id}" %>
+            <div id=<%= div_id_str %>>
+
+              <!-- モーダルウィンドウのコンテンツ開始 -->
+              <div class="modal_header">
+                <%= schedule.bookmark.name %>
+                <% button_close_id_str = "modal-close-#{schedule.id}" %>
+                <button id=<%= button_close_id_str %> class="close_btn">&times;</button>
+              </div>
+
+            <!-- モーダルウィンドウのコンテンツ終了 -->
             </div>
 
-          <!-- モーダルウィンドウのコンテンツ終了 -->
-          </div>
+            <% button_open_id_str = "modal-open-#{schedule.id}" %>
+            <button id=<%= button_open_id_str %> class="btn"><%= schedule.bookmark.name %></button>
 
-          <% button_open_id_str = "modal-open-#{schedule.id}" %>
-          <button id=<%= button_open_id_str %> class="btn"><%= schedule.bookmark.name %></button>
-
+          <% end %>
         <% end %>
+
       <% end %>
 
-    <% end %>
+    </div>
 
   </div>
 
-</div>
+<% end %>
