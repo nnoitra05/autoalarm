@@ -43,30 +43,62 @@
 
 <div class="train_route">
   <% @route_result[:sections].each_with_index do |route, idx| %>
+    <%if "#{route[:transit_status]}"=="true"%>
+      <div class="route_departure">
+        <div class="train_departuretime">
+          <%= "#{route[:departure_time]} 出発" %>
+        </div>
 
-    <div class="route_departure">
-      <div class="train_departuretime">
-        <%= "#{route[:departure_time]} 出発" %>
+        <div class="train_departure">
+          <%= "#{route[:departure]}" %>
+        </div>
       </div>
-
-      <div class="train_departure">
-        <%= "#{route[:departure]}" %>
-      </div>
-    </div>
 
       <div class="train_line">
         <%= "\t\t#{route[:line_name]}" %><br>
       </div>
+  
+      <div class="route_destination">
+        <div class="train_destinationtime">
+          <%= "#{route[:destination_time]} 到着" %>
+        </div>
 
-    <div class="route_destination">
-      <div class="train_destinationtime">
-        <%= "#{route[:destination_time]} 到着" %>
+        <div class="destination">
+          <%= "#{route[:destination]}" %>
+        </div>
       </div>
 
-      <div class="destination">
-        <%= "#{route[:destination]}" %>
+    <%else%>
+
+      <div class="route_departure">
+        <div class="train_departuretime">
+          <%= "#{route[:departure_time]} 出発" %>
+        </div>
+
+        <div class="train_departure">
+          <%= "#{route[:departure]}" %>
+        </div>
       </div>
-    </div>
-    
+
+      <%if idx==@route_result[:sections].length-1%>
+        <div class="train_line">
+          <%= "\t\t#{route[:line_name]}" %><br>
+        </div>
+        <div class="route_destination">
+          <div class="train_destinationtime">
+            <%= "#{route[:destination_time]} 到着" %>
+          </div>
+
+          <div class="destination">
+            <%= "#{route[:destination]}" %>
+          </div>
+        </div>
+      <%else%>       
+        <div class="train_line">
+          <%= "\t\t#{route[:line_name]} 乗換不要" %><br>
+        </div>
+      <%end%>
+   <%end%>
+
   <% end %>
 </div>
