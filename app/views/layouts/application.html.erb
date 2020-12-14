@@ -27,11 +27,11 @@
         </div>
 
         <%# このdivはサンドボックスアクセス用なのであとで削除する。if false / endはERBコメントアウト %>
-        <% if false %>
+        <%# if false %>
           <div class="nav__right">
             <%= link_to "サンドボックス", sandbox_trains_path, class: :nav__btn %>
           </div> 
-        <% end %>
+        <%# end %>
 
         <%# ログインしているときは以下を表示するようにしましょう %>
         <% if user_signed_in? %>
