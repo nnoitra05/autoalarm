@@ -18,9 +18,7 @@
 
   <div class="simple-calendar-parent">
 
-    <%= month_calendar do |date| %>
-
-      <%= "#{date.day}日" %><br>
+    <%= week_calendar do |date| %>
       
       <%# カレンダーに表示する予定の取得 %>
       <% calendar = Calendar.find_by(date: date, user_id: current_user.id) %>
@@ -36,12 +34,6 @@
             departure_flag: schedule.bookmark.departure_flag 
           } %>
           <%= link_to schedule.bookmark.name, search_trains_path(params: parameters), class: 'btn' %>
-          
-          <%# modal-contentへのrender %>
-          <%#= render template: "layouts/modal_template", locals: {schedule: schedule} %>
-
-          <%# modal-openボタンに反応してmodal-contentがJSにより起動する %>
-          <!-- <button id="modal-open" class="modal_btn"><%= schedule.bookmark.name %></button> -->
 
         <% end %>
 
