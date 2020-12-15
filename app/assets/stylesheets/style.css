@@ -18,6 +18,7 @@ div {
   margin: 0;
   padding: 0;
   font-family: 'M PLUS 1p', sans-serif;
+  color: #4e4e4e;
 }
 
 body {
@@ -240,7 +241,40 @@ div.contents.row .new_user {
 
 .user_name{
   display: flex;
+  justify-content: center;
   font-size: 30px;
+}
+
+.nickname{
+  display: flex;
+  align-items: center;
+  margin: 5px 10px;
+}
+
+.nickname_title{
+  background-color: #5e92c4;
+  color: white;
+  padding: 5px 10px;
+}
+
+.nickname_user{
+  margin: 0 10px;
+}
+
+.email{
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.email_title{
+  background-color: #c76daa;
+  color: white;
+  padding: 5px 10px;
+}
+
+.email_user{
+  margin: 0 10px;
 }
 
 .user_btn{
@@ -490,7 +524,7 @@ div.contents.row .new_user {
     font-size: large;
     font-weight: bold;
     padding: 10px 0;
-    margin: 20px 10px;
+    margin: 35px 10px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.22);
   }
