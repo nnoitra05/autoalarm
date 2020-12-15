@@ -73,22 +73,29 @@ class SearchNavitimeRoutesService
 
         route_info = {}
 
-        route_info[:departure] = route["transport"]["links"][0]["from"]["name"]
         route_info[:departure_time] = route["from_time"].to_datetime.strftime("%H:%M")
-        route_info[:destination] = route["transport"]["links"][0]["to"]["name"]
         route_info[:destination_time] = route["to_time"].to_datetime.strftime("%H:%M")
         route_info[:line_name] = route["line_name"]
+
+        if route.value?("徒歩")
+          route_info[:departure] =res["sections"][idx-1]["name"]
+          route_info[:destination] = res["sections"][idx+1]["name"]
+        else
+          route_info[:departure] = route["transport"]["links"][0]["from"]["name"]
+          route_info[:destination] = route["transport"]["links"][0]["to"]["name"]
+        end
         route_info[:dt_destination_time]= route["to_time"]
         route_info[:transit_status]= route["next_transit"]
-
+         
         route_result[:sections] << route_info
-
+        
+ 
       end
-
+      
     end
+      
 
     return route_result
-
   end
 
 
