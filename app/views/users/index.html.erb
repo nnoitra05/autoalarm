@@ -7,8 +7,25 @@
   </div>
 
   <div class="user_name">
-    <%= "Nickname:  #{current_user.nickname}" %>
-    <%= "Email:  #{current_user.email}" %>
+    <div class="nickname">
+      <div class="nickname_title">
+        Nickname
+      </div>
+
+      <div class="nickname_user">
+        <%= "#{current_user.nickname}" %>
+      </div>
+    </div>
+    
+    <div class="email">
+      <div class="email_title">
+        Email
+      </div>
+      
+      <div class="email_user">
+        <%= "#{current_user.email}" %>
+      </div>
+    </div>
   </div>
 
   <div class="user_btn">
