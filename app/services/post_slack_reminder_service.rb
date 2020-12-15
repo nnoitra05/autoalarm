@@ -18,38 +18,26 @@ class PostSlackReminderService
     return Slack::Web::Client.new
   end
   
-  def self.post_reminder
+  # user.slack_idに対しunixtimeにリマインドを設定
+  def self.post_reminder(user, time)
 
     begin
       
       client = PostSlackReminderService.set_user_client
 
       client.reminders_add(
-        time: "in 1 minutes",
-        user: "U01GL5DRE3Y",
+        time: time.to_unixtime,
+        user: user.slack_id,
         text: "Setting AutoAlarm"
       )
-
-      return PostSlackReminderService.fetch_reminders
     
     rescue => post_exception
-
-      return post_exception
       
     end
     
   end
 
-  def self.delete_reminder
-
-    client = PostSlackReminderService.set_user_client
-
-    client.reminders_delete(
-      reminder: "reminder ID"
-    )
-
-  end
-
+  # AutoAlarmワークスペースに参加しているユーザー全てのリマインドリストを取得
   def self.fetch_reminders
 
     client = PostSlackReminderService.set_user_client
@@ -58,11 +46,35 @@ class PostSlackReminderService
 
   end
 
+  # AutoAlarmワークスペースに参加しているユーザーリストを取得
   def self.fetch_users
 
     client = PostSlackReminderService.set_client
 
     return client.users_list
+
+  end
+
+  # trains/searchページからunixtimeを取得してその条件でreminders_listを起動し、idに変換したのちreminders_delete
+  def self.delete_reminder(user, time)
+
+    reminder_id = ""
+    reminders = PostSlackReminderService.fetch_reminders
+    
+    begin
+
+      reminders[:reminders].each do |reminder|
+        if reminder[:time] == time.to_unixtime && reminder[:user] == user.slack_id
+          reminder_id = reminder[:id]
+          client = PostSlackReminderService.set_user_client
+          client.reminders_delete(id: reminder_id)
+          break
+        end
+      end
+
+    rescue => delete_exception
+
+    end
 
   end
 

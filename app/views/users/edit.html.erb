@@ -7,30 +7,38 @@
       <%= form_with model: current_user, local: true do |f| %>
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :nickname%>
+            <%= f.label :nickname %>
           </div>
           <div class='field-input'>
-            <%= f.text_field :nickname, autofocus: true%>
+            <%= f.text_field :nickname, autofocus: true %>
           </div>
         </div>
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :email%>
+            <%= f.label :email %>
           </div>
           <div class='field-input'>
-            <%= f.email_field :email%>
+            <%= f.email_field :email %>
           </div>
         </div>
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :password%>
+            <%= f.label :slack_id, "AutoAlarmのメンバーID" %>
           </div>
           <div class='field-input'>
-            <%= f.password_field :password%>
+            <%= f.text_field :slack_id %>
+          </div>
+        </div>
+        <div class='field'>
+          <div class='field-label'>
+            <%= f.label :password %>
+          </div>
+          <div class='field-input'>
+            <%= f.password_field :password %>
           </div>
         </div>
         <div class='actions'>
-          <%= f.submit "更新する", class: 'form_btn'%>
+          <%= f.submit "更新する", class: 'form_btn' %>
         </div>
       <% end %>
     </div>
