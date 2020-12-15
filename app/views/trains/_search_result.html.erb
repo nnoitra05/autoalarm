@@ -119,10 +119,16 @@
             <%= "#{route[:destination]}" %>
           </div>
         </div>
-      <%else%>       
+      <%else%>
+        <%if "#{route[:walk_flag]}"=="true"%>
+            <div class="train_line">
+              <%= "\t\t#{route[:line_name]} " %><br>
+            </div>
+        <%else%>       
         <div class="train_line">
           <%= "\t\t#{route[:line_name]} 乗換不要" %><br>
         </div>
+        <%end%>
       <%end%>
    <%end%>
 
