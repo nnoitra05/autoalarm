@@ -33,7 +33,6 @@ class PostSlackReminderService
     
     rescue => post_exception
 
-      binding.pry
       return post_exception
       
     end
@@ -76,7 +75,6 @@ class PostSlackReminderService
 
     rescue => delete_exception
 
-      binding.pry
       return delete_exception
 
     end

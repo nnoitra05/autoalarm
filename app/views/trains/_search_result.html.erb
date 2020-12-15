@@ -50,12 +50,9 @@
   <%# Slackにリマインドを送信/削除するパラメータを定義 %>
   <% times_list = [] %>
   <% @route_result[:sections].each do |route| %>
-    <% times_list << Time.parse(route[:dt_destination_time]).to_i %>
+    <% times_list << (Time.parse(route[:dt_destination_time]) - Rational(1, 24 * 60)).to_i %>
   <% end %>
-  <% slack_params = {
-    user: current_user,
-    times: times_list
-  } %>
+  <% slack_params = {user: current_user, times: times_list} %>
 
   <%# Slackにリマインドを送信/削除するリンクを定義 %>
   <div class="calendar_btn">
