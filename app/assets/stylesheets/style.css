@@ -313,8 +313,8 @@ div.contents.row .new_user {
 
 /* モーダル用共通ボタンのCSSです */
 .modal_btn{
-  margin: 10px 5px;
-  padding: 8px 20px;
+  margin: 5px;
+  padding: 5px 5px;
   font-size: 14px;
   border: 2px solid #2c7873;
   color: #2c7873;
@@ -322,7 +322,6 @@ div.contents.row .new_user {
   text-align: center;
   border-radius: 3px;
   display: inline-block;
-  background-color: Transparent;
 }
 
 .modal_btn:hover{
@@ -590,10 +589,15 @@ div.contents.row .new_user {
   }
 
   .modal_btn{
-    height: 60px;
-    width: 100px;
+    margin: 5px;
+    padding: 5px 5px;
+    font-size: 14px;
+    border: 2px solid #2c7873;
+    color: #2c7873;
+    font-weight: bold;
     text-align: center;
-    padding: 5px;
+    border-radius: 3px;
+    display: inline-block;
   }
 
   .train_route{
@@ -635,7 +639,8 @@ div.contents.row .new_user {
   }
 
   .calendar_btn{
-    width: 180px;
+    width: 100px;
+    height: 100px;
   }
 
   .departure_index{
@@ -651,6 +656,10 @@ div.contents.row .new_user {
   .transit_index{
     text-align: center;
     width: 70px;
+  }
+
+  .icon_btn{
+    
   }
 
   /* ログイン・新規会員登録画面 */

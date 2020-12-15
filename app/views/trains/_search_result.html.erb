@@ -27,14 +27,14 @@
   <% if user_signed_in? %>
 
     <%= render partial: "trains/bookmark_form" %>
-    <div class="calendar_btn">
-      <%= link_to "カレンダーに登録する", register_without_bookmarks_path(params: @parameters), method: :post, class: "btn" %>
+    <div class="icon_btn">
+      <%= link_to image_tag("/assets/calendar_icon.png", width: "60", alt: "カレンダー登録"), register_without_bookmarks_path(params: @parameters), method: :post, class: "btn" %>
     </div>
 
   <% end %>
 
-  <div class="train_alarm">
-    <button onclick="loop()" class="alarm_btn">ブラウザ上でアラーム設定</button>
+  <div class="icon_btn">
+    <button onclick="loop()" class="btn"><%= image_tag("/assets/alarm_icon.png", width: "60", alt: "アラーム設定") %></button>
     <div id="timer" style="display:none" class="timer">
       <span id="_d">00</span>
       <span id="_h">00</span>
@@ -43,24 +43,24 @@
     </div>
   </div>
 
-</div>
+  <% if user_signed_in? %>
 
-<div class="register_btn">
+    <%# Slackにリマインドを送信/削除するパラメータを定義 %>
+    <% times_list = [] %>
+    <% @route_result[:sections].each do |route| %>
+      <% times_list << (Time.parse(route[:dt_destination_time]) - Rational(1, 24 * 60)).to_i %>
+    <% end %>
+    <% slack_params = {user: current_user, times: times_list} %>
 
-  <%# Slackにリマインドを送信/削除するパラメータを定義 %>
-  <% times_list = [] %>
-  <% @route_result[:sections].each do |route| %>
-    <% times_list << (Time.parse(route[:dt_destination_time]) - Rational(1, 24 * 60)).to_i %>
+    <%# Slackにリマインドを送信/削除するリンクを定義 %>
+    <div class="icon_btn">
+      <%= link_to image_tag("/assets/add_icon.png", width: "60", alt: "Slack連携"), post_slack_trains_path(params: slack_params), method: :post, remote: true, class: "btn" %>
+    </div>
+    <div class="icon_btn">
+      <%= link_to image_tag("/assets/remove_icon.png", width: "60", alt: "Slack連携解除"), delete_slack_trains_path(params: slack_params), method: :post, remote: true, class: "btn" %>
+    </div>
+
   <% end %>
-  <% slack_params = {user: current_user, times: times_list} %>
-
-  <%# Slackにリマインドを送信/削除するリンクを定義 %>
-  <div class="calendar_btn">
-    <%= link_to "Slackにリマインドする", post_slack_trains_path(params: slack_params), method: :post, remote: true, class: "btn" %>
-  </div>
-  <div class="calendar_btn">
-    <%= link_to "リマインドを削除する", delete_slack_trains_path(params: slack_params), method: :post, remote: true, class: "btn" %>
-  </div>
 
 </div>
 
