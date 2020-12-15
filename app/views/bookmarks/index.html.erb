@@ -1,8 +1,11 @@
 
 
 <div class="bookmarks">
-
-  <h1><%= @nickname%>さんのブックマーク</h1>
+  
+  <div class="all_title">
+    <%= @nickname%>さんの
+    <div>ブックマーク</div>
+  </div>
 
   <div class="bookmark">
 
@@ -23,7 +26,13 @@
 
         <div class="bookmark_departure_flag">
           <% departure_flag_str = (bookmark.departure_flag ? "到着時刻" : "出発時刻" ) %>
-          <%= "#{departure_flag_str}として検索" %>
+
+          <div class="bookmark_departure_str">
+            <div class="bookmark_departure_marker">
+              <%= "#{departure_flag_str}" %>
+            </div>
+            <div>として検索</div>
+          </div>
         </div>
 
         <div class= "bookmark_btn">
