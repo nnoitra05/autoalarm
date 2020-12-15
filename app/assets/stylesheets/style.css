@@ -201,11 +201,12 @@ div.contents.row .new_user {
 
 .container {
   margin: 20px 0;
-  padding: 30px;
+  padding: 30px 25px;
   box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
   background-color: white;
   box-sizing: border-box;
-  width: 70%;
+  width: 80%;
+  border-radius: 10px;
 }
 
 .row:before, .row:after {
@@ -227,8 +228,15 @@ div.contents.row .new_user {
   align-items: center;
 }
 .account-page__inner--right{
-  width: 40%;
+  background-color: white;
+  font-size: large;
+  font-weight: bold;
+  padding: 20px 25px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.22);
 }
+
 
 
 /* マイページのCSSです */
@@ -348,13 +356,11 @@ div.contents.row .new_user {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .bookmark{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  overflow: scroll;
 }
 
 .user_bookmark{
@@ -365,10 +371,8 @@ div.contents.row .new_user {
   background-color: white;
   font-size: large;
   font-weight: bold;
-  padding: 10px 10px;
-  margin: 10px;
-  width: 30vw;
-  height: 40vh;
+  padding: 10px 20px;
+  margin: 20px;
   border-top: solid 7px rgb(103, 197, 228);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.22);
 }
@@ -399,9 +403,13 @@ div.contents.row .new_user {
 .mybookmark_edit{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 40%;
+  background-color: white;
+  font-size: large;
+  font-weight: bold;
+  padding: 20px 25px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.22);
 }
 
 /* レスポンシブデザイン タブレット表示 */
@@ -524,7 +532,7 @@ div.contents.row .new_user {
     font-size: large;
     font-weight: bold;
     padding: 10px 0;
-    margin: 35px 10px;
+    margin: 30px 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.22);
   }
@@ -655,8 +663,6 @@ div.contents.row .new_user {
   .calendar_btn{
     width: 140px;
   }
-
-  
 }
 
 
@@ -698,7 +704,10 @@ div.contents.row .new_user {
 }
 
 .calendar_form{
-  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .calendar_date{
@@ -707,8 +716,7 @@ div.contents.row .new_user {
 
 /* モーダルCSS JS用 */
 #modal-content {
-	width: 50% ;
-	margin: 0 ;
+	width: 80%;
 	padding: 10px 20px ;
 	border: 2px solid #aaa ;
 	background: #fff ;
@@ -730,7 +738,6 @@ div.contents.row .new_user {
 
 .modal_header{
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -815,7 +822,6 @@ div.contents.row .new_user {
 
 .route_departure{
   background-color: #5e92c4;
-  color: white;
   justify-content: space-between;
   font-size: 20px;
   display: flex;
@@ -827,7 +833,6 @@ div.contents.row .new_user {
 
 .route_destination{
   background-color: #5e92c4;
-  color: white;
   justify-content: space-between;
   font-size: 20px;
   display: flex;
@@ -844,6 +849,22 @@ div.contents.row .new_user {
   margin: 0 10px;
   display: flex;
   align-items: center;
+}
+
+.train_departure{
+  color: white;
+}
+
+.destination{
+  color: white;
+}
+
+.train_departuretime{
+  color: white;
+}
+
+.train_destinationtime{
+  color: white;
 }
 
 /* アラーム用のCSSです */
