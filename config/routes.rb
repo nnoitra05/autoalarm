@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     collection do
       get :search
       get :sandbox
+      post :post_slack
+      post :delete_slack
     end
   end
 end

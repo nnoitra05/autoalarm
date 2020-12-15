@@ -1,5 +1,7 @@
 class TrainsController < ApplicationController
 
+  before_action :authenticate_user!, only: [:post_slack, :delete_slack]
+
   def index
 
     # 検索失敗時に表示するためのstring型変数
@@ -34,8 +36,8 @@ class TrainsController < ApplicationController
 
       # NAVITIME APIのコール回数削減のために経路検索結果をdumpしたものです。特に不要な場合はこちらのメソッドで読込してください。
       # 直通か非直通かでそれぞれjsonファイルが違うので、目的に合わせてコメントアウトを外してください。
-      file_name = Rails.public_path.join("jsons", "response_sample_no_transit.json") # 所沢→渋谷の直通経路のレスポンス
-      # file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
+      # file_name = Rails.public_path.join("jsons", "response_sample_no_transit.json") # 所沢→渋谷の直通経路のレスポンス
+      file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
       @route_result = SearchNavitimeRoutesService.sample_fetch(file_name)
 
       train_information = FetchTrainsApisService.fetch(FetchTrainsApisService.apis[:ti])
@@ -84,6 +86,30 @@ class TrainsController < ApplicationController
   end
 
   def sandbox
+
+  end
+
+  def post_slack
+
+    params[:times].each do |time|
+
+      if DateTime.now < Time.at(time.to_i)
+        PostSlackReminderService.post_reminder(current_user, time)
+      end
+
+    end
+
+  end
+
+  def delete_slack
+
+    params[:times].each do |time|
+
+      if DateTime.now < Time.at(time.to_i)
+        PostSlackReminderService.delete_reminder(current_user, time)
+      end
+
+    end
 
   end
 
