@@ -235,9 +235,8 @@ div.contents.row .new_user {
   margin: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.22);
+  width: 80%;
 }
-
-
 
 /* マイページのCSSです */
 .mypage{
@@ -390,6 +389,18 @@ div.contents.row .new_user {
 .bookmark_register{
   display: flex;
   justify-content: center;
+}
+
+.bookmark_departure_str{
+  display: flex;
+  align-items: center;
+}
+
+.bookmark_departure_marker{
+  color: white;
+  background-color: #ff7800;
+  padding: 2px 5px;
+  border-radius: 5px;
 }
 
 /* ブックマーク編集用ページのCSSです */
@@ -748,6 +759,33 @@ div.contents.row .new_user {
   border: 0;
   border-radius: 5px;
   right: 5px;
+}
+
+/* タイトルの共通CSSです */
+.all_title{
+  position: relative;
+  display: inline-block;
+  padding: 0 45px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.all_title:before, .all_title:after{
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 35px;
+  height: 3px;
+  background-color: #68b7a1;
+}
+
+.all_title:before{
+  left: 0;
+}
+
+.all_title:after{
+  right: 0;
 }
 
 /* 経路検索結果ページのCSSです */
