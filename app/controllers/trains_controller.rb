@@ -52,6 +52,19 @@ class TrainsController < ApplicationController
           end
         end
       end
+
+      @bookmark = Bookmark.new(departure: departure, destination: destination, time: @datetime.to_datetime.strftime("%H:%M"), departure_flag: departure_flag, status_check: true)
+      @parameters = {
+        bookmark: {
+          name: "#{@bookmark.departure}→#{@bookmark.destination}",
+          departure: @bookmark.departure,
+          destination: @bookmark.destination,
+          time: @bookmark.time,
+          departure_flag: @bookmark.departure_flag,
+          status_check: false,
+        },
+        datetime: @datetime.to_datetime
+      }
     
       # 例外処理が実行されていればtrains/indexにrender
       if @route_result.is_a?(String)
@@ -60,26 +73,6 @@ class TrainsController < ApplicationController
 
         @information_list = GetTrainInformationService.fetch
         render template: "trains/index"
-
-      else
-        
-        # 経路検索結果に引き渡すBookmarkモデルのインスタンス変数
-        if user_signed_in?
-        
-          @bookmark = Bookmark.new(departure: departure, destination: destination, time: @datetime.to_datetime.strftime("%H:%M"), departure_flag: departure_flag, status_check: true)
-          @parameters = {
-            bookmark: {
-              name: "#{@bookmark.departure}→#{@bookmark.destination}",
-              departure: @bookmark.departure,
-              destination: @bookmark.destination,
-              time: @bookmark.time,
-              departure_flag: @bookmark.departure_flag,
-              status_check: false,
-            },
-            datetime: @datetime.to_datetime
-          }
-
-        end
 
       end
 
