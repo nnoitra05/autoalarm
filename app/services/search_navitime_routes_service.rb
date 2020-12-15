@@ -80,6 +80,7 @@ class SearchNavitimeRoutesService
         if route.value?("徒歩")
           route_info[:departure] =res["sections"][idx-1]["name"]
           route_info[:destination] = res["sections"][idx+1]["name"]
+          route_info[:walk_flag] = "true"
         else
           route_info[:departure] = route["transport"]["links"][0]["from"]["name"]
           route_info[:destination] = route["transport"]["links"][0]["to"]["name"]
