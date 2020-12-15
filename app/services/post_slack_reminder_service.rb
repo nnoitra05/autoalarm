@@ -26,12 +26,15 @@ class PostSlackReminderService
       client = PostSlackReminderService.set_user_client
 
       client.reminders_add(
-        time: time.to_unixtime,
+        time: time.to_s,
         user: user.slack_id,
         text: "Setting AutoAlarm"
       )
     
     rescue => post_exception
+
+      binding.pry
+      return post_exception
       
     end
     
@@ -59,20 +62,22 @@ class PostSlackReminderService
   def self.delete_reminder(user, time)
 
     reminder_id = ""
-    reminders = PostSlackReminderService.fetch_reminders
+    reminders = PostSlackReminderService.fetch_reminders[:reminders]
     
     begin
 
-      reminders[:reminders].each do |reminder|
-        if reminder[:time] == time.to_unixtime && reminder[:user] == user.slack_id
-          reminder_id = reminder[:id]
+      reminders.each do |reminder|
+        if reminder[:time].to_i == time.to_i && reminder[:user] == user.slack_id
           client = PostSlackReminderService.set_user_client
-          client.reminders_delete(id: reminder_id)
+          client.reminders_delete(reminder: reminder[:id])
           break
         end
       end
 
     rescue => delete_exception
+
+      binding.pry
+      return delete_exception
 
     end
 

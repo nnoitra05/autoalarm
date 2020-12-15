@@ -4,6 +4,6 @@
 
 <div class="sandbox">
 
-  <%= temp = PostSlackReminderService.post_reminder %>
+  <%= temp = PostSlackReminderService.post_reminder(current_user, (DateTime.now + 30).to_i) %>
 
 </div>
