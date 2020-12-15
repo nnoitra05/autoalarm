@@ -5,10 +5,10 @@
   font-size: large;
   font-weight: bold;
   padding: 30px;
-  margin: 20px 0px 20px 0px;
+  margin: 20px 15px;
+  border-radius: 5px 5px 10px 10px;
   border-top: solid 7px #5a5760;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.22);
-  width: 100%;
 
   th{
     width: 10%;
@@ -59,10 +59,6 @@
   */
   .table-striped{
     border: 3px solid #dddddd;
-  }
-  
-  a:hover{
-    color: lightcoral;
   }
 
   .calendar-heading{

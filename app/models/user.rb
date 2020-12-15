@@ -6,4 +6,7 @@ class User < ApplicationRecord
          
   has_many :bookmarks, dependent: :destroy
   has_many :calendars, dependent: :destroy
+
+  validates :nickname, presence: true
+  validates :slack_id, presence: true
 end
