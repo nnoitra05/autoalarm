@@ -322,6 +322,7 @@ div.contents.row .new_user {
   text-align: center;
   border-radius: 3px;
   display: inline-block;
+  background: rgba(255,0,0,0.0);
 }
 
 .modal_btn:hover{
