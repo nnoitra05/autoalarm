@@ -40,23 +40,9 @@
 
   <% if user_signed_in? %>
 
-    <%# Slackにリマインドを送信/削除するパラメータを定義 %>
-    <% times_list = [] %>
-    <% @route_result[:sections].each_with_index do |route, idx| %>
-      <% if route[:line_name] != "徒歩" %>
-        <% if route[:transit_status] == true || idx == @route_result[:sections].length - 1 %>
-          <% times_list << (Time.parse(route[:dt_destination_time]) - Rational(1, 24 * 60)).to_i %>
-        <% end %>
-      <% end %>
-    <% end %>
-    <% slack_params = {user: current_user, times: times_list} %>
-
     <%# Slackにリマインドを送信/削除するリンクを定義 %>
-    <div class="icon_btn">
-      <%= link_to image_tag("/assets/add_icon.png", width: "60", alt: "Slack連携"), post_slack_trains_path(params: slack_params), method: :post, remote: true, class: "btn" %>
-    </div>
-    <div class="icon_btn">
-      <%= link_to image_tag("/assets/remove_icon.png", width: "60", alt: "Slack連携解除"), delete_slack_trains_path(params: slack_params), method: :post, remote: true, class: "btn" %>
+    <div class="icon_btn" id="slack_click">
+      <%= render partial: "trains/slack_partial", locals: {slack_params: @slack_params} %>
     </div>
 
   <% end %>

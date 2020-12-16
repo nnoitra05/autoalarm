@@ -80,6 +80,17 @@ class TrainsController < ApplicationController
         },
         datetime: @datetime.to_datetime
       }
+
+      # Slackにリマインドを送信/削除するパラメータを定義
+      times_list = []
+      @route_result[:sections].each_with_index do |route, idx|
+        if route[:line_name] != "徒歩"
+          if route[:transit_status] == true || idx == @route_result[:sections].length - 1
+            times_list << (Time.parse(route[:dt_destination_time]) - Rational(1, 24 * 60)).to_i
+          end
+        end
+      end
+      @slack_params = {user: current_user, times: times_list}
     
       # 例外処理が実行されていればtrains/indexにrender
       if @route_result.is_a?(String)
@@ -101,6 +112,8 @@ class TrainsController < ApplicationController
 
   def post_slack
 
+    @slack_params = get_slack_params
+
     params[:times].each do |time|
 
       if DateTime.now < Time.at(time.to_i)
@@ -113,6 +126,8 @@ class TrainsController < ApplicationController
 
   def delete_slack
 
+    @slack_params = get_slack_params
+
     params[:times].each do |time|
 
       if DateTime.now < Time.at(time.to_i)
@@ -124,5 +139,16 @@ class TrainsController < ApplicationController
   end
 
   private
+
+  def get_slack_params
+    
+    times_list = params[:times]
+    times_list.length.times do |idx|
+      times_list[idx] = times_list[idx].to_i
+    end
+
+    return {user: User.find(params[:user]), times: times_list}
+
+  end
 
 end

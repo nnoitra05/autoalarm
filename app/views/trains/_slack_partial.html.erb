@@ -1,0 +1,7 @@
+
+
+<% unless PostSlackReminderService.reminded?(@slack_params[:user], @slack_params[:times]) %>
+  <%= link_to image_tag("/assets/slack_icon.png", width: "60", alt: "Slack連携"), post_slack_trains_path(params: @slack_params), method: :post, remote: true, class: "btn" %>
+<% else %>
+  <%= link_to image_tag("/assets/slack_icon.png", width: "60", alt: "Slack連携解除"), delete_slack_trains_path(params: @slack_params), style: "background-color: yellow;", method: :post, remote: true, class: "btn" %>
+<% end %>

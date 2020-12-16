@@ -24,7 +24,7 @@ class PostSlackReminderService
     begin
       
       client = PostSlackReminderService.set_user_client
-      reminders = PostSlackReminderService.fetch_reminders[:reminders]
+      reminders = PostSlackReminderService.fetch_reminders(user)[:reminders]
       reminder_flag = false
 
       reminders.each do |reminder|
@@ -50,11 +50,33 @@ class PostSlackReminderService
   end
 
   # AutoAlarmワークスペースに参加しているユーザー全てのリマインドリストを取得
-  def self.fetch_reminders
+  def self.fetch_reminders(user)
 
     client = PostSlackReminderService.set_user_client
 
-    return client.reminders_list
+    reminders_list = client.reminders_list
+    
+    reminders_list[:reminders].each_with_index do |reminder, idx|
+      reminders_list[:reminders].delete(reminder) if reminder[:user] != user.slack_id
+    end
+    
+    return reminders_list
+
+  end
+
+  # 既にリマインドがされているかをbooleanで判定
+  def self.reminded?(user, times_list)
+
+    client = PostSlackReminderService.set_user_client
+
+    reminders_list = PostSlackReminderService.fetch_reminders(user)
+    reminded_flag = false
+
+    reminders_list[:reminders].each_with_index do |reminder, idx|
+      reminded_flag = true if times_list.include?(reminder[:time])
+    end
+
+    return reminded_flag
 
   end
 
@@ -71,7 +93,7 @@ class PostSlackReminderService
   def self.delete_reminder(user, time)
 
     reminder_id = ""
-    reminders = PostSlackReminderService.fetch_reminders[:reminders]
+    reminders = PostSlackReminderService.fetch_reminders(user)[:reminders]
     
     begin
 
