@@ -50,8 +50,15 @@ class TrainsController < ApplicationController
         railways.each do |railway|
           if train_info["odpt:railway"] == railway["owl:sameAs"]
             @route_result[:sections].each_with_index do |route, idx|
-              if !train_info["odpt:trainInformationStatus"].nil? && route[:line_name].include?(railway["dc:title"])
-                @realtime_info.push(train_info["odpt:trainInformationStatus"]["ja"])
+              if route[:line_name].include?(railway["dc:title"])
+                line_info={}
+                line_info[:line_name]=route[:line_name]
+                if !train_info["odpt:trainInformationStatus"].nil?
+                  line_info[:lineinfo]="遅延しています"
+                else
+                  line_info[:lineinfo]="平常運転"
+                end
+                @realtime_info<<line_info
               end
             end
           end

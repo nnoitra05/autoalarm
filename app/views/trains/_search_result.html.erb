@@ -86,6 +86,11 @@
 
       <div class="train_line">
         <%= "\t\t#{route[:line_name]}" %><br>
+        <% @realtime_info.each_with_index do |info, flag|%>
+          <%if info[:line_name]==route[:line_name]%>
+            <%= info[:lineinfo]%>
+          <%end%>
+        <%end%>
       </div>
   
       <div class="route_destination">
@@ -113,6 +118,11 @@
       <%if idx==@route_result[:sections].length-1%>
         <div class="train_line">
           <%= "\t\t#{route[:line_name]}" %><br>
+          <% @realtime_info.each_with_index do |info, flag|%>
+            <%if info[:line_name]==route[:line_name]%>
+              <%= info[:lineinfo]%>
+            <%end%>
+          <%end%>
         </div>
         <div class="route_destination">
           <div class="train_destinationtime">
@@ -131,6 +141,11 @@
         <%else%>       
           <div class="train_line">
             <%= "\t\t#{route[:line_name]} 乗換不要" %><br>
+            <% @realtime_info.each_with_index do |info, flag|%>
+              <%if info[:line_name]==route[:line_name]%>
+                <%= info[:lineinfo]%>
+              <%end%>
+            <%end%>
           </div>
         <%end%>
       <%end%>
