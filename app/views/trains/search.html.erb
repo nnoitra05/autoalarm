@@ -50,11 +50,15 @@
     var leftTime = end-now;
     //到着や乗り換え時間の判断
     if(leftTime<=0){
+      var ui =document.getElementById("timer");
+      ui.style.display="none";
       if(endtime.length>0){
         end= endtime.shift();
+        var ui =document.getElementById("timer");
+        ui.style.display="";
         countTime(end,endtime);
       }
-      return false;
+      return false;    
     }  
     // d,h,m,s時間の保存のための変数定義
     var d,h,m,s;
@@ -64,11 +68,14 @@
       m = Math.floor(leftTime/1000/60%60);
       s = Math.floor(leftTime/1000%60);
     }
+
     //アラームの時間設定
     if(d==0&&h==0&&m==0&&s==59){
       displayShowUI();
       setTimeout(botton_click(),1000);
     }
+
+
       //divに入れる
       document.getElementById("_d").innerHTML = d+"日";
       document.getElementById("_h").innerHTML = h+"時間";
@@ -124,4 +131,3 @@
     }
   </script>
 </div>
-
