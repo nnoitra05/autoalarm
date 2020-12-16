@@ -672,8 +672,10 @@ div.contents.row .new_user {
     margin: 0px;
   }
   .modal_btn{
+    /*
     height: 60px;
     width: 100px;
+    */
   }
 
   .alarm_btn{
