@@ -38,7 +38,7 @@
     <%= week_calendar do |date| %>
       
       <%# カレンダーに表示する予定の取得 %>
-      <% calendar = Calendar.find_by(date: date, user_id: current_user.id) %>
+      <% calendar = @calendars.find_by(date: date) %>
       <% unless calendar.nil? %>
         <% bookmark_calendars = BookmarkCalendar.where(calendar_id: calendar.id) %>
         <% bookmark_calendars.each do |schedule| %>
