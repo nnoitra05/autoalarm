@@ -54,9 +54,9 @@ class TrainsController < ApplicationController
                 line_info={}
                 line_info[:line_name]=route[:line_name]
                 if !train_info["odpt:trainInformationStatus"].nil?
-                  line_info[:lineinfo]="遅延しています"
+                  line_info[:delay_info]="現在遅延しています"
                 else
-                  line_info[:lineinfo]="平常運転"
+                  line_info[:delay_info]="平常運転"
                 end
                 @realtime_info<<line_info
               end
