@@ -3,7 +3,7 @@
 <div class="bookmarks">
   
   <div class="all_title">
-    <%= @nickname%>さんの
+    <div><%= @nickname %>さんの</div>
     <div>ブックマーク</div>
   </div>
 
@@ -12,26 +12,37 @@
     <% @bookmarks.each do |bookmark| %>
       <div class="user_bookmark">
         <div class="bookmark_title">
-          ブックマーク名: <%= bookmark.name %>
+          <%= bookmark.name %>
         </div>
 
         <div class="bookmark_route">
-          出発地: <%= bookmark.departure %>→
-          到着地: <%= bookmark.destination %>
+          <div class="departure_index">
+            出発地
+          </div>
+          <div class="departure_index departure_name">
+            <%= bookmark.departure %>
+          </div>
         </div>
 
-        <div class="bookmark_time">
-          時刻: <%= bookmark.time %>
+        <div class="bookmark_route">
+          <div class="destination_index">
+            到着地
+          </div>
+          <div class="destination_index destination_name">
+            <%= bookmark.destination %>
+          </div>
         </div>
 
         <div class="bookmark_departure_flag">
-          <% departure_flag_str = (bookmark.departure_flag ? "到着時刻" : "出発時刻" ) %>
+          <% departure_flag_str = (bookmark.departure_flag ? "到着" : "出発" ) %>
 
           <div class="bookmark_departure_str">
+            <div>
+              <%= bookmark.time %>に
+            </div>
             <div class="bookmark_departure_marker">
               <%= "#{departure_flag_str}" %>
             </div>
-            <div>として検索</div>
           </div>
         </div>
 

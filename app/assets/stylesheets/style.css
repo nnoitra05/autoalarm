@@ -381,11 +381,25 @@ div.contents.row .new_user {
 .bookmark_title{
   display: flex;
   align-items: center;
+  margin-bottom: 5px;
+}
+
+.bookmark_title:before, .bookmark_title:after{
+  content: '';
+  top: 50%;
+  display: inline-block;
+  width: 20px;
+  height: 3px;
+  background-color: #68b7a1;
 }
 
 .bookmark_edit{
   display: flex;
   justify-content: center;
+}
+
+.bookmark_route{
+  display: flex;
 }
 
 .bookmark_register{
@@ -648,12 +662,16 @@ div.contents.row .new_user {
 
   .departure_index{
     text-align: center;
+    /*
     width: 60px;
+    */
   }
 
   .destination_index{
     text-align: center;
+    /*
     width: 60px;
+    */
   }
 
   .transit_index{
@@ -782,6 +800,7 @@ div.contents.row .new_user {
   padding: 0 45px;
   font-size: 30px;
   font-weight: bold;
+  text-align: center;
 }
 
 .all_title:before, .all_title:after{
@@ -829,6 +848,11 @@ div.contents.row .new_user {
   margin: 5px;
 }
 
+.departure_index.departure_name{
+  background-color: white;
+  color: #4e4e4e;
+}
+
 .arrow{
   font-size: 30px;
   margin: 0 5px;
@@ -837,6 +861,16 @@ div.contents.row .new_user {
 .destination_index{
   background-color: #c76daa;
   color: white;
+  padding: 5px;
+  margin: 5px;
+}
+
+.destination_index.destination_name{
+  background-color: white;
+  color: #4e4e4e;
+}
+
+.bookmark_departure_flag{
   padding: 5px;
   margin: 5px;
 }
