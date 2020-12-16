@@ -24,12 +24,22 @@ class PostSlackReminderService
     begin
       
       client = PostSlackReminderService.set_user_client
+      reminders = PostSlackReminderService.fetch_reminders[:reminders]
+      reminder_flag = false
 
-      client.reminders_add(
-        time: time.to_s,
-        user: user.slack_id,
-        text: "Setting AutoAlarm"
-      )
+      reminders.each do |reminder|
+        if reminder[:time].to_i == time.to_i && reminder[:user] == user.slack_id
+          reminder_flag = true
+        end
+      end
+
+      unless reminder_flag
+        client.reminders_add(
+          time: time.to_s,
+          user: user.slack_id,
+          text: "Setting AutoAlarm"
+        )
+      end
     
     rescue => post_exception
 

@@ -47,8 +47,12 @@
 
     <%# Slackにリマインドを送信/削除するパラメータを定義 %>
     <% times_list = [] %>
-    <% @route_result[:sections].each do |route| %>
-      <% times_list << (Time.parse(route[:dt_destination_time]) - Rational(1, 24 * 60)).to_i %>
+    <% @route_result[:sections].each_with_index do |route, idx| %>
+      <% if route[:line_name] != "徒歩" %>
+        <% if route[:transit_status] == true || idx == @route_result[:sections].length - 1 %>
+          <% times_list << (Time.parse(route[:dt_destination_time]) - Rational(1, 24 * 60)).to_i %>
+        <% end %>
+      <% end %>
     <% end %>
     <% slack_params = {user: current_user, times: times_list} %>
 
@@ -66,7 +70,7 @@
 
 <div class="train_route">
   <% @route_result[:sections].each_with_index do |route, idx| %>
-    <%if "#{route[:transit_status]}"=="true"%>
+    <%if route[:transit_status] %>
       <div class="route_departure">
         <div class="train_departuretime">
           <%= "#{route[:departure_time]} 出発" %>
@@ -118,16 +122,16 @@
         </div>
       <%else%>
         <%if "#{route[:walk_flag]}"=="true"%>
-            <div class="train_line">
-              <%= "\t\t#{route[:line_name]} " %><br>
-            </div>
+          <div class="train_line">
+            <%= "\t\t#{route[:line_name]} " %><br>
+          </div>
         <%else%>       
-        <div class="train_line">
-          <%= "\t\t#{route[:line_name]} 乗換不要" %><br>
-        </div>
+          <div class="train_line">
+            <%= "\t\t#{route[:line_name]} 乗換不要" %><br>
+          </div>
         <%end%>
       <%end%>
-   <%end%>
+    <%end%>
 
   <% end %>
 </div>
