@@ -50,21 +50,22 @@ class BookmarksController < ApplicationController
   
     @bookmark = Bookmark.new(bookmark_params)
 
-    if @bookmark.save
-      redirect_to bookmarks_path(current_user.id)
-    else
-      @bookmark.valid?
-      file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
-      @route_result = SearchNavitimeRoutesService.sample_fetch(file_name)
-      @datetime = params[:bookmark][:datetime]
-      @parameters = {
-        bookmark: bookmark_params,
-        datetime: @datetime
-      }
-      @parameters[:bookmark][:status_check] = false
-      @failure_comment = "ブックマークの名前を入力してください。"
-      render search_trains_path
-   
+    begin
+
+      # ブックマークの保存ができた場合
+      if @bookmark.save
+        redirect_to bookmarks_path
+      # ブックマークの保存ができない（ブックマーク名を空欄にしている）場合
+      else
+
+        @bookmark.name = "#{@bookmark.departure}→#{@bookmark.destination}"
+        @bookmark.save
+        redirect_to bookmarks_path
+
+      end
+
+    rescue => create_exception
+
     end
 
   end
@@ -73,7 +74,7 @@ class BookmarksController < ApplicationController
 
     bookmark = Bookmark.find(params[:id])
     bookmark.destroy
-    redirect_to bookmarks_path(current_user.id)
+    redirect_to bookmarks_path
 
   end
 
@@ -86,25 +87,31 @@ class BookmarksController < ApplicationController
 
   def register_without
 
-    # status_check = falseの状態でブックマーク保存
-    bookmark = Bookmark.find_by(bookmark_params)
-    if bookmark.nil?
-      Bookmark.create(bookmark_params)
+    begin
+
+      # status_check = falseの状態でブックマーク保存
       bookmark = Bookmark.find_by(bookmark_params)
-    end
+      if bookmark.nil?
+        Bookmark.create(bookmark_params)
+        bookmark = Bookmark.find_by(bookmark_params)
+      end
 
-    calendar = Calendar.find_by(date: params[:datetime].to_date, user_id: current_user.id)
-    if calendar.nil?
-      Calendar.create(date: params[:datetime].to_date, user_id: current_user.id)
       calendar = Calendar.find_by(date: params[:datetime].to_date, user_id: current_user.id)
-    end
+      if calendar.nil?
+        Calendar.create(date: params[:datetime].to_date, user_id: current_user.id)
+        calendar = Calendar.find_by(date: params[:datetime].to_date, user_id: current_user.id)
+      end
 
-    bookmark_calendar = BookmarkCalendar.find_by(bookmark_id: bookmark.id, calendar_id: calendar.id)
-    if bookmark_calendar.nil?
-      BookmarkCalendar.create(bookmark_id: bookmark.id, calendar_id: calendar.id)
+      bookmark_calendar = BookmarkCalendar.find_by(bookmark_id: bookmark.id, calendar_id: calendar.id)
+      if bookmark_calendar.nil?
+        BookmarkCalendar.create(bookmark_id: bookmark.id, calendar_id: calendar.id)
+      end
+
+      redirect_to users_path
+
+    rescue => register_without_ecxeption
+
     end
-    
-    redirect_to users_path
 
   end
 
