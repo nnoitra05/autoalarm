@@ -1,3 +1,5 @@
+
+
 <div class="train_information">
   <div class="train_title">
     <div class="all_title">
@@ -5,14 +7,13 @@
     </div>
   </div>
 
-  
   <div class="train_contents">
     <% @information_list.each do |info| %>
       <li><%= info %></li><br>
     <% end %>
-  
 
     <%= "現在、首都圏の遅延情報はありません。" if @information_list.empty? %>
+
   </div>
   
 </div>

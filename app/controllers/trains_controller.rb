@@ -64,9 +64,6 @@ class TrainsController < ApplicationController
           end
         end
       end
-            
-
-
 
       @bookmark = Bookmark.new(departure: departure, destination: destination, time: @datetime.to_datetime.strftime("%H:%M"), departure_flag: departure_flag, status_check: true)
       @parameters = {
@@ -90,7 +87,7 @@ class TrainsController < ApplicationController
           end
         end
       end
-      @slack_params = {user: current_user, times: times_list}
+      @slack_params = {slack_id: current_user.slack_id, times: times_list}
     
       # 例外処理が実行されていればtrains/indexにrender
       if @route_result.is_a?(String)
@@ -113,11 +110,11 @@ class TrainsController < ApplicationController
   def post_slack
 
     @slack_params = get_slack_params
-
+    
     params[:times].each do |time|
 
       if DateTime.now < Time.at(time.to_i)
-        PostSlackReminderService.post_reminder(current_user, time)
+        PostSlackReminderService.post_reminder(@slack_params[:slack_id], time)
       end
 
     end
@@ -131,7 +128,7 @@ class TrainsController < ApplicationController
     params[:times].each do |time|
 
       if DateTime.now < Time.at(time.to_i)
-        PostSlackReminderService.delete_reminder(current_user, time)
+        PostSlackReminderService.delete_reminder(@slack_params[:slack_id], time)
       end
 
     end
@@ -147,7 +144,7 @@ class TrainsController < ApplicationController
       times_list[idx] = times_list[idx].to_i
     end
 
-    return {user: User.find(params[:user]), times: times_list}
+    return {slack_id: params[:slack_id], times: times_list}
 
   end
 

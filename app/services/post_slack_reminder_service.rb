@@ -18,17 +18,17 @@ class PostSlackReminderService
     return Slack::Web::Client.new
   end
   
-  # user.slack_idに対しunixtimeにリマインドを設定
-  def self.post_reminder(user, time)
+  # slack_idに対しunixtimeにリマインドを設定
+  def self.post_reminder(slack_id, time)
 
     begin
       
       client = PostSlackReminderService.set_user_client
-      reminders = PostSlackReminderService.fetch_reminders(user)[:reminders]
+      reminders = PostSlackReminderService.fetch_reminders(slack_id)[:reminders]
       reminder_flag = false
 
       reminders.each do |reminder|
-        if reminder[:time].to_i == time.to_i && reminder[:user] == user.slack_id
+        if reminder[:time].to_i == time.to_i && reminder[:user] == slack_id
           reminder_flag = true
         end
       end
@@ -36,7 +36,7 @@ class PostSlackReminderService
       unless reminder_flag
         client.reminders_add(
           time: time.to_s,
-          user: user.slack_id,
+          user: slack_id,
           text: "Setting AutoAlarm"
         )
       end
@@ -50,14 +50,14 @@ class PostSlackReminderService
   end
 
   # AutoAlarmワークスペースに参加しているユーザー全てのリマインドリストを取得
-  def self.fetch_reminders(user)
+  def self.fetch_reminders(slack_id)
 
     client = PostSlackReminderService.set_user_client
 
     reminders_list = client.reminders_list
     
     reminders_list[:reminders].each_with_index do |reminder, idx|
-      reminders_list[:reminders].delete(reminder) if reminder[:user] != user.slack_id
+      reminders_list[:reminders].delete(reminder) if reminder[:user] != slack_id
     end
     
     return reminders_list
@@ -65,11 +65,11 @@ class PostSlackReminderService
   end
 
   # 既にリマインドがされているかをbooleanで判定
-  def self.reminded?(user, times_list)
+  def self.reminded?(slack_id, times_list)
 
     client = PostSlackReminderService.set_user_client
 
-    reminders_list = PostSlackReminderService.fetch_reminders(user)
+    reminders_list = PostSlackReminderService.fetch_reminders(slack_id)
     reminded_flag = false
 
     reminders_list[:reminders].each_with_index do |reminder, idx|
@@ -80,25 +80,16 @@ class PostSlackReminderService
 
   end
 
-  # AutoAlarmワークスペースに参加しているユーザーリストを取得
-  def self.fetch_users
-
-    client = PostSlackReminderService.set_client
-
-    return client.users_list
-
-  end
-
   # trains/searchページからunixtimeを取得してその条件でreminders_listを起動し、idに変換したのちreminders_delete
-  def self.delete_reminder(user, time)
+  def self.delete_reminder(slack_id, time)
 
     reminder_id = ""
-    reminders = PostSlackReminderService.fetch_reminders(user)[:reminders]
+    reminders = PostSlackReminderService.fetch_reminders(slack_id)[:reminders]
     
     begin
 
       reminders.each do |reminder|
-        if reminder[:time].to_i == time.to_i && reminder[:user] == user.slack_id
+        if reminder[:time].to_i == time.to_i && reminder[:user] == slack_id
           client = PostSlackReminderService.set_user_client
           client.reminders_delete(reminder: reminder[:id])
           break
