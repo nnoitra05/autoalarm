@@ -88,7 +88,8 @@ class TrainsController < ApplicationController
           end
         end
       end
-      @slack_params = {slack_id: current_user.slack_id, times: times_list}
+
+      @slack_params = {slack_id: current_user.slack_id, times: times_list} if user_signed_in?
     
       # 例外処理が実行されていればtrains/indexにrender
       if @route_result.is_a?(String)
