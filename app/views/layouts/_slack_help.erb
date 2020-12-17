@@ -1,0 +1,35 @@
+
+<!-- モーダルウィンドウ -->
+<div id="modal-content">
+  <!-- モーダルウィンドウのコンテンツ開始 -->
+  <div class="modal_header">
+    <h2>Slack連携ヘルプ</h2>
+    <button id = "modal-close" class="close_btn">&times;</button>
+  </div>
+
+  <article class="cp_content">
+
+    <div class="slack_help_popup">
+      <div class="slack_explanation">
+        <span class="slack_title">AutoAlarmワークスペースへの参加</span><br>
+        招待リンクボタンをクリックとSlackのAutoAlarmワークスペースに参加できます。<br>
+        Slackアカウントを所持していない人は新規登録をしてください。
+      </div>
+    </div>
+    
+    <div class="slack_help_popup">
+      <div class="slack_explanation">
+        <span class="slack_title">メンバーIDの取得</span><br>
+        ワークスペース内右側のアイコンをクリックし、「プロフィールを表示」を選択してください。<br>
+        <%#= image_tag("/assets/slack_icon.png", width: "100%", alt: "Slack連携解除", style: "background-color: yellow") %>
+        右側の「その他」ボタンをクリックし、表示されたメンバーIDをコピー後、フォームの「AutoAlarmのメンバーID」欄にペーストしてください。
+        <%#= image_tag("/assets/slack_icon.png", width: "100%", alt: "Slack連携解除", style: "background-color: yellow") %>
+        
+      </div>
+    </div>
+  
+  </article>
+<!-- モーダルウィンドウのコンテンツ終了 -->
+</div>
+
+<div id="modal-open" class="modal_btn">Slack連携ヘルプ</div>

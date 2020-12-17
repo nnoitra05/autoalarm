@@ -1,6 +1,6 @@
 
 
-.icon_help_popup{
+.icon_help_popup, .slack_help_popup{
   display: flex;
   font-size: small;
   margin-bottom: 10px;
@@ -20,6 +20,10 @@
   width: 70%;
 }
 
-.icon_title{
+.slack_explanation{
+  width: 100%;
+}
+
+.icon_title, .slack_title{
   color: #2c7873;
 }

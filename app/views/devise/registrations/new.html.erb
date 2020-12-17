@@ -16,8 +16,11 @@
       </div>
 
       <div class="btn">
-        <%= link_to "Slackへの招待リンク", "https://join.slack.com/t/autoalarm/shared_invite/zt-k7gxwsgx-BBH5ZqVij9g3MJeOiAyOFw", target: :_blank, rel: "noopener noreferrer" %>
+        <%= link_to "Slack招待リンク", "https://join.slack.com/t/autoalarm/shared_invite/zt-k7gxwsgx-BBH5ZqVij9g3MJeOiAyOFw", target: :_blank, rel: "noopener noreferrer" %>
       </div>
+
+      <%# Slack連携ヘルプへのrender %>
+      <%= render partial: "layouts/slack_help" %>
 
       <div class="field">
         <%= f.label :slack_id, "AutoAlarmのメンバーID" %>
