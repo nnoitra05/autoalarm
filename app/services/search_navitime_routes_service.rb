@@ -88,6 +88,12 @@ class SearchNavitimeRoutesService
         end
         route_info[:dt_destination_time] = route["to_time"]
         route_info[:transit_status] = route["next_transit"]
+        if !route["transport"]["color"].nil?
+          route_info[:color] = route["transport"]["color"]
+        else
+          route_info[:color] = "#999999"
+        end
+
          
         route_result[:sections] << route_info
 
@@ -136,6 +142,11 @@ class SearchNavitimeRoutesService
         end
         route_info[:dt_destination_time] = route["to_time"]
         route_info[:transit_status] = route["next_transit"]
+        if !route["transport"]["color"].nil?
+          route_info[:color] = route["transport"]["color"]
+        else
+          route_info[:color] = "#999999"
+        end
          
         route_result[:sections] << route_info
        
