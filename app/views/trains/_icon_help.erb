@@ -1,0 +1,67 @@
+
+<!-- モーダルウィンドウ -->
+<div id="modal-content">
+  <!-- モーダルウィンドウのコンテンツ開始 -->
+  <div class="modal_header">
+    <h2>アイコンヘルプ</h2>
+    <button id = "modal-close" class="close_btn">&times;</button>
+  </div>
+
+  <article class="cp_content">
+    
+    <div class="icon_without_login">
+      全ユーザー使用可能
+    </div>
+
+    <div class="icon_help_popup">
+      <div class="icon_display">
+        <%= image_tag("/assets/alarm_icon.png", width: "60", alt: "アラーム設定") %>
+      </div>
+      <div class="icon_explanation">
+        <span class="icon_title">アラーム設定ボタン</span><br>
+        電車を降りるor乗り換えるタイミングになったら、ブラウザ上でアラームが鳴動するように設定できます。
+      </div>
+    </div>
+
+    <div class="icon_with_login">
+      ログインユーザーのみ使用可能
+    </div>
+
+    <div class="icon_help_popup">
+      <div class="icon_display">
+        <%= image_tag("/assets/bookmark_icon.png", width: "60", alt: "ブックマーク登録") %>
+      </div>
+      <div class="icon_explanation">
+        <span class="icon_title">ブックマーク登録ボタン</span><br>
+        ブックマークに登録することができます。
+      </div>
+    </div>
+
+    <div class="icon_help_popup">
+      <div class="icon_display">
+        <%= image_tag("/assets/calendar_icon.png", width: "60", alt: "カレンダー登録") %>
+      </div>
+      <div class="icon_explanation">
+        <span class="icon_title">カレンダー登録ボタン</span><br>
+        カレンダーに予定として登録することができます。
+      </div>
+    </div>
+    
+    <div class="icon_help_popup">
+      <div class="icon_display">
+        <%= image_tag("/assets/slack_icon.png", width: "60", alt: "Slack連携") %>
+      </div>
+      <div class="icon_explanation">
+        <span class="icon_title">Slack連携ボタン</span><br>
+        電車を降りるor乗り換えるタイミングで
+        Slackリマインドを設定できます。<br>
+        連携状態だと<%= image_tag("/assets/slack_icon.png", width: "20", alt: "Slack連携解除", style: "background-color: yellow") %>が表示されます。
+        この状態で再度クリックするとSlack連携を解除できます。
+      </div>
+    </div>
+  
+  </article>
+<!-- モーダルウィンドウのコンテンツ終了 -->
+</div>
+
+<button id = "modal-open" class="modal_btn">アイコンヘルプ</button>

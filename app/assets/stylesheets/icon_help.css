@@ -1,0 +1,25 @@
+
+
+.icon_help_popup{
+  display: flex;
+  font-size: small;
+  margin-bottom: 10px;
+}
+
+.icon_with_login, .icon_without_login{
+  font: bold;
+  margin: 10px 0px 10px 0px;
+  border-bottom: solid 2px #4e4e4e;
+}
+
+.icon_display{
+  width: 30%;
+}
+
+.icon_explanation{
+  width: 70%;
+}
+
+.icon_title{
+  color: #2c7873;
+}
