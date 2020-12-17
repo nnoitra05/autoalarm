@@ -26,6 +26,7 @@
 
   <% if user_signed_in? %>
 
+    <%# ブックマーク登録用のrender %>
     <%= render partial: "trains/bookmark_form" %>
     <div class="icon_btn">
       <%= link_to image_tag("/assets/calendar_icon.png", width: "60", alt: "カレンダー登録"), register_without_bookmarks_path(params: @parameters), method: :post, class: "btn" %>
@@ -42,7 +43,7 @@
 
     <%# Slackにリマインドを送信/削除するリンクを定義 %>
     <div class="icon_btn" id="slack_click">
-      <%= render partial: "trains/slack_partial", locals: {slack_params: @slack_params} %>
+      <%= render partial: "trains/slack_partial" %>
     </div>
 
   <% end %>
