@@ -73,7 +73,7 @@ class PostSlackReminderService
     reminded_flag = false
 
     reminders_list[:reminders].each_with_index do |reminder, idx|
-      reminded_flag = true if times_list.include?(reminder[:time])
+      reminded_flag = true if times_list.include?(reminder[:time]) && reminder[:user] == slack_id
     end
 
     return reminded_flag
