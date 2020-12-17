@@ -350,17 +350,17 @@ div.contents.row .new_user {
 }
 
 /* ブックマークページのCSSです */
-.bookmarks{
+.bookmark_headertitle{
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  /*
-  height: 100vh;
-  */
 }
 
 .bookmark{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
   overflow: scroll;
 }
 
@@ -439,6 +439,12 @@ div.contents.row .new_user {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.22);
 }
 
+@media (min-width: 1024px) {
+  .user_bookmark{
+    width: 25%;
+  }
+}
+
 /* レスポンシブデザイン タブレット表示 */
 @media (max-width: 1024px) {
   .nav__left{
@@ -492,6 +498,11 @@ div.contents.row .new_user {
     flex-direction: column;
     padding: 5px;
     width: 60%;
+  }
+
+  /* ブックマークページ */
+  .user_bookmark{
+    width: 40%;
   }
 
 }
@@ -641,7 +652,10 @@ div.contents.row .new_user {
     justify-content: center;
   }
 
-
+  /* ブックマークページ */
+  .user_bookmark{
+    width: 70%;
+  }
 }
 
 /* iPhone 6/7/8対応レスポンシブデザイン */
@@ -679,11 +693,10 @@ div.contents.row .new_user {
     width: 70px;
   }
 
-  .icon_btn{
-    
+  /* ブックマークページ */
+  .user_bookmark{
+    width: 70%;
   }
-
-  /* ログイン・新規会員登録画面 */
 }
 
 /* GooglePixel等横幅が小さいスマホのレスポンシブデザイン */
@@ -705,6 +718,11 @@ div.contents.row .new_user {
 
   .calendar_btn{
     width: 140px;
+  }
+
+  /* ブックマークページ */
+  .user_bookmark{
+    width: 80%;
   }
 }
 
@@ -846,6 +864,7 @@ div.contents.row .new_user {
   color: white;
   padding: 5px;
   margin: 5px;
+  border-radius: 5px;
 }
 
 .departure_index.departure_name{
@@ -863,6 +882,7 @@ div.contents.row .new_user {
   color: white;
   padding: 5px;
   margin: 5px;
+  border-radius: 5px;
 }
 
 .destination_index.destination_name{
@@ -885,6 +905,7 @@ div.contents.row .new_user {
   color: white;
   padding: 5px;
   margin: 5px 10px 5px 15px;
+  border-radius: 5px;
 }
 
 .train_date{
@@ -897,6 +918,7 @@ div.contents.row .new_user {
   color: white;
   padding: 5px;
   margin: 5px 10px;
+  border-radius: 5px;
 }
 
 .train_route{
