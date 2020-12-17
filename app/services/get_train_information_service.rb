@@ -33,9 +33,9 @@ class GetTrainInformationService
 
       end
 
-      return information_list
-
     end
+
+    return information_list
 
   end
 
