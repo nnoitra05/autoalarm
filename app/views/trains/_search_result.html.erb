@@ -40,8 +40,16 @@
   <% end %>
 
   <div class="icon_btn">
-    <button onclick="loop()" class="btn"><%= image_tag("/assets/alarm_icon.png", width: "50", alt: "アラーム設定") %></button>
-    <button class="btn" onclick="closePlay()" id="music_btn" style="display:none"><%= image_tag("/assets/alarm_stop.png", width: "50", alt: "アラーム停止") %></button>
+    <!--
+      <button onclick="loop()" class="btn"><%= image_tag("/assets/alarm_icon.png", width: "50", alt: "アラーム設定") %></button>
+    -->
+    <%= link_to image_tag("/assets/alarm_icon.png", width: "50", alt: "アラーム設定"), "javascript:void(0)", onclick: "loop()", class: "btn" %>
+  </div>
+  <div class="icon_btn">
+    <!--
+      <button class="btn" onclick="closePlay()" id="music_btn" style="display:none"><%= image_tag("/assets/alarm_stop.png", width: "50", alt: "アラーム停止") %></button>
+    -->
+    <%= link_to image_tag("/assets/alarm_stop.png", width: "50", alt: "アラーム設定"), "javascript:void(0)", onclick: "closePlay()", style: "display: none;", class: "btn" %>
   </div>
 
   <% if user_signed_in? %>

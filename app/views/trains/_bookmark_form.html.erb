@@ -27,5 +27,9 @@
 	<!-- モーダルウィンドウのコンテンツ終了 -->
   </div>
 
-  <button id = "modal-open" class="modal_btn"><%= image_tag("/assets/bookmark_icon.png", width: "50", alt: "ブックマーク登録") %></button>
+  <!--
+    <button id="modal-open" class="modal_btn"><%= image_tag("/assets/bookmark_icon.png", width: "50", alt: "ブックマーク登録") %></button>
+  -->
+  <%= link_to image_tag("/assets/bookmark_icon.png", width: "50", alt: "ブックマーク登録"), "javascript:void(0)", onClick: "hogeFunction();return false;", id: "modal-open", class: "modal_btn" %>
+
 </div>
