@@ -143,10 +143,11 @@ class SearchNavitimeRoutesService
         end
         route_info[:dt_destination_time] = route["to_time"]
         route_info[:transit_status] = route["next_transit"]
-        if !route["transport"]["color"].nil?
-          route_info[:color] = route["transport"]["color"]
-        else
+        
+        if route.value?("徒歩")
           route_info[:color] = "#999999"
+        else
+          route_info[:color] = route["transport"]["color"]
         end
          
         route_result[:sections] << route_info
