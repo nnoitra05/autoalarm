@@ -32,14 +32,14 @@ class TrainsController < ApplicationController
     else
 
       # サービスクラスSearchNavitimeRoutesServiceから条件を満たす最適なルートを取得
-      @route_result = SearchNavitimeRoutesService.fetch(departure, destination, @datetime, departure_flag)
+      # @route_result = SearchNavitimeRoutesService.fetch(departure, destination, @datetime, departure_flag)
 
       # NAVITIME APIのコール回数削減のために経路検索結果をdumpしたものです。特に不要な場合はこちらのメソッドで読込してください。
       # 直通か非直通かでそれぞれjsonファイルが違うので、目的に合わせてコメントアウトを外してください。
 
       # file_name = Rails.public_path.join("jsons", "response_sample_no_transit.json") # 所沢→渋谷の直通経路のレスポンス
-      # file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
-      # @route_result = SearchNavitimeRoutesService.sample_fetch(file_name)
+      file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
+      @route_result = SearchNavitimeRoutesService.sample_fetch(file_name)
 
       # 例外処理が実行されていればtrains/indexにrender
       if @route_result.is_a?(String)
@@ -60,14 +60,14 @@ class TrainsController < ApplicationController
           if train_info["odpt:railway"] == railway["owl:sameAs"]
             @route_result[:sections].each_with_index do |route, idx|
               if route[:line_name].include?(railway["dc:title"])
-                line_info={}
-                line_info[:line_name]=route[:line_name]
+                line_info = {}
+                line_info[:line_name] = route[:line_name]
                 if !train_info["odpt:trainInformationStatus"].nil?
-                  line_info[:delay_info]="現在遅延しています"
+                  line_info[:delay_info] = "現在遅延しています"
                 else
-                  line_info[:delay_info]="平常運転"
+                  line_info[:delay_info] = "平常運転"
                 end
-                @realtime_info<<line_info
+                @realtime_info << line_info
               end
             end
           end
