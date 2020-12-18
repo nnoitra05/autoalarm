@@ -1,4 +1,7 @@
 
+.icon_btn{
+  display: flex;
+}
 
 .icon_help_popup, .slack_help_popup{
   display: flex;
