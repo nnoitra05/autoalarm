@@ -41,6 +41,16 @@ class TrainsController < ApplicationController
       # file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
       # @route_result = SearchNavitimeRoutesService.sample_fetch(file_name)
 
+      # 例外処理が実行されていればtrains/indexにrender
+      if @route_result.is_a?(String)
+
+        @failure_comment = HandleExceptionService.update_comment(@route_result)
+
+        @information_list = GetTrainInformationService.fetch
+        render template: "trains/index"
+
+      end
+
       train_information = FetchTrainsApisService.fetch(FetchTrainsApisService.apis[:ti])
       railways = FetchTrainsApisService.fetch(FetchTrainsApisService.apis[:r])
 
@@ -88,16 +98,6 @@ class TrainsController < ApplicationController
       end
 
       @slack_params = {slack_id: current_user.slack_id, times: times_list} if user_signed_in?
-    
-      # 例外処理が実行されていればtrains/indexにrender
-      if @route_result.is_a?(String)
-
-        @failure_comment = HandleExceptionService.update_comment(@route_result)
-
-        @information_list = GetTrainInformationService.fetch
-        render template: "trains/index"
-
-      end
 
     end
     
