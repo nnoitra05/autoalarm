@@ -38,3 +38,8 @@ div[id*="modal-content"] {
 .close_btn:hover{
   color: lightcoral;
 }
+
+.modal_btn:hover{
+  color: white;
+  background: #2c7873;
+}
