@@ -40,12 +40,8 @@
   <% end %>
 
   <div class="icon_btn">
-    <div>
-      <button onclick="loop()" class="btn"><%= image_tag("/assets/alarm_icon.png", width: "50", alt: "アラーム設定") %></button>
-    </div>
-    <div>
-      <button class="btn" onclick="closePlay()" id="music_btn" style="display:none"><%= image_tag("/assets/alarm_stop.png", width: "50", alt: "アラーム停止") %></button>
-    </div>
+    <button onclick="loop()" class="btn"><%= image_tag("/assets/alarm_icon.png", width: "50", alt: "アラーム設定") %></button>
+    <button class="btn" onclick="closePlay()" id="music_btn" style="display:none"><%= image_tag("/assets/alarm_stop.png", width: "50", alt: "アラーム停止") %></button>
   </div>
 
   <% if user_signed_in? %>
