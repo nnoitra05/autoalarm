@@ -102,11 +102,7 @@ a {
 }
 
 .nav__logo{
-  color: white;
-  font-size: 25px;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
-  font-weight: 300;
-  margin: 0 15px;
+  margin: 0 10px;
 }
 
 /* devise用のCSS 適宜変更お願いします */
@@ -459,7 +455,8 @@ div.contents.row .new_user {
     align-items: center;
   }
   .nav__logo{
-    font-size: 30px;
+    width: 300px;
+    height: 100px;
   }
 
   .train_information{
@@ -528,7 +525,8 @@ div.contents.row .new_user {
     align-items: center;
   }
   .nav__logo{
-    font-size: 25px;
+    width: 180px;
+    height: 55px;
   }
 
   .train_information{
