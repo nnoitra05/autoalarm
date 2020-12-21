@@ -13,6 +13,7 @@ ul,
 li,
 h1,
 h2,
+h3,
 p {
   margin: 0;
   padding: 0;
@@ -265,6 +266,7 @@ div.contents.row .new_user {
   background-color: #5e92c4;
   color: white;
   padding: 5px 10px;
+  border-radius: 10px;
 }
 
 .nickname_user{
@@ -281,6 +283,7 @@ div.contents.row .new_user {
   background-color: #c76daa;
   color: white;
   padding: 5px 10px;
+  border-radius: 10px;
 }
 
 .email_user{
@@ -385,6 +388,7 @@ div.contents.row .new_user {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+  
 }
 
 .bookmark_title:before, .bookmark_title:after{
@@ -420,6 +424,7 @@ div.contents.row .new_user {
   background-color: #ff7800;
   padding: 2px 5px;
   border-radius: 5px;
+  margin: 0 5px;
 }
 
 /* ブックマーク編集用ページのCSSです */
