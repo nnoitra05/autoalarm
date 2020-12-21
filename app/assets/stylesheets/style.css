@@ -525,10 +525,7 @@ div.contents.row .new_user {
     width: 100%;
   }
 
-  .nav__left{
-    display: flex;
-    align-items: center;
-  }
+ 
   .nav__logo{
     width: 250px;
     height: 45px;
@@ -551,7 +548,7 @@ div.contents.row .new_user {
   }
   .nav__btn{
     display: flex;
-    font-size: 10px;
+    font-size: 15px;
   }
 
   .nav__logout{
