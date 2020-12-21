@@ -5,10 +5,18 @@
   */
 }
 
-.icon_help_popup, .slack_help_popup{
+.icon_help_popup{
   display: flex;
   font-size: small;
   margin-bottom: 10px;
+}
+
+.slack_help_popup{
+  display: flex;
+  font-size: small;
+  margin-bottom: 10px;
+  border-bottom: solid 2px #4e4e4e;
+
 }
 
 .icon_with_login, .icon_without_login{
@@ -17,16 +25,12 @@
   border-bottom: solid 2px #4e4e4e;
 }
 
-.icon_display{
+.icon_display,.slack_display{
   width: 30%;
 }
 
-.icon_explanation{
+.icon_explanation,.slack_explanation{
   width: 70%;
-}
-
-.slack_explanation{
-  width: 100%;
 }
 
 .icon_title, .slack_title{
