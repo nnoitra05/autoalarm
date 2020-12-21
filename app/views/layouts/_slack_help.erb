@@ -9,22 +9,34 @@
 
   <article class="cp_content">
 
-    <div class="slack_help_popup">
+    <%# <div class="slack_help_popup">
       <div class="slack_explanation">
         <span class="slack_title">AutoAlarmワークスペースへの参加</span><br>
-        招待リンクボタンをクリックとSlackのAutoAlarmワークスペースに参加できます。<br>
-        Slackアカウントを所持していない人は新規登録をしてください。
+        <%= image_tag("/assets/slack_link.png", width: "60", alt: "Slack招待リンク", style: "background-color: yellow") %>
+        <%# をクリックとSlackのAutoAlarmワークスペースに参加できます。<br> %>
+        <%# Slackアカウントを所持していない人は新規登録をしてください。 %>
+      <%# </div> %>
+    <%# </div> %> 
+
+    <div class="slack_help_popup">
+      <div class="slack_display">
+        <%= image_tag("/assets/slack_link.png", width: "100", alt: "Slack招待リンク") %>
+      </div>
+      <div class="slack_explanation">
+        <span class="icon_title">Slack招待リンクボタン</span><br>
+        ボタンを押すとSlackのAutoAlarmワークスペースに参加できます。<br>
+         Slackアカウントを所持していない人は新規登録をしてください。
       </div>
     </div>
     
     <div class="slack_help_popup">
+      <div class="slack_display">
+        <span class="slack_title">AutoAlarmのメンバーID</span><br>
+      </div>
       <div class="slack_explanation">
-        <span class="slack_title">メンバーIDの取得</span><br>
-        ワークスペース内右側のアイコンをクリックし、「プロフィールを表示」を選択してください。<br>
-        <%#= image_tag("/assets/slack_icon.png", width: "100%", alt: "Slack連携解除", style: "background-color: yellow") %>
-        右側の「その他」ボタンをクリックし、表示されたメンバーIDをコピー後、フォームの「AutoAlarmのメンバーID」欄にペーストしてください。
-        <%#= image_tag("/assets/slack_icon.png", width: "100%", alt: "Slack連携解除", style: "background-color: yellow") %>
-        
+        <span class="icon_title">取得方法</span><br>
+        AutoAlarmワークスペース内右上の名前のアイコンをクリックし、「プロフィールを表示」を選択してください。<br>
+        右側の<%= image_tag("/assets/other.png", width: "20", alt: "その他", style: "background-color: yellow") %>をクリックし、メンバーIDが表示されます。
       </div>
     </div>
   
@@ -32,4 +44,4 @@
 <!-- モーダルウィンドウのコンテンツ終了 -->
 </div>
 
-<%= link_to "Slack連携ヘルプ", "javascript:void(0)", id: "modal-open", class: "modal_btn" %>
+<%= link_to "Slack連携ヘルプ", "javascript:void(0)", id: "modal-open", class: "modal_btn"%>
