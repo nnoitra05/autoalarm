@@ -27,12 +27,29 @@
 
         <%# ログインしているときは以下を表示するようにしましょう %>
         <% if user_signed_in? %>
-
-          <div class="nav__right">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__btn %>
-            <%= link_to "マイページ", users_path, class: :nav__btn %>
-            <%= link_to "ブックマーク", bookmarks_path, class: :nav__btn %>
-          </div> 
+          <div class="zdo_drawer_menu">
+            <div class="zdo_drawer_bg"></div>
+            <button type="button" class="zdo_drawer_button">
+              <span class="zdo_drawer_bar zdo_drawer_bar1"></span>
+              <span class="zdo_drawer_bar zdo_drawer_bar2"></span>
+              <span class="zdo_drawer_bar zdo_drawer_bar3"></span>
+              <span class="zdo_drawer_menu_text zdo_drawer_text">MENU</span>
+              <span class="zdo_drawer_close zdo_drawer_text">CLOSE</span>
+            </button>
+            <nav class="zdo_drawer_nav_wrapper">
+              <ul class="zdo_drawer_nav">
+                <li>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                </li>
+                <li>
+                  <%= link_to "マイページ", users_path %>
+                </li>
+                <li>
+                  <%= link_to "ブックマーク", bookmarks_path %>
+                </li>
+              </ul>
+            </nav>
+          </div>
         
         <%# ログインしていないときは以下を表示するようにしましょう %>
         <% else %>
