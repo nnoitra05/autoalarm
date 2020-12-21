@@ -5,7 +5,7 @@
   <div class="bookmark_headertitle">
 
     <div class="all_title">
-      保存したブックマーク
+      ブックマーク一覧
     </div>
   </div>
 
@@ -14,7 +14,7 @@
     <% @bookmarks.each do |bookmark| %>
       <div class="user_bookmark">
         <div class="bookmark_title">
-          <%= bookmark.name %>
+          <h3><%= bookmark.name %></h3>
         </div>
 
         <div class="bookmark_route">
