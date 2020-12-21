@@ -447,7 +447,7 @@ div.contents.row .new_user {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.22);
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 1000px) {
   .user_bookmark{
     width: 25%;
   }
@@ -461,7 +461,7 @@ div.contents.row .new_user {
   }
   .nav__logo{
     width: 400px;
-    height: 100px;
+    height: 50px;
   }
 
   .train_information{
@@ -531,7 +531,7 @@ div.contents.row .new_user {
   }
   .nav__logo{
     width: 250px;
-    height: 50px;
+    height: 45px;
   }
 
   .train_information{
@@ -725,7 +725,7 @@ div.contents.row .new_user {
 
   .nav__logo{
     width: 220px;
-    height: 50px;
+    height: 45px;
   }
   .modal_btn{
     /*
