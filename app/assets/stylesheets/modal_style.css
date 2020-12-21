@@ -7,6 +7,8 @@ div[id*="modal-content"] {
 	position: fixed ;
 	display: none ;
 	z-index: 2 ;
+	overflow-y: auto;
+	height: 90%;
 }
   
 #modal-overlay {
@@ -42,4 +44,8 @@ div[id*="modal-content"] {
 .modal_btn:hover{
   color: white;
   background: #2c7873;
+}
+
+.modal-content{
+	overflow: scroll;
 }

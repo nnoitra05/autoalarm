@@ -1,11 +1,11 @@
 <div class="train_index">
   <div class="departure_index">出発地</div>
-    <%= "#{@route_result[:departure]}\n" %>
+    <div><%= "#{@route_result[:departure]}\n" %></div>
   
   <div class="arrow">→</div>
 
   <div class="destination_index">目的地</div>
-    <%= "#{@route_result[:destination]}\n" %>
+    <div><%= "#{@route_result[:destination]}\n" %></div>
 
   <div class="transits">
     <div class="transit_index">乗り換え回数</div>
@@ -50,6 +50,7 @@
       <button class="btn" onclick="closePlay()" id="music_btn" style="display:none"><%= image_tag("/assets/alarm_stop.png", width: "50", alt: "アラーム停止") %></button>
     -->
     <%= link_to image_tag("/assets/alarm_stop.png", width: "50", alt: "アラーム設定"), "javascript:void(0)", onclick: "closePlay()", style: "display: none;", class: "btn", id: "music_btn" %>
+
   </div>
 
   <% if user_signed_in? %>
@@ -65,10 +66,10 @@
    
     <%# カウントダウンの表示 %>
 <div id="timer" style="display:none" class="timer">
-      <span id="_d">00</span>
-      <span id="_h">00</span>
-      <span id="_m">00</span>
-      <span id="_s">00</span>
+      <span id="_d" class="day">00</span>
+      <span id="_h" class="hour">00</span>
+      <span id="_m" class="minute">00</span>
+      <span id="_s" class="second">00</span>
 </div>
 
 <div class="train_route">

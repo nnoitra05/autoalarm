@@ -15,13 +15,15 @@
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
-      <div>
-        <%= link_to "Slack招待リンク", "https://join.slack.com/t/autoalarm/shared_invite/zt-k7gxwsgx-BBH5ZqVij9g3MJeOiAyOFw", target: :_blank, rel: "noopener noreferrer", class: "btn" %>
+      <div class="slack_btn">
+        <div>
+          <%= link_to "Slack招待リンク", "https://join.slack.com/t/autoalarm/shared_invite/zt-k7gxwsgx-BBH5ZqVij9g3MJeOiAyOFw", target: :_blank, rel: "noopener noreferrer", class: "btn" %>
+        </div>
+
+        <%# Slack連携ヘルプへのrender %>
+        <%= render partial: "layouts/slack_help" %>
       </div>
-
-      <%# Slack連携ヘルプへのrender %>
-      <%= render partial: "layouts/slack_help" %>
-
+      
       <div class="field">
         <%= f.label :slack_id, "AutoAlarmのメンバーID" %>
         <%= f.text_field :slack_id, autofocus: true, autocomplete: "member-id" %>

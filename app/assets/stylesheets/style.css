@@ -13,6 +13,7 @@ ul,
 li,
 h1,
 h2,
+h3,
 p {
   margin: 0;
   padding: 0;
@@ -265,6 +266,7 @@ div.contents.row .new_user {
   background-color: #5e92c4;
   color: white;
   padding: 5px 10px;
+  border-radius: 10px;
 }
 
 .nickname_user{
@@ -281,6 +283,7 @@ div.contents.row .new_user {
   background-color: #c76daa;
   color: white;
   padding: 5px 10px;
+  border-radius: 10px;
 }
 
 .email_user{
@@ -385,6 +388,7 @@ div.contents.row .new_user {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+  
 }
 
 .bookmark_title:before, .bookmark_title:after{
@@ -420,6 +424,7 @@ div.contents.row .new_user {
   background-color: #ff7800;
   padding: 2px 5px;
   border-radius: 5px;
+  margin: 0 5px;
 }
 
 /* ブックマーク編集用ページのCSSです */
@@ -442,7 +447,7 @@ div.contents.row .new_user {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.22);
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 1000px) {
   .user_bookmark{
     width: 25%;
   }
@@ -456,7 +461,7 @@ div.contents.row .new_user {
   }
   .nav__logo{
     width: 400px;
-    height: 100px;
+    height: 50px;
   }
 
   .train_information{
@@ -526,7 +531,7 @@ div.contents.row .new_user {
   }
   .nav__logo{
     width: 250px;
-    height: 50px;
+    height: 45px;
   }
 
   .train_information{
@@ -720,7 +725,7 @@ div.contents.row .new_user {
 
   .nav__logo{
     width: 220px;
-    height: 50px;
+    height: 45px;
   }
   .modal_btn{
     /*
@@ -1012,4 +1017,37 @@ div.contents.row .new_user {
 .timer{
   display: flex;
   align-items: center;
+}
+
+ @-webkit-keyframes mymove {
+  50% {color: red;}
+} 
+
+@keyframes mymove {
+  50% {color:red;}
+}
+
+.day{
+  color:blueviolet;
+  animation: mymove 4s infinite;
+  font-size: x-large;
+}
+
+.hour{
+  color:blueviolet;
+  font-size: x-large;
+  animation: mymove 3s infinite;
+}
+
+.minute{
+  color:blueviolet;
+  font-size: x-large;
+  animation: mymove 2s infinite;
+}
+
+.second{
+  color:blueviolet;
+  font-size: x-large;
+  animation: mymove 1s infinite;
+
 }
