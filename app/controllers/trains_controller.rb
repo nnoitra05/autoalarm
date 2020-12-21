@@ -20,7 +20,9 @@ class TrainsController < ApplicationController
     departure = params[:departure]
     destination = params[:destination]
     @datetime = params[:datetime]
-    departure_flag = params[:departure_flag].to_i
+    departure_flag = ([1, "1", true, "true"].include?(params[:departure_flag]) ? true : false)
+
+    binding.pry
 
     # 経路検索フォームに空欄が合った場合にindexビューに戻る
     if (destination.nil? || departure.empty?) || (destination.nil? || destination.empty?) || @datetime.nil?

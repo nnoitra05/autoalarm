@@ -38,7 +38,7 @@ class SearchNavitimeRoutesService
       end
 
       # departure_flagがtrueなら到着時刻に間に合うような結果を、falseなら指定時刻以降に出発する結果を返すように設定する
-      if departure_flag == 1
+      if departure_flag
         request.params[:goal_time] = datetime
       else
         request.params[:start_time] = datetime
