@@ -11,12 +11,23 @@
   margin-bottom: 10px;
 }
 
+.slack_btn{
+  display: flex;
+}
+
+.slack_display{
+  margin: 5px 0 0 0;
+}
+
+.slack_explanation{
+  margin: 5px 0 0 0;
+}
+
 .slack_help_popup{
   display: flex;
   font-size: small;
   margin-bottom: 10px;
-  border-bottom: solid 2px #4e4e4e;
-
+  border-top: solid 2px #4e4e4e;
 }
 
 .icon_with_login, .icon_without_login{
