@@ -455,7 +455,7 @@ div.contents.row .new_user {
     align-items: center;
   }
   .nav__logo{
-    width: 300px;
+    width: 400px;
     height: 100px;
   }
 
@@ -525,8 +525,8 @@ div.contents.row .new_user {
     align-items: center;
   }
   .nav__logo{
-    width: 180px;
-    height: 55px;
+    width: 250px;
+    height: 50px;
   }
 
   .train_information{
@@ -673,6 +673,11 @@ div.contents.row .new_user {
     height: 60px;
   }
 
+  .nav__logo{
+    width: 230px;
+    height: 50px;
+  }
+
   .register_btn{
     margin: 0 10px;
   }
@@ -711,6 +716,11 @@ div.contents.row .new_user {
 @media (max-width: 360px) {
   .register_btn{
     margin: 0px;
+  }
+
+  .nav__logo{
+    width: 220px;
+    height: 50px;
   }
   .modal_btn{
     /*
