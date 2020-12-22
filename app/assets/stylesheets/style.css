@@ -1018,3 +1018,36 @@ div.contents.row .new_user {
   display: flex;
   align-items: center;
 }
+
+ @-webkit-keyframes mymove {
+  50% {color: red;}
+} 
+
+@keyframes mymove {
+  50% {color:red;}
+}
+
+.day{
+  color:blueviolet;
+  animation: mymove 4s infinite;
+  font-size: x-large;
+}
+
+.hour{
+  color:blueviolet;
+  font-size: x-large;
+  animation: mymove 3s infinite;
+}
+
+.minute{
+  color:blueviolet;
+  font-size: x-large;
+  animation: mymove 2s infinite;
+}
+
+.second{
+  color:blueviolet;
+  font-size: x-large;
+  animation: mymove 1s infinite;
+
+}
