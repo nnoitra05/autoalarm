@@ -54,12 +54,10 @@ a {
 /* ヘッダー */
 
 .header {
-
-  background-color: #f1f8fe;
+  width: 100%;
   background-color: #2c7873;
+  padding: 20px;
   margin-bottom: 30px;
-  padding: 20px 0;
-
 }
 .inner {
   width: 1024px;
@@ -100,10 +98,6 @@ a {
 }
 .nav__logout:hover{
   opacity: 0.5;
-}
-
-.nav__logo{
-  margin: 0 10px;
 }
 
 /* devise用のCSS 適宜変更お願いします */
@@ -459,10 +453,6 @@ div.contents.row .new_user {
     display: flex;
     align-items: center;
   }
-  .nav__logo{
-    width: 400px;
-    height: 50px;
-  }
 
   .train_information{
     font-size: 35px;
@@ -518,18 +508,6 @@ div.contents.row .new_user {
 
 /* レスポンシブデザイン スマホ表示 */
 @media (max-width: 599px) {
-  /* ヘッダー */
-  .header{
-    margin-bottom: 15px;
-    padding: 10px 0;
-    width: 100%;
-  }
-
- 
-  .nav__logo{
-    width: 250px;
-    height: 45px;
-  }
 
   .train_information{
     font-size: 20px;
@@ -720,10 +698,6 @@ div.contents.row .new_user {
     margin: 0px;
   }
 
-  .nav__logo{
-    width: 220px;
-    height: 45px;
-  }
   .modal_btn{
     /*
     height: 60px;
@@ -1046,5 +1020,6 @@ div.contents.row .new_user {
   color:#2c7873;
   font-size: x-large;
   animation: mymove 1s infinite;
-
 }
+
+
