@@ -1,9 +1,4 @@
 
-.icon_btn{
-  /*
-  display: flex;
-  */
-}
 
 .icon_help_popup{
   display: flex;
@@ -47,3 +42,4 @@
 .icon_title, .slack_title{
   color: #2c7873;
 }
+
