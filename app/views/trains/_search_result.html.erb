@@ -70,7 +70,7 @@
         </div>
       </div>
 
-      <div class="train_line">
+      <div class="train_line" style="border-left: thick solid <%=route[:color]%>;">
         <%= "\t\t#{route[:line_name]}" %><br>
 
         <% @realtime_info.each_with_index do |info, flag|%>
@@ -103,7 +103,7 @@
       </div>
 
       <%if idx==@route_result[:sections].length-1%>
-        <div class="train_line">
+        <div class="train_line" style="border-left: thick solid <%=route[:color]%>;">
           <%= "\t\t#{route[:line_name]}" %><br>
 
           <% @realtime_info.each_with_index do |info, flag| %>
@@ -125,7 +125,7 @@
 
       <%else%>
         <%if "#{route[:walk_flag]}"=="true"%>
-          <div class="train_line">
+          <div class="train_line" style="border-left: thick solid <%=route[:color]%>;">
             <%= "\t\t#{route[:line_name]} " %><br>
           </div>
 
@@ -140,7 +140,7 @@
           </div>
           
         <%else%>       
-          <div class="train_line">
+          <div class="train_line" style="border-left: thick solid <%=route[:color]%>;">
             <%= "\t\t#{route[:line_name]} 乗換不要" %><br>
             <% @realtime_info.each_with_index do |info, flag|%>
               <%if info[:line_name]==route[:line_name]%>

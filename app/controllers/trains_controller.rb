@@ -66,8 +66,6 @@ class TrainsController < ApplicationController
       end
             
 
-
-
       @bookmark = Bookmark.new(departure: departure, destination: destination, time: @datetime.to_datetime.strftime("%H:%M"), departure_flag: departure_flag, status_check: true)
       @parameters = {
         bookmark: {
