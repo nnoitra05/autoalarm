@@ -773,13 +773,16 @@ div.contents.row .new_user {
 
 /* モーダルCSS JS用 */
 #modal-content {
-	width: 80%;
-	padding: 10px 20px ;
-	border: 2px solid #aaa ;
-	background: #fff ;
-	position: fixed ;
-	display: none ;
-	z-index: 2 ;
+  width: 80%;
+  height: calc(100vh - 120px);
+  margin-top: 40px;
+  overflow: scroll;
+	padding: 10px 20px;
+	border: 2px solid #aaa;
+	background: #fff;
+	position: fixed;
+  display: none;
+	z-index: 2;
 }
   
 #modal-overlay {

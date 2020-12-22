@@ -1,15 +1,4 @@
-div[id*="modal-content"] {
-	width: 50% ;
-	margin: 0 ;
-	padding: 10px 20px ;
-	border: 2px solid #aaa ;
-	background: #fff ;
-	position: fixed ;
-	display: none ;
-	z-index: 2 ;
-	overflow-y: auto;
-	height: 90%;
-}
+
   
 #modal-overlay {
 	z-index: 1 ;
