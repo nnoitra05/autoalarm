@@ -44,14 +44,22 @@ class TrainsController < ApplicationController
 
       train_information = FetchTrainsApisService.fetch(FetchTrainsApisService.apis[:ti])
       railways = FetchTrainsApisService.fetch(FetchTrainsApisService.apis[:r])
+
+      @realtime_info = []
       train_information.each do |train_info|
-        puts train_info["odpt:railway"]
         railways.each do |railway|
           if train_info["odpt:railway"] == railway["owl:sameAs"]
-            puts railway["dc:title"]
+            @route_result[:sections].each_with_index do |route, idx|
+              if !train_info["odpt:trainInformationStatus"].nil? && route[:line_name].include?(railway["dc:title"])
+                @realtime_info.push(train_info["odpt:trainInformationStatus"]["ja"])
+              end
+            end
           end
         end
       end
+            
+
+
 
       @bookmark = Bookmark.new(departure: departure, destination: destination, time: @datetime.to_datetime.strftime("%H:%M"), departure_flag: departure_flag, status_check: true)
       @parameters = {
