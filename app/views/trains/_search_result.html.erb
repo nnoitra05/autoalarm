@@ -138,6 +138,16 @@
           <div class="train_line">
             <%= "\t\t#{route[:line_name]} " %><br>
           </div>
+          <div class="route_destination">
+            <div class="train_destinationtime">
+              <%= "#{route[:destination_time]} 到着" %>
+            </div>
+
+            <div class="destination">
+              <%= "#{route[:destination]}" %>
+            </div>
+          </div>
+          
         <%else%>       
           <div class="train_line">
             <%= "\t\t#{route[:line_name]} 乗換不要" %><br>
