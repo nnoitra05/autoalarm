@@ -297,7 +297,7 @@ div.contents.row .new_user {
 /* 画面遷移用の共通ボタンのCSSです */
 .btn:hover{
   color: white;
-  background: #2c7873;
+  background-color: #2c7873;
 }
 
 /* 入力フォームの共通ボタンのCSSです */
