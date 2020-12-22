@@ -1017,33 +1017,33 @@ div.contents.row .new_user {
 }
 
  @-webkit-keyframes mymove {
-  50% {color: red;}
+  50% {color: #5e92c4;}
 } 
 
 @keyframes mymove {
-  50% {color:red;}
+  50% {color:#5e92c4;}
 }
 
 .day{
-  color:blueviolet;
+  color:#2c7873;
   animation: mymove 4s infinite;
   font-size: x-large;
 }
 
 .hour{
-  color:blueviolet;
+  color:#2c7873;
   font-size: x-large;
   animation: mymove 3s infinite;
 }
 
 .minute{
-  color:blueviolet;
+  color:#2c7873;
   font-size: x-large;
   animation: mymove 2s infinite;
 }
 
 .second{
-  color:blueviolet;
+  color:#2c7873;
   font-size: x-large;
   animation: mymove 1s infinite;
 
