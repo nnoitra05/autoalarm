@@ -2,7 +2,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
 <button onclick="loop()" class="modal_btn">アラーム設定</button>
-<div>
+<div id="timer" style="display:none">
   <span id="_d">00</span>
   <span id="_h">00</span>
   <span id="_m">00</span>
@@ -114,6 +114,8 @@
 
     //到着や乗り換え時間取得
     function loop(){
+      var ui =document.getElementById("timer");
+      ui.style.display="";
       var endtime = new Array();
       for (i=0;i<document.getElementById("index").innerHTML;i++){
         if(document.getElementById("transit_status_"+i).innerHTML.trim()!="true" &&i<document.getElementById("index").innerHTML-1){
