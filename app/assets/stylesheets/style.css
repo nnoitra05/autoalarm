@@ -57,8 +57,8 @@ a {
   position: fixed;
   width: 100%;
   background-color: #2c7873;
-  padding: 20px;
-  margin-bottom: 30px;
+  padding: 15px;
+  margin-bottom: 25px;
   z-index: 999;
 }
 .inner {
@@ -244,6 +244,7 @@ div.contents.row .new_user {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 10px 0 0 0;
 }
 
 .user_name{
@@ -352,6 +353,10 @@ div.contents.row .new_user {
 }
 
 /* ブックマークページのCSSです */
+.bookmarks{
+  margin: 10px 0 0 0;
+}
+
 .bookmark_headertitle{
   display: flex;
   justify-content: center;
@@ -429,6 +434,7 @@ div.contents.row .new_user {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 10px 0 0 0;
 }
 
 .mybookmark_edit{
@@ -657,7 +663,7 @@ div.contents.row .new_user {
 
   .nav__logo{
     width: 230px;
-    height: 50px;
+    height: 43px;
   }
 
   .register_btn{
@@ -847,6 +853,7 @@ div.contents.row .new_user {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 10px 0 0 0;
 }
 
 .train_index{
