@@ -52,6 +52,8 @@ class SearchNavitimeRoutesService
       response_body = JSON.parse(response.body)
       res = response_body["items"][0]
 
+      # JsonDumpService.write(response_body, Rails.public_path.join("jsons", "response_sample_hybrid.json").to_s)
+
     rescue => exception3
 
       return HandleExceptionService.rescue(response_body)
