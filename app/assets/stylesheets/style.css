@@ -1012,26 +1012,22 @@ div.contents.row .new_user {
 
 .day{
   color:#2c7873;
-  animation: mymove 4s infinite;
   font-size: x-large;
 }
 
 .hour{
   color:#2c7873;
   font-size: x-large;
-  animation: mymove 3s infinite;
 }
 
 .minute{
   color:#2c7873;
   font-size: x-large;
-  animation: mymove 2s infinite;
 }
 
 .second{
   color:#2c7873;
   font-size: x-large;
-  animation: mymove 1s infinite;
 }
 
 
