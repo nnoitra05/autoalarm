@@ -1,3 +1,26 @@
 
 
 $("#slack_click").html("<%= escape_javascript(render partial: "trains/slack_partial", locals: {slack_params: @slack_params}) %>");
+
+$('.btn').each(
+
+  function(){
+
+    var src = $(this).find('img').attr('src');
+    var src_white = src.replace('.png', '_white.png');
+
+    $(this).mouseover(
+      function(){
+        $(this).find('img').attr('src', src_white);
+      }
+    );
+
+    $(this).mouseout(
+      function(){
+        $(this).find('img').attr('src', src);
+      }
+    );
+
+  }
+
+);

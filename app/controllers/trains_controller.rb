@@ -39,7 +39,8 @@ class TrainsController < ApplicationController
       # 直通か非直通かでそれぞれjsonファイルが違うので、目的に合わせてコメントアウトを外してください。
 
       # file_name = Rails.public_path.join("jsons", "response_sample_no_transit.json") # 所沢→渋谷の直通経路のレスポンス
-      file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
+      # file_name = Rails.public_path.join("jsons", "response_sample.json") # 西国分寺→渋谷の乗換有のレスポンス
+      file_name = Rails.public_path.join("jsons", "response_sample_hybrid.json") # 所沢→渋谷の12/28 12:00出発のレスポンス
       @route_result = SearchNavitimeRoutesService.sample_fetch(file_name)
 
       # 例外処理が実行されていればtrains/indexにrender
