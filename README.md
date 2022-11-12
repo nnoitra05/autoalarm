@@ -1,6 +1,7 @@
 
 
-Original links (be made by our project participants: @jxn1156596, @yunayotuba, and me)
+Original links (made by our project participants: @jxn1156596, @yunayotuba, and me)
+
 https://github.com/jxn1156596/autoalarm
 
 #テーブル設計
