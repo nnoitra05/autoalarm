@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
   database: autoalarm_production
   username: autoalarm
   password: <%= ENV['AUTOALARM_DATABASE_PASSWORD'] %>
