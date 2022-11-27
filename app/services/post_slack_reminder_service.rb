@@ -22,7 +22,7 @@ class PostSlackReminderService
   def self.post_reminder(slack_id, time)
 
     begin
-      
+
       client = PostSlackReminderService.set_user_client
       reminders = PostSlackReminderService.fetch_reminders(slack_id)[:reminders]
       reminder_flag = false

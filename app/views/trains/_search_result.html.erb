@@ -88,11 +88,11 @@
       <div class="train_line" style="border-left: thick solid <%=route[:color]%>;">
         <%= "\t\t#{route[:line_name]}" %><br>
 
-        <% @realtime_info.each_with_index do |info, flag|%>
-          <% if info[:line_name]==route[:line_name] %>
-            <%= info[:delay_info] %>
-          <% end %>
-        <% end %>
+        <%# @realtime_info.each_with_index do |info, flag|%>
+          <%# if info[:line_name]==route[:line_name] %>
+            <%#= info[:delay_info] %>
+          <%# end %>
+        <%# end %>
       </div>
   
       <div class="route_destination">
@@ -121,11 +121,11 @@
         <div class="train_line" style="border-left: thick solid <%=route[:color]%>;">
           <%= "\t\t#{route[:line_name]}" %><br>
 
-          <% @realtime_info.each_with_index do |info, flag| %>
-            <% if info[:line_name]==route[:line_name] %>
-              <%= info[:delay_info] %>
-            <% end %>
-          <% end %>
+          <%# @realtime_info.each_with_index do |info, flag| %>
+            <%# if info[:line_name]==route[:line_name] %>
+              <%#= info[:delay_info] %>
+            <%# end %>
+          <%# end %>
         </div>
 
         <div class="route_destination">
@@ -157,11 +157,11 @@
         <%else%>       
           <div class="train_line" style="border-left: thick solid <%=route[:color]%>;">
             <%= "\t\t#{route[:line_name]} 乗換不要" %><br>
-            <% @realtime_info.each_with_index do |info, flag|%>
-              <%if info[:line_name]==route[:line_name]%>
-                <%= info[:lineinfo]%>
-              <%end%>
-            <%end%>
+            <%# @realtime_info.each_with_index do |info, flag|%>
+              <%# if info[:line_name]==route[:line_name]%>
+                <%#= info[:lineinfo]%>
+              <%# end %>
+            <%# end %>
           </div>
           
         <%end%>

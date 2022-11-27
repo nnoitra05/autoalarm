@@ -10,6 +10,11 @@
     <%= @failure_comment unless @failure_comment.empty? %>
   </div>
 
+  <%# アイコンヘルプの表示 %>
+  <div class="search_result">
+  <%= render partial: "trains/search_help" %>
+  </div>
+
   <%= form_with url: search_trains_path, method: :get, local: true, class: "search_form" do |f| %>
 
     <div class="field search-field">

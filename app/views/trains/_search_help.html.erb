@@ -1,0 +1,69 @@
+
+<!-- モーダルウィンドウ -->
+<div id="modal-content">
+  <!-- モーダルウィンドウのコンテンツ開始 -->
+  <div class="modal_header">
+    <h2>このアプリについて</h2>
+    <button id = "modal-close" class="close_btn">&times;</button>
+  </div>
+
+  <article class="cp_content">
+    
+    <div class="icon_without_login">
+      このアプリで提供される機能
+    </div>
+
+    <div class="icon_help_popup">
+      <div class="icon_display">
+        <%= image_tag("/assets/route.png", width: "60", alt: "経路検索") %>
+      </div>
+      <div class="icon_explanation">
+        <span class="icon_title">経路検索機能</span><br>
+        出発駅、到着駅、日時を入力することで、経路を検索・表示します。<br>
+        経路検索の日時オプションとして、「到着時刻として検索（デフォルト）」または「出発時刻として検索」を選択可能です。
+      </div>
+    </div>
+
+    <div class="icon_help_popup">
+      <div class="icon_display">
+        <%= image_tag("/assets/bookmark_icon.png", width: "60", alt: "ブックマーク登録") %>
+      </div>
+      <div class="icon_explanation">
+        <span class="icon_title">経路ブックマーク機能</span><br>
+        経路検索情報をブックマークに登録することができます（出発駅、到着駅、オプション）。<br>
+        ブックマークの一覧は、ブックマークページから閲覧できます。<br>
+        また、ブックマークページから特定のブックマークを選択し、日時を指定して再検索することも可能です。
+      </div>
+    </div>
+
+    <div class="icon_help_popup">
+      <div class="icon_display">
+        <%= image_tag("/assets/calendar_icon.png", width: "60", alt: "カレンダー登録") %>
+      </div>
+      <div class="icon_explanation">
+        <span class="icon_title">カレンダー登録機能</span><br>
+        経路検索結果（出発・乗換・到着時刻）をカレンダーに予定として登録することができます。<br>
+        カレンダー登録された予定は、マイページから閲覧できます。
+      </div>
+    </div>
+
+    <div class="icon_with_login">
+      ログインユーザーのみ使用可能な機能
+    </div>
+    
+    <div class="icon_help_popup">
+      <div class="icon_display">
+        <%= image_tag("/assets/slack_icon.png", width: "60", alt: "Slack連携") %>
+      </div>
+      <div class="icon_explanation">
+        <span class="icon_title">Slackリマインド（通知）連携</span><br>
+        電車を降りるor乗り換えるタイミングでSlackリマインドを設定できます。<br>
+        ※アカウント登録の際に、「AutoAlarm（Slackリマインドを行うためのチャンネル）のメンバーID」を入力する必要があります。
+      </div>
+    </div>
+  
+  </article>
+<!-- モーダルウィンドウのコンテンツ終了 -->
+</div>
+
+<%= link_to "このアプリについて", "javascript:void(0)", id: "modal-open", class: "modal_btn" %>
